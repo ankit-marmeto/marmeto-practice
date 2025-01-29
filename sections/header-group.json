@@ -11,38 +11,45 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "an_announcement_bar_gj66BM": {
+      "type": "an-announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
+        "text_zLL8KW": {
+          "type": "text",
           "settings": {
-            "text": "Welcome to our store",
-            "link": ""
+            "text": "🎁 Refer and earn $15"
+          }
+        },
+        "text_wCA3BL": {
+          "type": "text",
+          "settings": {
+            "text": "🎁 Free worldwide shipping"
+          }
+        },
+        "text_JVAQDR": {
+          "type": "text",
+          "settings": {
+            "text": "🎁 Buy 2 get 2"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "text_zLL8KW",
+        "text_wCA3BL",
+        "text_JVAQDR"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "show_line_separator": true,
-        "show_social": false,
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "enable_country_selector": false,
-        "enable_language_selector": false
+        "color_scheme": "scheme-7d22fd54-dfad-4350-adb6-5d80c45c8c3e"
       }
     },
     "header": {
       "type": "header",
       "settings": {
         "logo_position": "middle-left",
-        "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
-        "sticky_header_type": "on-scroll-up",
-        "show_line_separator": true,
+        "menu": "gumazing",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "always",
+        "show_line_separator": false,
         "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-1",
         "enable_country_selector": true,
@@ -56,7 +63,7 @@
     }
   },
   "order": [
-    "announcement-bar",
+    "an_announcement_bar_gj66BM",
     "header"
   ]
 }

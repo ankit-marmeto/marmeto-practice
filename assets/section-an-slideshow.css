@@ -1,0 +1,64 @@
+.splide__list {
+  max-height: 480px;
+}
+.cutout {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  z-index: 20;
+}
+.an-slideshow-slide__content {
+  width: 50%;
+  position: absolute;
+  top: 5%;
+  right: 0;
+  padding: 10px 40px;
+}
+.an-slideshow-slide__heading {
+  color: #8c3b00;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "BalooTamma";
+}
+.an-slideshow-slide__sub-heading {
+  color: #ff8933;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-family: "BalooTamma";
+}
+.an-slideshow-slide__button {
+  text-transform: uppercase;
+  font-family: "BalooTamma";
+}
+
+/* Custom pagination styles */
+.custom-pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 20px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.custom-dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.custom-dot.is-active {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+/* Optional: Add container styles if needed */
+.an-slideshow__wrapper {
+  position: relative;
+}

@@ -1,0 +1,27 @@
+.custom-quick-watch__heading {
+  text-align: center;
+  font-family: "BalooTamma";
+  font-weight: 700;
+  font-size: 48px;
+  color: #ffbb8a;
+}
+.custom-quick-watch__heading-color {
+  color: #ffcd00;
+}
+
+.custom-image-grid-new {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.2rem;
+}
+.grid-ele {
+  border-radius: 8px;
+  text-align: center;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  .custom-quick-watch__heading {
+    font-size: 32px;
+  }
+}

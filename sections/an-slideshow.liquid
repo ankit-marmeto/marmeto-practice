@@ -1,0 +1,142 @@
+{{ "section-an-slideshow.css" | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="an-slideshow__wrapper">
+  <component-splide data-splide='{
+  "type": "loop",
+  "autoplay": true,
+  "interval": 3000,
+  "pauseOnHover": true,
+  "resetProgress": false,
+  "classes": {
+    "pagination": "splide__pagination custom-pagination",
+    "page": "splide__pagination__page custom-dot"
+  }
+}'>
+    <section class="splide" aria-label="Splide Basic HTML Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for block in section.blocks %}
+
+            <li class="splide__slide">
+              <div class="an-slideshow__slide">
+                {% if block.settings.image_picker != blank %}
+                  <div class="an-slideshow__image">
+                    {% render 'responsive-picture'
+                      , desktopImage: block.settings.image_picker
+                      , class: "image-fit" %}
+                  </div>
+                {% endif %}
+                <div class="an-slideshow-slide__content">
+                  {% if block.settings.heading != blank %}
+                    <div class="an-slideshow-slide__heading h1">{{ block.settings.heading }}</div>
+                  {% endif %}
+                  {% if block.settings.sub-heading != blank %}
+                    <h3 class="an-slideshow-slide__sub-heading h2">{{ block.settings.sub-heading }}</h3>
+                  {% endif %}
+                  {% if block.settings.button-label != blank %}
+                    <a class="an-button an-slideshow-slide__button" href="{{block.settings.button-url}}">{{ block.settings.button-label }}</a>
+                  {% endif %}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+        {% if section.settings.cutout-image != blank %}
+          <div class="cutout">
+            {% render 'responsive-picture'
+              , desktopImage: section.settings.cutout-image
+              , class: "image-fit" %}
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  </component-splide>
+</section>
+
+
+{% schema %}
+  {
+    "name": "an-slideshow",
+    "class": "an-slideshow section",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "label": "Cutout image",
+        "id": "cutout-image"
+      }, {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Image Picker",
+            "id": "image_picker"
+          },
+          {
+            "type": "text",
+            "label": "heading",
+            "id": "heading"
+          },
+          {
+            "type": "richtext",
+            "label": "Sub heading",
+            "id": "sub-heading"
+          },
+          {
+            "type": "text",
+            "label": "Button label",
+            "id": "button-label"
+          }, {
+            "type": "url",
+            "label": "Button url",
+            "id": "button-url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "an-slideshow"
+      }
+    ]
+  }
+{% endschema %}

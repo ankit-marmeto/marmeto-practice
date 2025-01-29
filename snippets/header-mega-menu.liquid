@@ -12,15 +12,11 @@
         {%- if link.links != blank -%}
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
-              <summary
-                id="HeaderMenu-{{ link.handle }}"
-                class="header__menu-item list-menu__item link focus-inset"
-              >
+              <summary id="HeaderMenu-{{ link.handle }}" class="header__menu-item list-menu__item link focus-inset">
                 <span
                   {%- if link.child_active %}
-                    class="header__active-menu-item"
-                  {% endif %}
-                >
+                  class="header__active-menu-item"
+                  {% endif %}>
                   {{- link.title | escape -}}
                 </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
@@ -28,12 +24,8 @@
               <div
                 id="MegaMenu-Content-{{ forloop.index }}"
                 class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
-                tabindex="-1"
-              >
-                <ul
-                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
-                  role="list"
-                >
+                tabindex="-1">
+                <ul class="mega-menu-card-container mega-menu__list page-width" role="list">
                   {%- for childlink in link.links -%}
                     <li>
                       <a
@@ -41,11 +33,23 @@
                         href="{{ childlink.url }}"
                         class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
                         {% if childlink.current %}
-                          aria-current="page"
-                        {% endif %}
-                      >
-                        {{ childlink.title | escape }}
+                        aria-current="page"
+                        {% endif %}>
+                        {% assign link_object = collections[childlink.handle] %}
+                        <div class="mega-menu-card">
+                          {% if link_object.image != blank %}
+                            <div class="mega-menu-card-image">
+                              {% render 'responsive-picture'
+                                , desktopImage: link_object.image
+                                , class: "image-fit" %}
+                            </div>
+                          {% endif %}
+                          <div class="mega-menu-card-title">
+                            {{ childlink.title }}
+                          </div>
+                        </div>
                       </a>
+
                       {%- if childlink.links != blank -%}
                         <ul class="list-unstyled" role="list">
                           {%- for grandchildlink in childlink.links -%}
@@ -55,9 +59,8 @@
                                 href="{{ grandchildlink.url }}"
                                 class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
                                 {% if grandchildlink.current %}
-                                  aria-current="page"
-                                {% endif %}
-                              >
+                                aria-current="page"
+                                {% endif %}>
                                 {{ grandchildlink.title | escape }}
                               </a>
                             </li>
@@ -76,14 +79,12 @@
             href="{{ link.url }}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
-              aria-current="page"
-            {% endif %}
-          >
+            aria-current="page"
+            {% endif %}>
             <span
               {%- if link.current %}
-                class="header__active-menu-item"
-              {% endif %}
-            >
+              class="header__active-menu-item"
+              {% endif %}>
               {{- link.title | escape -}}
             </span>
           </a>
@@ -92,3 +93,33 @@
     {%- endfor -%}
   </ul>
 </nav>
+
+<style>
+  .mega-menu-card-container {
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+  .mega-menu-card {
+    max-height: 186px;
+    min-height: 186px;
+    max-width: 150px;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #45454508;
+    border: 1px solid #45454533;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 0 0 0.8px #454545;
+
+  }
+  .mega-menu-card-title {
+    color: #454545;
+    font-weight: 400;
+    font-family: "BalooTamma";
+    margin-top: 10px;
+  }
+</style>

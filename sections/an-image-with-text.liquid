@@ -1,0 +1,138 @@
+{{ "an-image-with-text.css" | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="an-image-with-text__wrapper">
+
+  {% if section.settings.heading-1 != blank %}
+
+    <h1 class="an-image-with-text__heading">{{ section.settings.heading-1 }}
+      <span class="an-image-with-text__heading-colors">{{ section.settings.heading-2 }}</span>
+    </h1>
+  {% endif %}
+  {% if section.settings.image-head != blank %}
+    <div class="an-image-with-text__head-image">
+      {% render 'responsive-picture'
+        , desktopImage: section.settings.image-head
+        , class: "image-fit" %}
+    </div>
+  {% endif %}
+
+  <div class="page-width  an-image-with-text__container" style="{% if section.settings.image-first != true %} flex-direction: row-reverse {% endif %}">
+    {% if section.settings.image != blank %}
+      <div class="an-image-with-text__image">
+        {% render "responsive-picture"
+          , desktopImage: section.settings.image
+          , class: "image-fit" %}
+      </div>
+    {% endif %}
+    <div class="an-image-with-text__content">
+      {% if section.settings.description %}
+        <div class="an-image-with-text__description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+      {% if section.settings.button-label != blank %}
+        <a class="an-image-with-text__button" href="{{section.settings.button-url}}">{{ section.settings.button-label }}</a>
+      {% endif %}
+    </div>
+  </div>
+
+
+  {% if section.settings.image-head != blank %}
+    <div class="an-image-with-text__head-image">
+      {% render 'responsive-picture'
+        , desktopImage: section.settings.image-head
+        , class: "image-fit" %}
+    </div>
+  {% endif %}
+
+</section>
+
+{% schema %}
+  {
+    "name": "An image with text",
+    "class": "section an-image-with-text",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading-1",
+        "label": "Heading part 1"
+
+      },
+      {
+        "type": "text",
+        "id": "heading-2",
+        "label": "Heading part 2"
+
+      },
+      {
+        "type": "image_picker",
+        "label": "Heading line",
+        "id": "image-head"
+      },
+      {
+        "type": "image_picker",
+        "label": "Image",
+        "id": "image"
+      }, {
+        "type": "text",
+        "label": "Description",
+        "id": "description"
+      }, {
+        "type": "text",
+        "label": "Button label",
+        "id": "button-label"
+      }, {
+        "type": "url",
+        "label": "Button url",
+        "id": "button-url"
+      }, {
+        "type": "checkbox",
+        "id": "image-first",
+        "label": "Show image in first place",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "presets": [
+      {
+        "name": "An image with text"
+      }
+    ]
+  }
+{% endschema %}

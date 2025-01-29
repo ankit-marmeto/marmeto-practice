@@ -1,0 +1,73 @@
+<div class="blog__wrapper page-width">
+  <div class="blog-container">
+    <div class="blog-container__image">
+      {% render 'responsive-picture'
+        , desktopImage: section.settings.image
+        , class: 'image-fit' %}
+      <div class="blog-container__description">
+        {{ section.settings.description1 }}
+      </div>
+    </div>
+    <div class="blog-container__content">
+      {% for block in section.blocks %}
+        <div class="blog-container__heading">
+          {{ block.settings.heading }}
+        </div>
+        <div class="blog-container__descriptions">
+          {{ block.settings.description2 }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<style>
+  .blog-container__heading {
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+
+</style>
+
+{% schema %}
+  {
+    "name": "Blog",
+    "tag": "section",
+    "class": "blog-page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, {
+        "type": "richtext",
+        "id": "description1",
+        "label": "Description1"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "terms",
+        "name": "terms",
+        "settings": [
+
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          }, {
+            "type": "richtext",
+            "id": "description2",
+            "label": "Description2"
+          }
+        ]
+
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog"
+      }
+    ]
+  }
+{% endschema %}

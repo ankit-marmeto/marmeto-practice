@@ -99,10 +99,147 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "quick_watch_AUTfXF": {
+      "type": "quick-watch",
+      "blocks": {
+        "image_wUDGk6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114653.png"
+          }
+        },
+        "image_rdFcUa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114655.png"
+          }
+        },
+        "image_XBdKP6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114656.png"
+          }
+        },
+        "image_biQTah": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114654.png"
+          }
+        },
+        "image_JpEGpG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114652.png"
+          }
+        },
+        "image_g7G4pd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114650_1.png"
+          }
+        },
+        "image_zx8qJk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114657.png"
+          }
+        },
+        "image_QMqtxM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114652_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_wUDGk6",
+        "image_rdFcUa",
+        "image_XBdKP6",
+        "image_biQTah",
+        "image_JpEGpG",
+        "image_g7G4pd",
+        "image_zx8qJk",
+        "image_QMqtxM"
+      ],
+      "settings": {
+        "heading": "Quick watch",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "bundle_7Ehyeq": {
+      "type": "bundle",
+      "disabled": true,
+      "settings": {
+        "heading": "Add Your Own Bundle",
+        "background": "#FFF0E6",
+        "color": "#ff8933",
+        "cutout": "shopify://shop_images/Vector_3.png",
+        "enable_product_recommendations": true
+      }
+    },
+    "custom_quick_watch_KwjYcz": {
+      "type": "custom-quick-watch",
+      "blocks": {
+        "image_pJHMnX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114650.png"
+          }
+        },
+        "image_VznraM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114650_1.png"
+          }
+        },
+        "image_qDDLVD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114656.png"
+          }
+        },
+        "image_M6GazB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114655.png"
+          }
+        },
+        "image_9bNPhy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114655.png"
+          }
+        },
+        "image_pxj7wz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_114652_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_pJHMnX",
+        "image_VznraM",
+        "image_qDDLVD",
+        "image_M6GazB",
+        "image_9bNPhy",
+        "image_pxj7wz"
+      ],
+      "settings": {
+        "heading-1": "Quick",
+        "heading-2": "Watch",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "related-products"
+    "related-products",
+    "quick_watch_AUTfXF",
+    "bundle_7Ehyeq",
+    "custom_quick_watch_KwjYcz"
   ]
 }

@@ -1,0 +1,52 @@
+{{ "section-an-announcement-bar.css" | asset_url | stylesheet_tag }}
+
+<section class="an-announcement-bar__wrapper color-{{ section.settings.color_scheme }}">
+  <div class="an-announcement-bar__container">
+    {% for i in (1..10) %}
+      {% for block in section.blocks %}
+        <div class="an-announcement-bar__content">
+          {% if block.settings.text != blank %}
+            <span class="an-announcement-bar__text">{{ block.settings.text }}</span>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "An announcement bar",
+    "class": "an-announcement-bar section",
+    "tag": "section",
+    "enabled_on": {
+      "groups": ["header"]
+    },
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color schema",
+        "default": "scheme-4"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "An announcement bar"
+      }
+    ]
+  }
+{% endschema %}

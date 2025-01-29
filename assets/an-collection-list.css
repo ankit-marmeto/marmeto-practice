@@ -1,0 +1,33 @@
+.an-collection-list__heading {
+  text-align: center;
+  font-family: "BalooTamma";
+  font-weight: 700;
+  font-size: 48px;
+  color: #ffbb8a;
+}
+.an-collection-list__heading-color {
+  color: #ffcd00;
+}
+
+.an-collection-list__container {
+  display: flex;
+  align-items: center;
+  gap: 7rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.an-collection-list__collection-card {
+  max-width: 200px;
+  height: 329px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.an-collection-list__collection-card-title {
+  font-weight: 600;
+  text-align: center;
+  font-size: 32px;
+  text-decoration: none;
+  font-family: "BalooTamma";
+}
