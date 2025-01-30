@@ -58,7 +58,7 @@
         "custom_class": "",
         "padding_top": 0,
         "padding_bottom": 0,
-        "layout": "full_bleed",
+        "layout": "grid",
         "slide_height": "medium",
         "slider_visual": "dots",
         "slider_dots_overlay": true,
