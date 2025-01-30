@@ -59,7 +59,7 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "layout": "full_bleed",
-        "slide_height": "extra_large",
+        "slide_height": "medium",
         "slider_visual": "dots",
         "slider_dots_overlay": true,
         "auto_rotate": true,
