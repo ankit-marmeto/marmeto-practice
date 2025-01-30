@@ -1,0 +1,165 @@
+.contact_top_container p {
+    margin: 0;
+}
+.error-message {
+    color: #ffffff;
+}
+.contact .field__input:focus + .field__label {
+    display: none;
+}
+.contact_adddress p {
+    color: rgba(0, 0, 0, 0.63);
+}
+.contact .form__message {
+    color: #ffffff;
+}
+.contact .email-error {
+    display: none;
+}
+.contact_adddress p strong {
+    color: #000000;
+}
+.contact .field__input:not(:placeholder-shown) ~ .field__label {
+    display: none;
+}
+.contact_form_input {
+    height: 60px;
+}
+.contact .text-area {
+    height: 17.6rem;
+}
+.contact-data-maincontainer {
+    display: flex;
+}
+@media screen and (min-width:750px) {
+    .contact-data-maincontainer {
+        justify-content: space-evenly;
+        gap: 1rem;
+    }
+    .contact {
+        padding: 1.2rem 1rem;
+        background: #141413;
+    }
+    .contact .field__input {
+        color: #FFF;
+        background: #141413;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .contact .field__label {
+        font-size: 1.6rem;
+        color: #FFF;
+    }
+    .contact_heading {
+        padding-bottom: 2.4rem;
+        color: #0D0D0D;
+        font-size: 40px;
+        line-height: 1.4;
+    }
+    .contact_adddress p {
+        line-height: 3.4rem;
+    }
+    .contact_text {
+        padding-bottom: 4.4rem;
+        color: rgba(0, 0, 0, 0.63);
+        font-size: 1.6rem;
+        line-height: 22.4px;
+    }
+    .contact_form_heading {
+        padding-bottom: 2rem;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 400;
+    }
+    .contact-btn {
+        display: flex;
+        justify-content: center;
+    }
+    .contact-btn button {
+        padding: 1.6rem 10rem;
+        font-size: 1.6rem;
+        color: #141413;
+    }
+    .contact .field__label {
+        top: 0.3rem;
+        left: 1%;
+    }
+}
+@media screen and (max-width:749px) {
+    .contact-data-maincontainer {
+        flex-direction: column;
+    }
+    .contact {
+        background: #141413;
+        padding: 3.3rem 3.5rem;
+    }
+    .contact__fields {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2rem;
+    }
+    .contact .field__input {
+        color: #FFF;
+        background: #141413;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .contact .field__label {
+        font-size: 14px;
+        color: #FFF;
+    }
+    .contact-btn {
+        display: flex;
+        justify-content: center;
+    }
+    .contact .field__label {
+        top: 33%;
+    }
+    .contact .field__input {
+        height: 3.3rem;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .contact .field {
+        padding-top: 0;
+        padding-bottom: 0;
+        min-height: 3.3rem !important;
+    }
+    .contact-btn button {
+        line-height: 1.4;
+        font-weight: 400;
+        padding: 1.4rem 4.2rem;
+        color: #141413;
+        font-size: 1.6rem;
+    }
+    .contact-data-container {
+        padding-top: 3rem;
+        padding-bottom: 3.2rem;
+        text-align: center;
+    }
+    .contact_heading {
+        padding-bottom: 1.2rem;
+        color: #141413;
+        font-size: 32px;
+        line-height: 40.32px;
+    }
+    .contact_text {
+        padding-bottom: 4.4rem;
+        color: rgba(0, 0, 0, 0.63);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19.6px;
+    }
+    .contact_form_heading {
+        color: #fff;
+        padding-bottom: 1.7rem;
+        font-size: 1.6rem;
+        font-weight: 400;
+    }
+    .map-container {
+        padding-top: 3.2rem;
+        padding-bottom: 3.2rem;
+    }
+    .contact_adddress p {
+        color: rgba(0, 0, 0, 0.63);
+        line-height: 30px;
+    }
+}

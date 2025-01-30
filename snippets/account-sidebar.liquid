@@ -1,0 +1,23 @@
+<script src="{{ 'account.js' | asset_url }}" defer="defer"></script> 
+
+{{ 'account-sidebar.css' | asset_url | stylesheet_tag }}
+
+<div class="account-snippet-main">
+    <div class="account_holderName_container">
+        {% if customer %}
+            {% render 'hello-icon', %}
+        <p id="customer_name">Hello,{{ customer.first_name }}</p>
+        {% endif %}
+    </div>
+    <div class="main-hr"><div></div></div>
+    <div class="">
+        <div class="account_overview account_page_data account_page_container">
+            {% for block in section.blocks %}
+                <div class="tab-details {% if forloop.first %} active-tab {% endif %}" data-tab-id="{{ block.settings.data-id }}" onclick="showContent('{{ block.settings.data-id }}')">
+                    {{ block.settings.heading }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="child-hr"><div></div></div>
+    </div>
+</div>

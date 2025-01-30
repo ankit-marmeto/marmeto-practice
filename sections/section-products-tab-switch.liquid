@@ -1,0 +1,212 @@
+{{ 'section-products-tab-switch.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-products-tab-switch.js' | asset_url }}" defer="defer"></script>
+
+{% style %}
+  .caption-{{ section.id }} {
+    color: {{ section.settings.caption_color }};
+  }
+{% endstyle %}
+<div class="color-{{ section.settings.color_scheme }} products-tab-switch">
+  <div class="products-tab-switch__text {{ section.settings.text_position }}">
+    <p class="{{ section.settings.caption_size}} letter-spacing caption-{{ section.id }}">{{ section.settings.caption }}</p>
+    <p class="{{ section.settings.title_size }} products-tab-switch__heading">{{ section.settings.title }}</p>
+    <p class="{{ section.settings.description }} products-tab-switch__description">{{ section.settings.description }}</p>
+  </div>
+  <div class="tabs-switch-container">     
+    <product-tabs>
+      <div class="tabs-container">
+          <div class="tabs-container__tabs-list">
+          {% for block in section.blocks %}
+              {% if block.settings.collection != blank %}
+                <button class="h5 tabs-container__tabs-list--tab" data-active-tab="{{ block.settings.collection.title | upcase }}" data-element="tab" data-tab-index="{{ forloop.index0 }}">
+                    {{ block.settings.collection.title | capitalize | remove : 'Browse the new arrivals - ' }}
+                </button>
+              {% endif %}
+          {% endfor %}
+          </div>
+      </div>        
+      <div class="carousels-container">
+        {% for block in section.blocks %}
+          {% if block.settings.collection != blank %}
+            <div class="carousels-container__item splide section-tab-switch" data-index="{{ forloop.index0 }}">                         
+              <div class="splide__track">
+                <div class="carousel-container-lists splide__list">
+                  {% for product in block.settings.collection.products %}
+                    {%  if forloop.index0 < 10 %}
+                      <div class="carousels-container__item--cell splide__slide">
+                        {% render 'mm-product-card', card_product: product, show_vendor: section.settings.show_vendor %}
+                      </div>                                    
+                    {%  endif %}
+                  {% endfor %}                               
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </product-tabs>      
+  </div>
+</div>  
+{% schema %}
+  {
+    "name": "Products tab switch",
+    "tag": "section",
+
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "default": "scheme_1",
+        "label": "Color Scheme"
+      },
+      {
+        "type": "header",
+        "content": "Caption settings"
+      },
+      {
+        "type": "text",
+        "id": "caption",
+        "label": "Enter caption",
+        "default": "NEW ARRIVALS"
+      },
+      {
+        "type": "select",
+        "id": "caption_size",
+        "options": [
+          {
+            "value": "caption",
+            "label": "Caption"
+          },
+          {
+            "value": "subtitle",
+            "label": "Subtitle"
+          }
+        ],
+        "default": "caption",
+        "label": "Select font size"
+      },
+      {
+        "type": "color",
+        "id": "caption_color",
+        "label": "Caption color",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Title settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Enter title",
+        "default": "BROWSE THE NEW ARRIVALS"
+      },
+      {
+        "type": "select",
+        "id": "title_size",
+        "options": [
+          {
+            "value": "h6",
+            "label": "small"
+          },
+          {
+            "value": "h2",
+            "label": "medium"
+          },
+          {
+            "value": "h1",
+            "label": "large"
+          }
+        ],
+        "default": "h2",
+        "label": "Select font size"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Select font color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Description settings"
+      },
+      {
+        "type": "text",
+        "id": "description",
+        "label": "Add description"
+      },
+      {
+        "type": "select",
+        "id": "description_size",
+        "options": [
+          {
+            "value": "h4",
+            "label": "small"
+          },
+          {
+            "value": "h5",
+            "label": "medium"
+          },
+          {
+            "value": "h3",
+            "label": "large"
+          }
+        ],
+        "default": "h4",
+        "label": "Select font size"
+      },
+      {
+        "type": "color",
+        "id": "description_color",
+        "label": "Select font color",
+        "default": "#fff"
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "Choose the text position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": false
+      }
+    ],
+    "blocks": [
+        {
+          "type": "collection",
+          "name": "Collection",
+          "settings": [
+            {
+              "type": "collection",
+              "id": "collection",
+              "label": "Select collection"
+            }
+          ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Products tab switch"
+      }
+    ]
+  }
+{% endschema %}

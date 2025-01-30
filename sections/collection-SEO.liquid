@@ -1,0 +1,66 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{% if section.settings.show_seo_content and collection.metafields.custom.seo_title.value != blank %}
+    <div class="section-{{ section.id }}-padding collection-seo-wrapper">
+        <div class="SEO-content-wrapper page-width">
+            {% assign title_content = collection.metafields.custom.seo_title.value %}   
+            <h1 class="seo-title h1"> {{ title_content.seo_title | metafield_tag }}</h1>
+            <div class="seo-content">{{ title_content.seo_content | metafield_tag }}</div>
+            {% for qusetion_answer in collection.metafields.custom.seo_question_answer.value %}
+                <div class="seo-faq-wrapper">
+                    <h2 class="seo-question h2"> {{ qusetion_answer.question | metafield_tag }} </h2>
+                    <div class="seo-answer">   {{ qusetion_answer.answer | metafield_tag }} </div>
+                </div>
+            {% endfor %}
+        </div> 
+    </div>   
+{% endif %}
+{% schema %}
+  {
+    "name": "Collection SEO",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "show_seo_content",
+            "label": "Show SEO Content",
+            "default": true
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 36
+          },
+          {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 36
+          }     
+    ],
+    "presets": [
+        {
+           "name": "Collection SEO" 
+        }
+    ]
+  }
+{% endschema %}

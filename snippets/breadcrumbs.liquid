@@ -1,0 +1,63 @@
+{% if template == 'product' or template == 'collection' or template == 'list-collections' or template == 'page' or template.suffix == 'default' %}
+
+    {% assign t = template | split: '.' | first %}
+    <nav class="breadcrumbs left {% if template == 'product' %} page-width {% endif %}" 
+      role="navigation" 
+      aria-label="breadcrumbs"
+    >
+      <ol>
+        <li class="store-name">
+          <a class="subtitle-text tm-blue-color" href="/" title="Home">My Raymonds</a>
+          <span class="breadcrumbs-icon">{% render 'icon' with 'caret' %}</span>
+        </li>
+        
+        {% case t %}
+          {% when 'page' %}
+            <li>
+              <a class="subtitle-text tm-blue-color" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+              <span class="breadcrumbs-icon">{% render 'icon' with 'caret' %}</span>
+            </li>
+          {% when 'product' %}
+            {% assign collection = product.collections | first %}
+            {% assign current_collection = product.metafields.custom.breadcrumbs | split: ',' %}
+            {% if current_collection.size > 0 %}
+              {% for collec in current_collection %}
+                {% if collections[collec].url %}
+                  <li>
+                    {{ collections[collec].title | link_to: collections[collec].url }}
+                    <span class="breadcrumbs-icon">{% render 'icon' with 'caret' %}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            {% elsif collection %}
+              <li>
+                {{ collection.title | link_to: collection.url }}
+                <span class="breadcrumbs-icon">{% render 'icon' with 'caret' %}</span>
+              </li>
+            {% endif %} 
+        
+            <li>
+              <a class="subtitle-text tm-blue-color" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+            </li>
+        
+          {% when 'collection' and collection.handle %}
+            {% if current_tags %}
+              <li>{{ collection.title | link_to: collection.url }}</li>
+              <li>
+                {% capture tag_url %}{{ collection.url }}/{{ current_tags | join: "+"}}{% endcapture %}
+                <a class="subtitle-text tm-blue-color" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+              </li>
+            {% else %}
+              <li>
+                <a class="subtitle-text tm-blue-color" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+              </li>
+            {% endif %}
+        {% else %}
+          <li aria-current="page">
+            <a class="subtitle-text tm-blue-color" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
+          </li>
+        {% endcase %}
+      </ol>
+    </nav>
+{% endif %}
+  

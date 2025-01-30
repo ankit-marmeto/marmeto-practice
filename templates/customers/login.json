@@ -11,14 +11,21 @@
   "sections": {
     "main": {
       "type": "main-login",
+      "disabled": true,
       "settings": {
-        "enable_shop_login_button": "true",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "171230445182aaeace": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "171230445182aaeace"
   ]
 }

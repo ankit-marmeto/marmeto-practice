@@ -1,0 +1,176 @@
+
+
+{{'milestone.css' |  asset_url |  stylesheet_tag }}
+
+
+<div class="milestone_section">
+
+<p class="mile_stone_section_heading-mobile mile_stone_section_heading">{{ section.settings.section_heading}}</p>
+
+<div class="milestone_main_container">
+
+
+  <div class="thumbnail-container">
+    
+    <div id="thumbnail-slider" class="splide splide_width">
+  <div class="splide__track">
+		<ul class="splide__list new_splide_list">
+      {% for block in section.blocks %}
+        <li class="splide__slide splide_solide_new splide_thumnail_list">
+          <div class="splide-text-year">{{ block.settings.year }}</div>
+          <div class="splide_line">
+            <div></div>
+          </div>
+        </li>
+			{% endfor %}
+		</ul>
+  </div>
+</div>
+   </div>
+
+   <div class="main_slider_top">
+
+  
+    <div id="main-slider" class="splide main-image-slider">
+        <p class="mile_stone_section_heading"> {{ section.settings.section_heading }}</p>
+        <div class="splide__arrows">
+          
+            <button class="splide__arrow splide__arrow--prev milestone_button prev-milestone-btn">
+              <span> {% render 'next-icon'%}</span>
+               <span> Prev </span>
+               
+            </button>
+            <button class="splide__arrow splide__arrow--next  milestone_button next-milestone-btn">
+               <span> Next  </span>
+                <span> {% render 'next-icon'%}</span>
+                {% render 'next-icon'%}
+            </button>
+      </div>
+    
+  <div class="splide__track">
+   
+  <ul class="splide__list">
+    {% for block in section.blocks %}
+      <li class="splide__slide">
+
+      <div class="milestone_text">
+        {{ block.settings.enter_text }}
+      </div>
+
+      
+
+      <div class="milestone_image_container">
+        {% render 'new-image',
+        
+        mobileSrc: block.settings.image2,
+        desktopSrc: block.settings.image1
+      %}
+      </div>
+      </li>
+      {% endfor %}
+    </ul>
+    
+  </div>
+</div>
+
+</div>
+
+
+ 
+</div>
+</div>
+
+
+<script>
+   document.addEventListener( 'DOMContentLoaded', function () {
+  var main = new Splide( '#main-slider', {
+    type      : 'loop',
+    drag: 'false',
+    snap: true,
+    pagination: false,
+    arrows    : true,
+    wheel    : false,
+    perMove:1,
+    duration: 1000,
+  } )
+
+  
+  var thumbnails = new Splide( '#thumbnail-slider', {
+    direction: 'ttb',
+    type : "fade",
+    height   : '90%',
+    perPage: 3,
+    gap: '20rem',
+    perMove: 1,
+    type   : 'loop',
+    perPage: 3,
+    focus  : 'center',
+    rewind      : true,
+    pagination  : false,
+    cover       : true,
+    isNavigation: true,
+  
+    arrows:false,
+    breakpoints : {
+      990: {
+        direction:"ltr",
+        gap:"2rem",
+       
+      },
+    },
+  } );
+  main.sync( thumbnails );
+  main.mount();
+  thumbnails.mount();
+} );
+
+</script>
+
+
+
+{% schema %}
+    {
+      "name": "milestone",
+      "tag": "section",
+      "settings": [
+        {
+          "type":"text",
+          "label": "heading Text",
+          "id": "section_heading"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "milestone",
+          "name": "milestone",
+          "settings": [
+            {
+              "type": "number",
+              "label": "Enter Year",
+              "id": "year"
+            },
+            {
+              "type": "text",
+              "label": "Enter text",
+              "id": "enter_text"
+            },
+            {
+              "type": "image_picker",
+              "label": "Add Image For Desktop",
+              "id": "image1"
+            },
+            {
+              "type": "image_picker",
+              "label": "Add Image for Mobile",
+              "id": "image2"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "milestone"
+        }
+      ]
+    }
+    {% endschema %}

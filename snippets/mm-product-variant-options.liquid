@@ -1,0 +1,121 @@
+{% comment %}
+  Renders product variant options
+
+  Accepts:
+  - product: {Object} product object.
+  - option: {Object} current product_option object.
+  - variants: {Object} variants object.
+  - options_with_values: {Object} options_with_values object (for variant as product).
+  - block: {Object} block object.
+  - class: {String} string to differentaite desktop and mobile radio buttons.
+
+
+  Usage:
+  {% render 'product-variant-options',
+    product: product,
+    option: option,
+    block: block
+  %}
+{% endcomment %}
+
+{%- liquid
+  assign picker_type = picker_type | default: block.settings.picker_type
+  assign variants_available_arr = variants | map: 'available'
+  assign variants_option1_arr = variants | map: 'option1'
+  assign variants_option2_arr = variants | map: 'option2'
+  assign variants_option3_arr = variants | map: 'option3'
+  assign sectionId = sectionId | default: section.id
+  assign products_handle_arr = variants | map: 'product' | map: 'handle'
+  assign variant_bg_images = variants | map: 'product' | map: 'featured_image'
+
+  assign product_form_id = 'product-form--' | append: sectionId | append: '--' | append: product.id
+
+  assign downcased_option_name = option.name | downcase 
+  if downcased_option_name contains 'color' or downcased_option_name contains 'colour'
+    assign col-data = exist
+    assign is_color_option = true
+  endif
+
+  assign all_product_option_values = option.values
+  if product.metafields.custom.variant_as_product.value.product.value != blank and is_color_option
+    assign all_product_option_values = options_with_values | where: 'position', option.position | map: 'values' | uniq
+  endif 
+
+  # Adding random number to the input's "id", label's "for" and "name" attributes so that even if all the products apeears in the same section they will work.
+  assign randomNumber = "now" | date: "%N" | modulo: 100
+-%}
+{%- for value in all_product_option_values -%}
+  {%- liquid
+    assign variant_id = product.variants[forloop.index0].id
+    assign variant_quantity = product.variants[forloop.index0].inventory_quantity
+    assign option_disabled = true
+    assign product_handle = ''
+
+    for option1_name in variants_option1_arr
+      case option.position
+        when 1
+          if variants_option1_arr[forloop.index0] == value
+            assign option_disabled = false
+            assign product_handle = products_handle_arr[forloop.index0]
+            assign variant_bg_image = variant_bg_images[forloop.index0]
+          endif
+        when 2
+          if variants_option2_arr[forloop.index0] == value
+            assign option_disabled = false
+            assign product_handle = products_handle_arr[forloop.index0]
+            assign variant_bg_image = variant_bg_images[forloop.index0]
+          endif
+        when 3
+          if variants_option3_arr[forloop.index0] == value
+            assign option_disabled = false
+            assign product_handle = products_handle_arr[forloop.index0]
+            assign variant_bg_image = variant_bg_images[forloop.index0]
+          endif
+      endcase
+    endfor
+  -%}
+  {% if variant_id %} 
+    <div style="position: relative;">
+      <input
+        type="radio"
+        class="MM-variant-input {{ option.name }}"
+        id="{{ sectionId }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.id }}-{{ randomNumber }}"
+        name="{{ option.name }}-{{ sectionId }}-{{ product.id }}-{{ randomNumber }}"
+        value="{{ value | escape }}"
+        data-url="{{ product_handle }}"
+        form="{{ product_form_id }}"
+        {% if option.selected_value == value %}
+          checked
+        {% endif %}
+        data-variantid="{{ variant_id }}"
+        {% if variant_quantity <= 0 %} disabled {% endif %}
+      >
+      {% if is_color_option == true %}
+        {% assign swatch_bg_color = value %}
+        {% assign swatch_bg_image = variant_bg_image | img_url %}
+        <span 
+          class="MM-variant-swatch-container"
+          data-active="{% if option.selected_value == value %}active{% endif %}"
+        >
+          <span 
+            class="MM-variant-swatch"
+            style=" background-color: {{- swatch_bg_color -}};
+            "
+          > 
+            {{ value }} 
+          </span>
+        </span>
+        <label for="{{ sectionId }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.id }}-{{ randomNumber }}">
+          <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+        </label>
+      {% else %}  
+        <label 
+          class="MM-variant-label {% if variant_quantity > 0 %}available {% else %} unavailable {% endif %}" 
+          for="{{ sectionId }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.id }}-{{ randomNumber }}" data-option="{{ option.name }}">
+          {{ value -}}
+          <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+        </label>
+      {% endif %}
+    </div>
+  {% endif %}
+{%- endfor -%}

@@ -1,0 +1,59 @@
+{% comment %}
+  Renders upselling product options
+  Accepts:
+  - product: {Object} product object.
+  Usage:
+  {% render 'cart-upselling-variant-selector', product: product %}
+{% endcomment %}
+
+{%- unless product.has_only_default_variant -%}
+    <div
+      id="variant-selects-CartDrawer"
+      class="no-js-hidden {% if product.options.size > 1 %}variant-selects-CartDrawer{% endif %}"
+      data-section="CartDrawer"
+      data-url="{{ product.url }}"
+      {% if update_url == false %}
+        data-update-url="false"
+      {% endif %}
+    >
+      {%- for option in product.options_with_values -%}
+        {%- liquid
+          assign picker_type = "button"
+          
+            if product.options.size > 1
+              assign picker_type = 'dropdown'
+            else
+              assign picker_type = 'button'
+            endif
+        -%}
+        {%- if picker_type == 'button' -%}
+          <fieldset class="js product-form__input product-form__input--pill">
+            {% render 'cart-upselling-variant-options',
+              product: product,
+              option: option,
+              picker_type: picker_type
+            %}
+          </fieldset>
+        {%- else -%}
+          <div>
+            <label class="drawer-product-option-label {% if option.selected_value == value %} active {% else %}inactive{% endif %}" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+              <select
+                id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                name="options[{{ option.name | escape }}]"
+                form="{{ product_form_id }}"
+              >
+                {% render 'cart-upselling-variant-options',
+                  product: product,
+                  option: option,
+                  picker_type: picker_type
+                %}
+              </select>
+            </label>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+      <script type="application/json">
+        {{ product.variants | json }}
+      </script>
+    </div>
+  {%- endunless -%}

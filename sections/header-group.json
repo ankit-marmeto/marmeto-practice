@@ -11,50 +11,94 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "an_announcement_bar_gj66BM": {
-      "type": "an-announcement-bar",
+    "announcement_bar": {
+      "type": "announcement-bar",
       "blocks": {
-        "text_zLL8KW": {
-          "type": "text",
+        "announcement_gpCMMc": {
+          "type": "announcement",
           "settings": {
-            "text": "🎁 Refer and earn $15"
+            "text": "<p>Get FLAT ₹100 OFF on your first purchase | Use code: <strong>MRFIRST. *T&C Apply.</strong></p>",
+            "link": "",
+            "tracking_id": "annpouncement_bar",
+            "tracking_name": "Diwali sale",
+            "tracking_creative": "banner1",
+            "tracking_position": "slot1"
           }
         },
-        "text_wCA3BL": {
-          "type": "text",
+        "announcement_dDfXFi": {
+          "type": "announcement",
           "settings": {
-            "text": "🎁 Free worldwide shipping"
-          }
-        },
-        "text_JVAQDR": {
-          "type": "text",
-          "settings": {
-            "text": "🎁 Buy 2 get 2"
+            "text": "<p>Get 10% Additional discount on purchase above INR 2500,<strong> Use Code: SALE10</strong></p>",
+            "link": "",
+            "tracking_id": "announcement_bar",
+            "tracking_name": "Diwali sale",
+            "tracking_creative": "banner2",
+            "tracking_position": "slot2"
           }
         }
       },
       "block_order": [
-        "text_zLL8KW",
-        "text_wCA3BL",
-        "text_JVAQDR"
+        "announcement_gpCMMc",
+        "announcement_dDfXFi"
       ],
       "settings": {
-        "color_scheme": "scheme-7d22fd54-dfad-4350-adb6-5d80c45c8c3e"
+        "color_scheme": "inverse",
+        "change_slides_speed": 3
       }
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "drawer_link_1_NAeyHN": {
+          "type": "drawer_link-1",
+          "settings": {
+            "menu": "menu-drawer-1"
+          }
+        },
+        "drawer_link_2_rCNYjc": {
+          "type": "drawer_link-2",
+          "settings": {
+            "menu": "menu-drawer-2"
+          }
+        },
+        "image_blocks_Ur7qXj": {
+          "type": "image_blocks",
+          "settings": {
+            "mega_menu_handle": "Categories",
+            "mega_menu_image": "shopify://shop_images/Desktop_c8e724ce-3de3-4f50-afc8-bedd768096ef.png",
+            "mega_menu_image_link": "shopify://collections/online-exclusive"
+          }
+        },
+        "image_blocks_3taYL9": {
+          "type": "image_blocks",
+          "settings": {
+            "mega_menu_handle": "Categories",
+            "mega_menu_image": "shopify://shop_images/Desktop.png",
+            "mega_menu_image_link": "shopify://collections/sale"
+          }
+        }
+      },
+      "block_order": [
+        "drawer_link_1_NAeyHN",
+        "drawer_link_2_rCNYjc",
+        "image_blocks_Ur7qXj",
+        "image_blocks_3taYL9"
+      ],
       "settings": {
-        "logo_position": "middle-left",
-        "menu": "gumazing",
+        "menu_image": "shopify://shop_images/Sale_image.png",
+        "show_sale_text": true,
+        "red-font-text": "End of Season Sale",
+        "menu_image-text": "",
+        "menu_image_url": "shopify://collections/online-exclusive",
+        "logo_position": "top-center",
+        "menu": "main-menu",
         "menu_type_desktop": "mega",
         "sticky_header_type": "always",
-        "show_line_separator": false,
-        "color_scheme": "scheme-1",
-        "menu_color_scheme": "scheme-1",
+        "show_line_separator": true,
+        "color_scheme": "background-1",
+        "menu_color_scheme": "background-1",
         "enable_country_selector": true,
         "enable_language_selector": true,
-        "enable_customer_avatar": true,
         "mobile_logo_position": "center",
         "margin_bottom": 0,
         "padding_top": 20,
@@ -63,7 +107,7 @@
     }
   },
   "order": [
-    "an_announcement_bar_gj66BM",
+    "announcement_bar",
     "header"
   ]
 }

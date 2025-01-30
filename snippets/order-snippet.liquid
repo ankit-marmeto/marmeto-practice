@@ -1,0 +1,136 @@
+{{ 'account-order.css' | asset_url | stylesheet_tag }}
+<div class="order-border-container">
+
+  <P class="your-order">Your Orders</P>
+  {% paginate customer.orders by 3 %}
+
+  {%- if customer.orders.size > 0 -%}
+  <table role="table" class="order-history">
+    <caption class="visually-hidden">
+      {{ 'customer.orders.title' | t }}
+    </caption>
+    <thead role="rowgroup">
+      <tr role="row">
+        <th id="ColumnOrder" scope="col" role="columnheader" width="111px">{{ 'customer.orders.order_number' | t }}</th>
+        <th id="Columnquantity" scope="col" role="columnheader" width="98px">Items</th>
+
+        <th id="ColumnDate" scope="col" role="columnheader" width="147px">Order Placed</th>
+        <th id="ColumnPayment" scope="col" role="columnheader" width="119px">Payment</th>
+        <th id="ColumnTotal" scope="col" role="columnheader" width="95px">{{ 'customer.orders.total' | t }}</th>
+        <th id="ColumnFulfillment" scope="col" role="columnheader" width="103px">Fulfillment Status</th>
+        <th id="ColumnFulfillment" scope="col" role="columnheader" width="103px" class="hidden">Order Status</th> 
+        <th id="ColumnFulfillment" scope="col" role="columnheader" width="103px">Order Details</th>   
+        <th id="ColumnFulfillment" scope="col" role="columnheader">
+        </th>
+      </tr>
+    </thead>
+    <tbody role="rowgroup">
+      {%- for order in customer.orders -%}
+      <tr role="row">
+        <td id="RowOrder" role="cell" headers="ColumnOrder" data-label="{{ 'customer.orders.order_number' | t }}">
+          <a href="{{ order.customer_url }}"
+            aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}" class="order-num">
+            {{ order.name }}
+          </a>
+        </td>
+        <td id="row-count" headers="RowOrder ColumnDate" role="cell" data-label="items">
+          {{ order.item_count }}
+        </td>
+
+        <td id="row-date" headers="RowOrder ColumnDate" role="cell" data-label="Order Placed">
+          {{ order.created_at | date: "%m/%d/%Y" }}
+        </td>
+        <td id="row-status" headers="RowOrder ColumnPayment" role="cell" data-label="Payment "
+          class="{% if order.financial_status_label == 'Paid' %} green {% else %} red {% endif %}">
+          {{ order.financial_status_label }}
+        </td>
+
+        <td id="row-price" headers="RowOrder ColumnTotal" role="cell" data-label="Total" class="order-total">
+          {{ order.total_net_amount | money_with_currency }}
+        </td>
+        <td id="row-fullfill" headers="RowOrder ColumnFulfillment" role="cell" data-label="Status"
+          class="{% if order.fulfillment_status_label == 'Unfulfilled' %} red {% else %} green {% endif %}">
+          {{ order.fulfillment_status_label }}
+        </td>
+
+        <td id="row-fullfill" headers="RowOrder ColumnView" role="cell" data-label="Order Details" class="order-view hidden">
+          <a href="{{ order.order_status_url }}" class="table-order">
+            View
+          </a>
+        </td>
+        
+        <td id="row-fullfill" headers="RowOrder ColumnViewOrder" role="cell" data-label="Order Status" class="order-view">
+          <a href="{{ order.customer_url }}" class="table-order">View Order</a>
+        </td>
+
+        {% unless order.cancelled == true %}
+          <td id="row-fullfill" headers="RowOrder ColumnCancelOrder" role="cell" data-label="Cancel Order" class="cancel-order">
+            <a target="_blank" href="https://shopify-order-edit.herokuapp.com/order-editor/raymond-india.myshopify.com/{{order.id}}" class="table-order">Cancel</a>
+          </td> 
+        {% endunless %}     
+      </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+  {%- else -%}
+  <p>{{ 'customer.orders.none' | t }}</p>
+  {%- endif -%}
+
+  {%- if paginate.pages > 1 -%}
+  {%- if paginate.parts.size > 0 -%}
+  <nav class="pagination" id="order-pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+    <ul role="list">
+
+      <li class="{%- if paginate.next -%}pionter{% endif %}">
+        <a href="{{ paginate.previous.url }}#view=orders"
+          class="{%- if paginate.next -%}pionter{% endif %} paginate-svg-container"
+          aria-label="{{ 'general.pagination.previous' | t }}">
+          <p class="pagination-prev"> Back</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="6" viewBox="0 0 9 6" fill="none"
+            class="pagination-svg">
+            <path d="M0 2.99789L2.34914 6H4L1.65086 2.99789L4 0L2.34914 0L0 2.99789Z" fill="black" />
+            <path d="M5 2.99789L7.34914 6H9L6.65086 2.99789L9 0L7.34914 0L5 2.99789Z" fill="black" />
+          </svg>
+        </a>
+      </li>
+      {%- endif -%}
+
+      <div class="order-pagination-number-wrapper">
+        {%- for part in paginate.parts -%}
+
+        <li>
+          {%- if part.is_link -%}
+          <a href="{{ part.url }}#view=orders" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{
+            part.title }}</a>
+          {%- else -%}
+          {%- if part.title == paginate.current_page -%}
+          <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title
+            }}</span>
+          {%- else -%}
+          <span>{{ part.title }}</span>
+          {%- endif -%}
+          {%- endif -%}
+        </li>
+        {%- endfor -%}
+      </div>
+
+      <li>
+        <a href="{{ paginate.next.url }}#view=orders"
+          class="{%- if paginate.previous -%}pionter{% endif %} paginate-svg-container"
+          aria-label="{{ 'general.pagination.next' | t }}">
+         
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="6" viewBox="0 0 9 6" fill="none">
+            <path d="M9 2.99789L6.65086 6H5L7.34914 2.99789L5 0L6.65086 0L9 2.99789Z" fill="black" />
+            <path d="M4 2.99789L1.65086 6H0L2.34914 2.99789L0 0L1.65086 0L4 2.99789Z" fill="black" />
+          </svg>
+          <p class="pagination-next">Next</p>
+        </a>
+      {% endif %}
+      </li>
+
+    </ul>
+  </nav>
+
+  {% endpaginate %}
+</div>

@@ -1,0 +1,29 @@
+.st-search-box.hidden-desktop a.icon-search.st-search-icon.st-autocomplete-open-btn {
+    cursor: pointer !important;
+  }  
+  .st-search-box.hidden-desktop {
+    padding: 3px 10px 0;
+    background: #fff;
+  }
+  .st-search-box.hidden-desktop .st-search-input {
+    height: 40px;
+    min-height: 40px;
+}
+
+  .st-search-box .st-search-input {
+    padding: 8px 0px 8px 25px;
+    background-position-x: 2px;
+  }
+
+  input#st-search:focus {
+    border: 1px solid #969696;
+  }
+
+  .st-search-box .st-search-input::placeholder {
+    font-size: 8px;
+  }
+  @media screen and (max-width: 374px) {
+    .st-search-box.hidden-desktop {
+      padding: 3px 5px 0 0;
+    }
+  }

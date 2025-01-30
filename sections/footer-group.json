@@ -13,19 +13,40 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "link_list_bfXKcC": {
+          "type": "link_list",
+          "settings": {
+            "heading": "",
+            "menu": "about-raymonds"
+          }
+        },
+        "link_list_drzDmN": {
+          "type": "link_list",
+          "settings": {
+            "heading": "",
+            "menu": "support"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_bfXKcC",
+        "link_list_drzDmN"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "background-2",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
+        "newsletter_heading": "Newsletter & Signup",
+        "newsletter_description": "Sign up for exclusive updates, new ar & insider only discounts",
+        "enable_follow_on_shop": false,
         "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "payment_enable": true,
-        "show_policy": true,
+        "show_policy": false,
         "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     }
   },

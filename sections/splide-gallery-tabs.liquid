@@ -1,0 +1,139 @@
+{% style %}
+  .container-{{ section.id }} {
+    padding-top: calc({{section.settings.padding_top}} * 0.625px);
+    padding-bottom: calc({{section.settings.padding_bottom}} * 0.625px);
+  }
+  @media screen and (min-width: 750px) {
+    .container-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="blogs-with-tabs-container splide-gallery container-{{ section.id }} color-{{ section.settings.section_color_scheme }}">
+
+  {% assign tabHeading = section.blocks | map: "settings" | map: "tab_id" %}
+  {% assign tabHeading = tabHeading | uniq %}
+
+  <tab-switch class="featured-blog__list-container featured-collection__tabs">
+    <div class="article-tabs__container">
+      {% for tabName in tabHeading %}
+        <div class="article-with-tabs__container {% if forloop.first %}article-tab-active{% endif %}" data-tab="{{ tabName | handleize }}">
+          <div class="blogs-with-tabs__tab-name h5">
+            {{ tabName }}
+            <div class="tab-icons">
+              {% render 'tab-closed' %}
+              {% render 'tab-open' %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div
+      class="splide tab_small"
+      id="thumbnail"
+      aria-label="label">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for tabName in tabHeading %}
+            <li class="article-with-tabs__container tab_small_container splide__slide h5 {% if forloop.first %}article-tab-active{% endif %}" data-tab="{{ tabName | handleize }}">
+              {{ tabName }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="tabs-curosel__container featured-collection__slide">
+      {% assign content_id = '' %}
+      {% for block in section.blocks %}
+        {% assign current_tab = block.settings.tab_id %}
+        {% unless content_id contains current_tab %}
+          {% assign content_id = content_id | append: current_tab %}
+          <div class="tabs-splide__container splide {% if forloop.first %} article-content-active {% endif %}" data-content-id="{{ current_tab | handleize }}">
+            <div class="splide__track">
+              <ul class="splide__list">
+                {% for block in section.blocks %}
+                  {% case block.settings.tab_id %}
+                    {% when current_tab %}
+                      {% assign imageitem = block.settings.image %}
+                      {% if imageitem != blank %}
+                        {% assign article_content = imageitem %}
+                        <div class="article--tab-item__container tab__card splide__slide">
+                          {% render 'picture'
+                            , class: ''
+                            , mobileSrc: imageitem
+                            , desktopSrc: imageitem %}
+                        </div>
+                      {% endif %}
+                  {% endcase %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </tab-switch>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Featured Gallery Tabs",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "max": 100,
+        "min": 0,
+        "step": 2,
+        "default": 20,
+        "info": "IF Desktop padding 80px In Mobile padding It calculate 80*0.625 = 50px padding"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "max": 100,
+        "min": 0,
+        "step": 2,
+        "default": 20,
+        "info": "IF Desktop padding 80px In Mobile padding It calculate 80*0.625 = 50px padding"
+      }, {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
+      }, {
+        "type": "header",
+        "content": "Blogs Settings"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "dynamic",
+        "name": "Image & Tab",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tab_id",
+            "label": "Tab name"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Gallery Tabs"
+      }
+    ]
+  }
+{% endschema %}

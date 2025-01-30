@@ -1,0 +1,48 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      window.dataLayer = window.dataLayer || [];
+  
+      // Function to handle click events for promotional data
+      const handleClickEvent = (elements) => {
+          elements.forEach(element => {
+              element.addEventListener('click', (evt) => {
+                  const promoData = {};
+  
+                  const id = element.getAttribute('data-tracking-id');
+                  if (id) promoData.id = id;
+  
+                  const name = element.getAttribute('data-tracking-name');
+                  if (name) promoData.name = name;
+  
+                  const creative = element.getAttribute('data-tracking-creative');
+                  if (creative) promoData.creative = creative;
+  
+                  const position = element.getAttribute('data-tracking-position');
+                  if (position) promoData.position = position;
+  
+                  if (Object.keys(promoData).length > 0) {
+                      dataLayer.push({
+                          'event': evt.currentTarget.classList.contains('slideshow_image_block') ? 'bannerClick' : 'announcementBarClick',
+                          'ecommerce': {
+                              'promoClick': {
+                                  'promotions': [promoData]
+                              }
+                          }
+                      });
+                  }
+              });
+          });
+      };
+  
+      const bannerAnchors = document.querySelectorAll('.slideshow_image_block');
+      if (bannerAnchors.length > 0) {        
+          handleClickEvent(bannerAnchors);
+      }
+  
+      const announcementBars = document.querySelectorAll('.announcement-bar');
+      if (announcementBars.length > 0) {
+          handleClickEvent(announcementBars);
+      }
+    });
+  </script>
+  

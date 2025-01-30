@@ -1,0 +1,206 @@
+<script src="{{ 'visenze-product-recommendation.js' |  asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.45 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.66 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% if section.settings.api_key != blank and section.settings.placement_id != blank %}
+  <div class="color-{{ section.settings.color_scheme }}">
+    <div class="shimmer-container hidden page-width section-{{ section.id }}-padding">
+      {% if section.settings.heading %}
+        <div class="skeleton shimmer-heading"></div>
+      {% endif %}
+      <div class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down">
+        {% for i in (1..4) %}
+          <div class="shimmer-product-card grid__item">
+            <div class="skeleton image-placeholder"></div>
+            <div class="skelelton-information-container">
+              <div class="skeleton-addtocart-container">
+                <div class="variant-swatch-addtocart variant-swatch skeleton"></div>
+                <div class="variant-swatch-addtocart variant-swatch skeleton"></div>
+              </div>
+              <div class="skeleton title-placeholder"></div>
+              <div class="variant-options">
+                <div class="variant-swatch skeleton"></div>
+                <div class="variant-swatch skeleton"></div>
+                <div class="variant-swatch skeleton"></div>
+                <div class="variant-swatch skeleton"></div>
+              </div>
+              <div class="skeleton price-placeholder"></div>
+              <div class="skeleton title-placeholder"></div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="visenze-recommendation-container page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {% if section.settings.heading != blank %}
+        <h3 class="related-products__heading inline-richtext {{ section.settings.heading_size }} {{ section.settings.text_alignment }}">
+          {{ section.settings.heading }}
+        </h3>
+      {% endif %}
+      <visenze-recommendation data-show-alternative-products="{{ section.settings.show_alternative_products }}" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" data-api-key="{{ section.settings.api_key }}" data-placement-id="{{ section.settings.placement_id }}" data-products-limit="{{ section.settings.products_to_show }}" class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"></visenze-recommendation>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Visenze Recommendation",
+    "tag": "section",
+    "enabled_on": {
+      "templates": [
+        "product"
+      ]
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "api_key",
+        "label": "Widget App Key",
+        "info": "Input your Visenze app api key.",
+        "default": "0c47edc9035e15be04f3b22a61e4fbfe"
+      },
+      {
+        "type": "text",
+        "id": "placement_id",
+        "label": "Widget Placement Id",
+        "info": "Input your Visenze app placement id's separeted by '|'",
+        "default": "6528"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_alternative_products",
+        "default": false,
+        "label": "Show alternative products"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "default": "You may also like",
+        "label": "t:sections.related-products.settings.heading.label"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h3",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__3.label"
+          }
+        ],
+        "default": "h2",
+        "label": "t:sections.all.heading_size.label"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.related-products.settings.text_alignment.option_1.label"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.related-products.settings.text_alignment.option_2.label"
+          },
+          {
+            "value": "right",
+            "label": "t:sections.related-products.settings.text_alignment.option_3.label"
+          }
+        ],
+        "default": "center",
+        "label": "Heading alignment"
+      },
+      {
+        "type": "range",
+        "id": "products_to_show",
+        "min": 2,
+        "max": 12,
+        "step": 1,
+        "default": 4,
+        "label": "t:sections.related-products.settings.products_to_show.label"
+      },
+      {
+        "type": "header",
+        "content": "Desktop Layout"
+      },
+      {
+        "type": "range",
+        "id": "columns_desktop",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 4,
+        "label": "t:sections.related-products.settings.columns_desktop.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.related-products.settings.header_mobile.content"
+      },
+      {
+        "type": "range",
+        "id": "columns_mobile",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "default": 2,
+        "label": "t:sections.related-products.settings.columns_mobile.label"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "info": "t:sections.all.colors.has_cards_info",
+        "default": "background-1"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "presets": [
+      {
+        "name": "Visenze Recommendation"
+      }
+    ]
+  }
+  {% endschema %}

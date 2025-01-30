@@ -1,0 +1,26 @@
+<div>
+    {% if settings.offer_main_heading != blank %}
+      <div class="offer-main-heading">{{ settings.offer_main_heading }}</div>
+    {% endif %}  
+</div>
+<div class="splide__track">
+	<ul class="splide__list offer-splide-list">        
+        <li class="splide__slide">
+            <div class="offer_1">
+                <div class="offers-heading_1">
+                    {% if settings.combo_offer_heading != blank %}
+                        {{ settings.combo_offer_heading }}
+                    {% endif %}
+                </div>
+                <div class="offers-description_1">
+                    {% if settings.combo_offers_description != blank %}
+                        {{ settings.combo_offers_description }}
+                    {% endif %}
+                </div>
+                {% if settings.offer_button_link != blank and settings.combo_couponcode != blank  %}
+                    <a href="{{ settings.offer_button_link }}"> <button class="offer_button"> {{ settings.combo_couponcode }}</button> </a> 
+                {% endif %}                  
+            </div>
+        </li>
+    </ul> 
+</div> 

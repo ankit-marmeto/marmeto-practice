@@ -1,0 +1,46 @@
+{{'static-blog-banner.css' |  asset_url |  stylesheet_tag }}
+<div class="static-main">
+  {% if section.settings.image_for_mobile!= blank or section.settings.image_for_desktop != blank %}
+    <div class="static-image-container">  
+      {% render 'new-image',
+        class: 'twoImgages ',
+        mobileSrc: section.settings.image_for_mobile,
+        desktopSrc: section.settings.image_for_desktop
+      %}    
+    </div>
+  {% endif %}
+  <div class="static-blog-text-container">
+    <p class="static-blog-text"> {{ section.settings.text }}</p>
+  </div>
+</div>
+{% schema %}
+    {
+      "name": "static-blog-banner",
+      "tag": "section",
+      "class": "static-blog-banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image For Desktop",
+          "id": "image_for_desktop"
+        },
+        {
+          "type": "text",
+          "label": "Enter Text",
+          "id": "text",
+          "default": "Blogs"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image For Mobile",
+          "id": "image_for_mobile"
+        }
+      ],
+      "blocks": [],
+      "presets": [
+        {
+          "name": "static-blog-banner"
+        }
+      ]
+    }
+    {% endschema %}

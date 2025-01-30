@@ -1,0 +1,120 @@
+.timeline_block{
+    display: flex;
+    padding: 6rem 9.5rem;
+    gap: 84px;
+}
+
+.dot{
+    z-index: 2;
+    height: 30px;
+    width: 14px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dot_child{
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background-color: #000;
+}
+.timeline_text_container{
+    width: 50%;
+}
+.timeline_image_container{
+    width: 50%;
+}
+
+.timeline_maincontainer{
+    margin-top: 4.8rem;
+    position: relative;
+}
+
+.timeline_text{
+    font-weight: 400;
+    font-size: 40px;
+    color: #000000;
+    line-height: 48px;
+    line-height: 140%;
+}
+.timeline_para{
+    padding-top: 3.6rem;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+    line-height: 19.6px;
+}
+
+.timeline_section_line{
+    position: absolute;
+    width: 3px;
+    background: #B3B3B3;
+    display: block;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to bottom, rgba(179, 179, 179, 0), rgba(179, 179, 179, 1) 2%, rgba(179, 179, 179, 1) 100%);
+}
+.timeline_image_container picture{
+    display: block;
+    aspect-ratio: .8;
+}
+.timeline_image_container img{
+    height: auto;
+    width: 100%;
+    
+}
+.timeline-image-align-row{
+    flex-direction: row;
+}
+.timeline-image-align-row-reverse{
+    flex-direction: row-reverse;
+}
+
+.timeline-text-alignment-right{
+    text-align: right;
+}
+.timeline-text-alignment-left{
+    text-align: left;
+}
+
+
+
+@media screen and (max-width:749px){
+    .dot{
+        height: 12px;
+        width: 4px;
+
+    }
+    .dot_child{
+        height: 4px;
+        width: 4px;
+    }
+    .timeline_section_line{
+        width: .79px;
+    }
+    .timeline_maincontainer{
+        margin-top: 2.4rem;
+
+    }
+    .timeline_block{
+        display: flex;
+        padding: 1.68rem 1.5rem;
+        gap: 2.33rem;
+    }
+    .timeline_text{
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140px;
+    }
+    .timeline_para{
+        padding-top: 1.6rem;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16.8px;
+
+    }
+
+}

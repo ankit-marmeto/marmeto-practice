@@ -1,7 +1,15 @@
 .related-products {
   display: block;
 }
-
 .related-products__heading {
-  margin: 0 0 3rem;
+  line-height: 1.4em;
+  text-transform: uppercase;
+  margin: 0 0 4.8rem;
+}
+.related-products-slider-container-item {
+  width: 50%;
+  height: auto;
+  margin-right: 1.2rem;
+  background: transparent;
+  border-radius: 0.5rem;
 }

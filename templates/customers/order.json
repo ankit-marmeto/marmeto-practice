@@ -12,6 +12,7 @@
     "main": {
       "type": "main-order",
       "settings": {
+        "contact_details": "<p>you can reach out to us via email<br>support@raymond.com</p>",
         "padding_top": 36,
         "padding_bottom": 36
       }

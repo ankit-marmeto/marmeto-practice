@@ -1,0 +1,6 @@
+{{ 'st-searchbox-desktop.css' | asset_url | stylesheet_tag }}
+<div class="st-search-box hidden-mobile">
+  <form class="main-search__form" action="/search" method="get" autocomplete="off" style="display:flex;">
+    <input type="text" autocomplete="off" placeholder="" name="q" id="st-search" class="st-search-input">
+  </form>
+</div>

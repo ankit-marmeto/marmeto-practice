@@ -1,0 +1,168 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "about_us_banner_GBf6cw": {
+      "type": "about-us-banner",
+      "settings": {
+        "image_for_desktop": "shopify://shop_images/Rectangle_198_1.jpg",
+        "text": "ABOUT US",
+        "image_for_mobile": "shopify://shop_images/Group_690_1.jpg"
+      }
+    },
+    "time_line_hte7pB": {
+      "type": "time_line",
+      "blocks": {
+        "timeline_9cD9mi": {
+          "type": "timeline",
+          "settings": {
+            "text": "Raymonds Overview",
+            "paragraph": "<p>Raymond Limited is an Indian textile and apparel company founded in 1925. With its headquarters in Thane, Maharashtra, the company is renowned for its expertise in textile manufacturing and offers a range of products, including suiting fabrics and ready-to-wear apparel. Key brands under Raymond Limited </p>",
+            "text_alignment": "right",
+            "select_image": "shopify://shop_images/Image.2.png",
+            "image_alignment": "row"
+          }
+        },
+        "timeline_DYwUbJ": {
+          "type": "timeline",
+          "settings": {
+            "text": "The Founding and Evolution of the Brand",
+            "paragraph": "<p>The inception of a Brand Identity. By the mid-sixties Raymond had surged ahead and was leading the domestic market. Its lead over other competitors was not only due to the superior quality of its product but also because the company began a concerted attempt to reach a wider audience through consistent advertising and promotions …Raymond Woollen Mills ltd. entered the business of ready-made apparel in 1966. In 1967, they expanded to Kenya …. Raymond Woollen Mills (Kenya) ltd., later known as Heritage Woollen Mills ltd., was set up in Eldoret in order to manufacture hand-knitting yarn, knitwear as well as knitted fabrics, blankets and garments.</p>",
+            "text_alignment": "left",
+            "select_image": "shopify://shop_images/Image2.png",
+            "image_alignment": "row-reverse"
+          }
+        },
+        "timeline_Khnpin": {
+          "type": "timeline",
+          "settings": {
+            "text": "Core principles that guide the company",
+            "paragraph": "<p>Raymond Limited is an Indian textile and apparel company founded in 1925. With its headquarters in Thane, Maharashtra, the company is renowned for its expertise in textile manufacturing and offers a range of products, including suiting fabrics and ready-to-wear apparel. Key brands under Raymond Limited</p>",
+            "text_alignment": "right",
+            "select_image": "shopify://shop_images/Image3.png",
+            "image_alignment": "row"
+          }
+        },
+        "timeline_KgLztc": {
+          "type": "timeline",
+          "settings": {
+            "text": "The Journey of Raymonds",
+            "paragraph": "<p>Raymond Limited was first incorporated as the Raymond Woolen Mill in 1925 near Thane Creek. Lala Kailashpat Singhania took over The Raymond Woolen Mill in the year 1944. Ever since then they have been analogous with class, elegance and individuality which is evident in their men's fashion.In the year 2000, Mr Gautam Singhania was appointed Chairman and Managing Director of Raymond Limited. In 2015, Raymond became the first textile company in the world to produce Super 250s and innovative fabrics.Raymond with its 97-year-old expertise is a textile powerhouse with modern infrastructure and strong fibre-to-fabric manufacturing capabilities. Along with being reputed, it is the fastest-growing fashion fabric brand. Raymond offers an exquisite range of shirting and suiting fabrics across a plethora of options such as Worsted fabrics, Cotton, Wool blends, Linen and Denim. The ethnic culture, exquisite clothing and the comfort of couture in each of its brands - Park Avenue, Raymond Ready To Wear, ColorPlus and Parx Ethnix have proven beneficial and created a desirous space in your lives. With the central theme of ‘Go Beyond’, the conglomerate has undertaken the project to build quality housing for all by introducing Raymond Realty and Home.</p>",
+            "text_alignment": "left",
+            "select_image": "shopify://shop_images/Image4.png",
+            "image_alignment": "row-reverse"
+          }
+        }
+      },
+      "block_order": [
+        "timeline_9cD9mi",
+        "timeline_DYwUbJ",
+        "timeline_Khnpin",
+        "timeline_KgLztc"
+      ],
+      "settings": {}
+    },
+    "milestone_9XiNxd": {
+      "type": "milestone",
+      "blocks": {
+        "milestone_CLtYxH": {
+          "type": "milestone",
+          "settings": {
+            "year": 2014,
+            "enter_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+            "image1": "shopify://shop_images/Image45.jpg"
+          }
+        },
+        "milestone_p8rMtr": {
+          "type": "milestone",
+          "settings": {
+            "year": 2024,
+            "enter_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+            "image1": "shopify://shop_images/Image45.jpg"
+          }
+        },
+        "milestone_yCrCVC": {
+          "type": "milestone",
+          "settings": {
+            "year": 2020,
+            "enter_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+            "image1": "shopify://shop_images/Image45.jpg"
+          }
+        },
+        "milestone_zkQJJB": {
+          "type": "milestone",
+          "settings": {
+            "year": 2023,
+            "enter_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+            "image1": "shopify://shop_images/Image45.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "milestone_CLtYxH",
+        "milestone_p8rMtr",
+        "milestone_yCrCVC",
+        "milestone_zkQJJB"
+      ],
+      "settings": {
+        "section_heading": "Our Milestones"
+      }
+    },
+    "ourvalue_T4jTja": {
+      "type": "ourvalue",
+      "blocks": {
+        "ourvalue_nbTyWn": {
+          "type": "ourvalue",
+          "settings": {
+            "image": "shopify://shop_images/Group_1000004859_2.png",
+            "text": "<p>The trust bestowed on Raymond by its stakeholders has enabled it to be a market leader. We believe that conducting business in a fair, transparent and ethical manner is pivotal to building strong relationships.</p>"
+          }
+        },
+        "ourvalue_qi7ErD": {
+          "type": "ourvalue",
+          "settings": {
+            "image": "shopify://shop_images/Group_1000004860_1.png",
+            "text": "<p>An iconic brand that has been at the helm of innovation, Raymond has always been recognised for its high-quality product offerings across price points. The testimony to Raymond’s success is its loyal consumer base spanning domestic and international markets.</p>"
+          }
+        },
+        "ourvalue_zF4XPn": {
+          "type": "ourvalue",
+          "settings": {
+            "image": "shopify://shop_images/Group_1000004861_2.png",
+            "text": "<p>At Raymond, we believe in achieving excellence in all we do. Be it crafting world-class offerings, implementing industry best practices or delivering a delightful service experience.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ourvalue_nbTyWn",
+        "ourvalue_qi7ErD",
+        "ourvalue_zF4XPn"
+      ],
+      "settings": {
+        "section_heading_text": "OUR VALUES"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "about_us_banner_GBf6cw",
+    "time_line_hte7pB",
+    "milestone_9XiNxd",
+    "ourvalue_T4jTja"
+  ]
+}

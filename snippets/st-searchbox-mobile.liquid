@@ -1,0 +1,11 @@
+{{ 'st-searchbox-mobile.css' | asset_url | stylesheet_tag }}
+
+<div class="st-search-box hidden-desktop">
+  <!-- <input type="text" autocomplete="off" placeholder="Looking for something?" name="q" id="st-search-mobile" class="st-search-input">  -->
+<a class="icon-search st-search-icon st-autocomplete-open-btn" title="{{ 'general.search.title' | t | escape }}">
+  <svg aria-hidden="true" fill="none" focusable="false" width="24" class="header__nav-icon icon icon-search" viewBox="0 0 24 24">
+      <path d="M10.364 3a7.364 7.364 0 1 0 0 14.727 7.364 7.364 0 0 0 0-14.727Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"></path>
+      <path d="M15.857 15.858 21 21.001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"></path>
+    </svg>
+</a>
+</div>

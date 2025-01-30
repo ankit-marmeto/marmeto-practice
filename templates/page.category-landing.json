@@ -1,0 +1,307 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "slideshow_image_3UK9iy": {
+      "type": "slideshow-image",
+      "blocks": {
+        "slide_Vg6beC": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hero_banner_category_1.webp",
+            "image_mobile": "shopify://shop_images/Mobile_Banner_1.png",
+            "slide_url": "shopify://collections",
+            "image_overlay_opacity": 0,
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Vg6beC"
+      ],
+      "settings": {
+        "custom_class": "",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "slider_dots_overlay": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "accessibility_info": ""
+      }
+    },
+    "section_brand_collections_Vf4ha3": {
+      "type": "section-brand-collections",
+      "blocks": {
+        "collection_ktiQfq": {
+          "type": "collection",
+          "settings": {
+            "collection": "shirts-2",
+            "image_small": "shopify://shop_images/1._Solid_Shirt.png",
+            "image_alternate": "shopify://shop_images/1._Solid_Shirt.png"
+          }
+        },
+        "collection_fm8enX": {
+          "type": "collection",
+          "settings": {
+            "collection": "shirts-1",
+            "image_small": "shopify://shop_images/2._Printed_T-shit.png",
+            "image_alternate": "shopify://shop_images/2._Printed_T-shit.png"
+          }
+        },
+        "collection_ipTTEq": {
+          "type": "collection",
+          "settings": {
+            "collection": "t-shirts-polos",
+            "image_small": "shopify://shop_images/3._Stiped_T-shirt.png",
+            "image_alternate": "shopify://shop_images/3._Stiped_T-shirt.png"
+          }
+        },
+        "collection_E6qmBC": {
+          "type": "collection",
+          "settings": {
+            "collection": "women-t-shirts",
+            "image_small": "shopify://shop_images/4._Checked_Shirt.png",
+            "image_alternate": "shopify://shop_images/4._Checked_Shirt.png"
+          }
+        }
+      },
+      "block_order": [
+        "collection_ktiQfq",
+        "collection_fm8enX",
+        "collection_ipTTEq",
+        "collection_E6qmBC"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "show_title": false,
+        "caption": "",
+        "caption_size": "caption",
+        "caption_mobile_enable": false,
+        "title": "FEATURED STYLES",
+        "title_size": "h2",
+        "title_color": "#ffffff",
+        "text_position": "center"
+      }
+    },
+    "collection_products_kFAqfd": {
+      "type": "collection-products",
+      "settings": {
+        "padding_top": 72,
+        "padding_bottom": 40,
+        "section_color_scheme": "scheme-8df69448-b2da-46bf-8130-7767891bb76b",
+        "subtitle": "",
+        "heading": "DISCOVER THE STYLES",
+        "collection": "jeans",
+        "image_small": "shopify://shop_images/Shirt_Vertical_Image_d9aa84fe-056d-496c-8689-8358ea27c502.png",
+        "image_alternate": "shopify://shop_images/Shirt_Vertical_image.png",
+        "view_all": "Discover More"
+      }
+    },
+    "occassion_banner_TC7fmB": {
+      "type": "occassion-banner",
+      "settings": {
+        "background_image": "shopify://shop_images/Clearance_Sale.png",
+        "background_image_small": "shopify://shop_images/Clearance_Sale_6b374c4b-1bc2-479e-8038-2ace88061ff5.png",
+        "bg_url": "",
+        "image_height": "small",
+        "padding_top": 32,
+        "padding_bottom": 0,
+        "content_position_x": "flex-start",
+        "content_position_y": "flex-start",
+        "text_alignment": "flex-start",
+        "section_color_scheme": ""
+      }
+    },
+    "section_products_tab_switch_RdgMnB": {
+      "type": "section-products-tab-switch",
+      "blocks": {
+        "collection_NV8FyK": {
+          "type": "collection",
+          "settings": {
+            "collection": "jeans"
+          }
+        }
+      },
+      "block_order": [
+        "collection_NV8FyK"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "caption": "",
+        "caption_size": "subtitle",
+        "caption_color": "#000000",
+        "title": "Top Items",
+        "title_size": "h2",
+        "title_color": "#ffffff",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "description_size": "h4",
+        "description_color": "#ffffff",
+        "text_position": "center",
+        "show_vendor": true
+      }
+    },
+    "countdown_banner_iizjF8": {
+      "type": "countdown-banner",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "banner_image": "shopify://shop_images/Deal_of_the_week_-_Transparent_Background_1.png",
+        "heading_text": "DEAL OF THE WEEK",
+        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do elusmod tempor incididunt ut labore et dolore",
+        "discounted_price": "$35.00 / HanBag",
+        "button_text": "SHOP NOW",
+        "button_url": "",
+        "button_style_secondary": false,
+        "layout": "row",
+        "text_color_scheme": "#e7ab3c",
+        "section_color_scheme": "accent-2",
+        "date": "01/03/2024"
+      }
+    },
+    "splide_gallery_tabs_PibJG8": {
+      "type": "splide-gallery-tabs",
+      "blocks": {
+        "dynamic_GMwQyj": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Raymonds",
+            "image": "shopify://shop_images/Category_image_1_2694dfbf-f343-466e-b3e1-37a705f7da65.png"
+          }
+        },
+        "dynamic_9wM7Bj": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Raymonds",
+            "image": "shopify://shop_images/Category_image_2_10d2e28e-e3b5-44bf-90bb-84aa41eba4e0.png"
+          }
+        },
+        "dynamic_LLG4KN": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Raymonds",
+            "image": "shopify://shop_images/Category_image_1_2694dfbf-f343-466e-b3e1-37a705f7da65.png"
+          }
+        },
+        "dynamic_DpEtL3": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Raymonds",
+            "image": "shopify://shop_images/Category_image_2_10d2e28e-e3b5-44bf-90bb-84aa41eba4e0.png"
+          }
+        },
+        "dynamic_9dXJPn": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Parx",
+            "image": "shopify://shop_images/Category_image_1_2694dfbf-f343-466e-b3e1-37a705f7da65.png"
+          }
+        },
+        "dynamic_pHcgVW": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Parx",
+            "image": "shopify://shop_images/Category_image_2_10d2e28e-e3b5-44bf-90bb-84aa41eba4e0.png"
+          }
+        },
+        "dynamic_h8P3Qz": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Parx",
+            "image": "shopify://shop_images/Category_image_1_2694dfbf-f343-466e-b3e1-37a705f7da65.png"
+          }
+        },
+        "dynamic_xXkyqt": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Parx",
+            "image": "shopify://shop_images/Category_image_2_10d2e28e-e3b5-44bf-90bb-84aa41eba4e0.png"
+          }
+        },
+        "dynamic_RVF3Tw": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Park Avenue",
+            "image": "shopify://shop_images/Category_image_2_10d2e28e-e3b5-44bf-90bb-84aa41eba4e0.png"
+          }
+        },
+        "dynamic_ekhanx": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Park Avenue",
+            "image": "shopify://shop_images/Category_image_1_2694dfbf-f343-466e-b3e1-37a705f7da65.png"
+          }
+        },
+        "dynamic_RKYfUt": {
+          "type": "dynamic",
+          "settings": {
+            "tab_id": "Park Avenue",
+            "image": "shopify://shop_images/Category_image_2_10d2e28e-e3b5-44bf-90bb-84aa41eba4e0.png"
+          }
+        }
+      },
+      "block_order": [
+        "dynamic_GMwQyj",
+        "dynamic_9wM7Bj",
+        "dynamic_LLG4KN",
+        "dynamic_DpEtL3",
+        "dynamic_9dXJPn",
+        "dynamic_pHcgVW",
+        "dynamic_h8P3Qz",
+        "dynamic_xXkyqt",
+        "dynamic_RVF3Tw",
+        "dynamic_ekhanx",
+        "dynamic_RKYfUt"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "section_color_scheme": "background-2"
+      }
+    },
+    "occassion_banner_fT7mt3": {
+      "type": "occassion-banner",
+      "settings": {
+        "background_image": "shopify://shop_images/The_Fall_Edit.png",
+        "background_image_small": "shopify://shop_images/The_Fall_edit_2.png",
+        "bg_url": "",
+        "image_height": "medium",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "content_position_x": "flex-start",
+        "content_position_y": "flex-start",
+        "text_alignment": "flex-start",
+        "section_color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow_image_3UK9iy",
+    "section_brand_collections_Vf4ha3",
+    "collection_products_kFAqfd",
+    "occassion_banner_TC7fmB",
+    "section_products_tab_switch_RdgMnB",
+    "countdown_banner_iizjF8",
+    "splide_gallery_tabs_PibJG8",
+    "occassion_banner_fT7mt3"
+  ]
+}

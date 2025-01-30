@@ -1,0 +1,108 @@
+.create-account-heading{
+    margin-bottom: 32px;
+    color: #000;
+    font-size: 40px;
+}
+.register_login_container{
+    padding-top: 1.2rem;
+}
+.register .field:after{
+    box-shadow: none;
+    border: 1px solid rgba(39, 39, 39, 0.60);
+}
+.register_checkbox{
+    padding-top: 2.4rem;
+}
+.register .field label{
+    top: 29%;
+    color: #272727;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+ .field__input:focus + .field__label {
+    display: none;
+}
+.register_checkbox{
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+
+}
+.register_checkbox input[type="checkbox"]{
+    height: 24px;
+    width: 24px;
+    margin: 0;
+}
+.register_checkbox label{
+    text-align: start;
+}
+button.register_button{
+padding: 1.4rem 4.2rem;
+background-color: #fff;
+color: #000;
+text-align: center;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+box-shadow: 0px 0px 0px 2px #000;
+}
+.register button:after{
+    box-shadow: none;
+}
+
+.register .field input{
+    height:6rem;
+}
+.register_termsText{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+.customer button.disabled{
+   pointer-events: none;
+}
+
+
+@media screen and (max-width:749px){
+    .register {
+        width: 100%;
+        padding: 0 5.3rem;
+    }
+    .register:not(.account):not(.order) {
+        margin: 0 auto;
+        max-width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+    .customer .field{
+        margin-bottom: 1.2rem;
+    }
+    .register_checkbox{
+        padding-top: 0;
+    }
+    #create_customer{
+        padding: 0 5.3rem;
+    }
+    .register .field input{
+        height:3rem;
+    }
+    .create-account-heading{
+        padding: 0 4.8rem;
+        margin: 0;
+        font-size: 28px;
+        text-align: start;
+    }
+    .customer button{
+        margin-top: 3.2rem;
+        margin-bottom: 1.2rem;
+    }
+    .register_checkbox{
+        gap: 8px;
+    }
+    .register form {
+        margin-top: 14px;
+    }
+}

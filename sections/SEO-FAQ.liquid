@@ -1,0 +1,98 @@
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+{{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{% if collection.metafields.custom.seo_faq.value != blank %} 
+    <div class="section-{{ section.id }}-padding collection-seo-faq-content page-width">
+        <details id="Details-{{ block.id }}-{{ section.id }}" class="seo-faq-wrapper-container">
+            <summary id="Summary-{{ block.id }}-{{ section.id }}" class="seo-faq-summary-wrapper">  
+                <div class="collapsible-summary-wrapper">                 
+                    <h2 class="inline-richtext center collection-seo-faq-wrapper">
+                        {{ section.settings.heading }}
+                    </h2>
+                    <span class="seo-icon-caret">
+                        {% render 'icon-caret' %}
+                    </span>
+                </div>
+                <div class="collapsible-content-msg">Click here for the questions and answers</div>
+            </summary>     
+        
+            <div class="grid grid--1-col grid--2-col-tablet collapsible-content__grid">    
+                <div class="grid__item seo-faq-wrapper" id="collection-seo-faq">
+                {%- for faq_content in collection.metafields.custom.seo_faq.value -%}
+                    <div class="accordion" {{ block.shopify_attributes }}>
+                    <details id="Details-{{ block.id }}-{{ section.id }}" class="details-wrapper">
+                        <summary id="Summary-{{ block.id }}-{{ section.id }}">                   
+                            <h3 class="accordion-title inline-richtext h3 seo-faq-question">
+                                {{ faq_content.faq_question | metafield_tag }}
+                            </h3>
+                            <span class="seo-icon-caret">
+                                {% render 'icon-caret' %}
+                            </span>
+                        </summary>
+                        <div
+                        class="accordion-content seo-faq-answer"
+                        id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
+                        role="region"
+                        aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+                        >
+                        {{ faq_content.answer | metafield_tag }}
+                        </div>
+                    </details>
+                    </div>
+                {%- endfor -%}
+                </div>
+            </div> 
+        </details>
+    </div>
+{% endif %}
+{% schema %}
+{
+  "name": "SEO FAQ",
+  "tag": "section", 
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }     
+ ],
+ "presets": [
+    {
+        "name": "SEO FAQ"
+    }
+ ]
+}
+{% endschema %}

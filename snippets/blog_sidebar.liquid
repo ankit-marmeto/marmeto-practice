@@ -1,0 +1,82 @@
+ <div class="blog_catagory">
+    
+    <p class="catagory_text">Categories</p>
+    <div class="catagory_line"></div>
+
+    {% for block in section.blocks %}
+      {% if block.type == "blog" %}
+      {%- assign current_url = blog.url |  handleize |  split: "-" |  last  -%}
+      {%- assign blog_title = block.settings.blog1.title | handleize -%}
+      
+      <div class="blog_catagory_container">
+        <a  href="{{ block.settings.blog1.url }}" class="blog__title  {% if current_url == blog_title %} active__blog{% endif %}">
+          {% if block.settings.blog_title != blank %}
+            {{ block.settings.blog_title }}
+          {% else %}
+            {{ block.settings.blog1.title }}
+          {% endif %}
+          <p class="article_count"> ({{ block.settings.blog1.articles_count }}) </p>  
+        </a>
+      </div>
+        {% endif %}
+    {% endfor %}
+ </div>
+
+
+
+ <div class=" blog_catagory ">
+  <p class="catagory_text">Recent Posts</p>
+  <div class="catagory_line"></div>
+
+    {% assign sorted_articles = blogs[blog.handle].articles | sort: 'published_at' | reverse %}
+    {% for article in sorted_articles limit:3 %}
+      <div class="recent_post_container">
+        {% render 'new-image',
+        mobileSrc: article.image,
+        desktopSrc: article.image
+      %}
+      
+      <div class="recent_data_container">
+      <div class="blog_recent_date_container">
+        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.375 1.625V2.5H7.875V1.625C7.875 1.36979 7.95703 1.16016 8.12109 0.996094C8.28516 0.832031 8.49479 0.75 8.75 0.75C9.00521 0.75 9.21484 0.832031 9.37891 0.996094C9.54297 1.16016 9.625 1.36979 9.625 1.625V2.5H10.9375C11.3021 2.51823 11.612 2.64583 11.8672 2.88281C12.1042 3.13802 12.2318 3.44792 12.25 3.8125V5.125H0V3.8125C0.0182292 3.44792 0.145833 3.13802 0.382812 2.88281C0.638021 2.64583 0.947917 2.51823 1.3125 2.5H2.625V1.625C2.625 1.36979 2.70703 1.16016 2.87109 0.996094C3.03516 0.832031 3.24479 0.75 3.5 0.75C3.75521 0.75 3.96484 0.832031 4.12891 0.996094C4.29297 1.16016 4.375 1.36979 4.375 1.625ZM0 6H12.25V13.4375C12.2318 13.8021 12.1042 14.112 11.8672 14.3672C11.612 14.6042 11.3021 14.7318 10.9375 14.75H1.3125C0.947917 14.7318 0.638021 14.6042 0.382812 14.3672C0.145833 14.112 0.0182292 13.8021 0 13.4375V6ZM1.75 9.0625C1.76823 9.33594 1.91406 9.48177 2.1875 9.5H3.0625C3.33594 9.48177 3.48177 9.33594 3.5 9.0625V8.1875C3.48177 7.91406 3.33594 7.76823 3.0625 7.75H2.1875C1.91406 7.76823 1.76823 7.91406 1.75 8.1875V9.0625ZM5.25 9.0625C5.26823 9.33594 5.41406 9.48177 5.6875 9.5H6.5625C6.83594 9.48177 6.98177 9.33594 7 9.0625V8.1875C6.98177 7.91406 6.83594 7.76823 6.5625 7.75H5.6875C5.41406 7.76823 5.26823 7.91406 5.25 8.1875V9.0625ZM9.1875 7.75C8.91406 7.76823 8.76823 7.91406 8.75 8.1875V9.0625C8.76823 9.33594 8.91406 9.48177 9.1875 9.5H10.0625C10.3359 9.48177 10.4818 9.33594 10.5 9.0625V8.1875C10.4818 7.91406 10.3359 7.76823 10.0625 7.75H9.1875ZM1.75 12.5625C1.76823 12.8359 1.91406 12.9818 2.1875 13H3.0625C3.33594 12.9818 3.48177 12.8359 3.5 12.5625V11.6875C3.48177 11.4141 3.33594 11.2682 3.0625 11.25H2.1875C1.91406 11.2682 1.76823 11.4141 1.75 11.6875V12.5625ZM5.6875 11.25C5.41406 11.2682 5.26823 11.4141 5.25 11.6875V12.5625C5.26823 12.8359 5.41406 12.9818 5.6875 13H6.5625C6.83594 12.9818 6.98177 12.8359 7 12.5625V11.6875C6.98177 11.4141 6.83594 11.2682 6.5625 11.25H5.6875ZM8.75 12.5625C8.76823 12.8359 8.91406 12.9818 9.1875 13H10.0625C10.3359 12.9818 10.4818 12.8359 10.5 12.5625V11.6875C10.4818 11.4141 10.3359 11.2682 10.0625 11.25H9.1875C8.91406 11.2682 8.76823 11.4141 8.75 11.6875V12.5625Z" fill="#C28565"/>
+        </svg>
+       <p>{{ article.published_at  | date: '%d %b, %y'}}</p>
+
+      </div>
+      <a href="{{ article.url }}" class="recent_content">{{ article.content |  truncatewords: 4, "" }}</a>
+
+      </div>
+
+      </div>
+
+
+    {% endfor %}
+       
+   
+  </div>
+ 
+
+  <div class="blog_catagory">
+    <p class="catagory_text">Popular Tags</p>
+    <div class="catagory_line"></div>
+
+
+    <div class="blog_tag_list">
+      {% for tag in blog.all_tags %}
+        {% if tag contains "popular__" %}
+          {% assign tag_name = tag | remove_first: "popular__" | remove: "__"  |  capitalize %}
+          <li>
+            
+          <a href="{{ blog.url }}/tagged/{{ tag | handle }}" 
+             class="{% if current_tags contains tag %}active{% endif    %}">
+            {{ tag_name }}
+          </a>
+          </li>
+      
+        {% endif %}
+      {% endfor %}
+    </div>
+
+
+    </div>

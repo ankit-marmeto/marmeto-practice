@@ -1,0 +1,30 @@
+.occassion-image-container img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+.occassion-content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	display: flex;
+}
+.main-banner {
+	position: relative;
+}
+.occ-position {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+.mb_10 {
+	margin-bottom: 10px;
+}
+@media screen and (max-width: 600px) {
+	.occ-position {
+		width: 310px;
+		text-align: center;
+	}
+}

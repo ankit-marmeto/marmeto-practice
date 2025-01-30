@@ -1,0 +1,40 @@
+<div class="banner_item_container p-relative">
+  <div class="banner_image_container">
+    {% if block.settings.image_mobile %}
+      {% render 'picture'
+        , class: ''
+        , mobileSrc: block.settings.image_mobile
+        , desktopSrc: block.settings.image %}
+    {% else %}
+      {% render 'picture'
+        , class: ''
+        , mobileSrc: block.settings.image
+        , desktopSrc: block.settings.image %}
+    {% endif %}
+
+  </div>
+  <div class="p-absolute-100 position-{{ block.id }}">
+    <div class="banner_content">
+      <div class="h2 text-alignment-{{ block.id }} center">
+        {{ block.settings.banner_title }}
+      </div>
+      {% if block.settings.button_text != blank %}
+        <div class="button button--primary text-alignment-{{ block.id }}">
+          {{ block.settings.button_text | link_to: block.settings.button_url, class: 'CTA-section-multiimage' }}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .position-{{ block.id }} {
+    justify-content: {{ block.settings.content_position_x }};
+    align-items: {{ block.settings.content_position_y }};
+  }
+  .text-alignment-{{ block.id }} {
+    align-self: {{ block.settings.text_alignment }};
+  }
+</style>

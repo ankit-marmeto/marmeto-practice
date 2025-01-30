@@ -1,0 +1,73 @@
+<div class="wizzy-autocomplete-top-products">
+  [[#displayNoResults]] [[#isForEmptyResult]]
+  <div class="wizzy-autocomplete-no-results-wrapper">
+    [[#query]]
+    <span class="no-results-default-message">Sorry, nothing found for <strong>"[[query]]"</strong>.</span>
+    [[/query]] [[#noResultsText]]
+    <span class="no-results-custom-message">[[noResultsText]]</span>
+    [[/noResultsText]]
+  </div>
+  [[/isForEmptyResult]] [[/displayNoResults]] [[#topProductsTitle]]
+  <p class="top-products-title">[[topProductsTitle]]</p>
+  [[/topProductsTitle]]
+
+  <ul class="autocomplete-top-products">
+    [[#products]]
+
+    <div
+      class="topproduct-item"
+      title="[[& name ]]"
+      data-id="[[id]]"
+      data-groupId="[[#groupId]][[groupId]][[/groupId]][[#singleVarientGroupId]][[singleVarientGroupId]][[/singleVarientGroupId]]"
+    >
+      <div class="st-outer-box st-link">
+        <div class="st-image-container">
+          <span class="st-oos-badge" style="[[#inStock]]display: none;[[/inStock]]">Sold Out</span>
+          <a href="[[&url]]">
+            <div class="st-image-wrapper">
+              <img
+                class="st-hero-image"
+                src="[[mainImage]]"
+                alt="[[name]]"
+              >
+            </div>
+          </a>
+        </div>
+        <div class="st-inner-box-outer">
+          <div class="st-inner-box">
+            <a href="[[&url]]">
+              <div class="st-name" style="text-transform: none; color: rgb(0, 0, 0);">[[name]]</div>
+            </a>
+            <div class="st-extra-field-box st-brand">
+              <!--  -->
+              <span class="st-extra-field-value">[[brand]]</span>
+            </div>
+            <div class="st-price-box">
+              <!--  -->
+              <div class="st-price-wrapper st-sale-price-wrapper" style="color: rgb(0, 0, 0);">
+                <span class="st-currency-symbol">Rs.</span><span class="st-sale-price">[[sellingPrice]]</span>
+              </div>
+              <div class="st-price-wrapper st-main-price-wrapper" style="color: rgb(133, 133, 133);">
+                <span class="st-currency-symbol">Rs.</span><span class="st-main-price">[[price]]</span>
+              </div>
+              [[#discountPercentage ]]<span class="st-discount-label" style="color: rgb(255, 255, 255);"
+                >[[discountPercentage ]]% OFF</span
+              >[[/discountPercentage ]]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ending of topproduct-item -->
+
+    [[/products]]
+  </ul>
+  <!-- ending of autocomplete-top-products -->
+  [[^isForDefault]]
+  <div class="autocomplete-top-products-view-more">
+    <button type="button" class="btn btn--small wizzy-autocomplete-top-products-view-more">View More</button>
+  </div>
+  [[/isForDefault]]
+</div>
+<!-- ending of top-products -->

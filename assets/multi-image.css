@@ -1,0 +1,42 @@
+.banner_image_container img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+.banner_image_container picture {
+	height: 100%;
+}
+.mb_container {
+	display: flex;
+	gap: 25px;
+	width: 100%;
+}
+.multi_banner .banner_content {
+	display: flex;
+	flex-direction: column;
+	gap: 19px;
+	width: 45%;
+}
+.banner_image_container {
+	height: 65rem;
+}
+.CTA-section-multiimage {
+	color: rgba(50, 50, 50, 1);
+	font-weight: 500;
+}
+@media screen and (max-width: 990px) {
+	.multi_banner .banner_content {
+		width: 55%;
+	}
+	.banner_image_container {
+		height: 35rem;
+	}
+	.mb_container {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+	.multi_banner .banner_image_container img {
+		height: 100%;
+	}
+}

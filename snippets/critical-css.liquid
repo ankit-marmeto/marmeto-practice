@@ -1,0 +1,165 @@
+<style>
+product-recommendations.related-products.page-width {	
+    display: block;
+}
+.footer__header-logo img {
+    height: auto;
+    width: 15rem
+}
+.footer__header-logo {
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 1);
+    padding: .9rem 1.8rem;
+    margin-bottom: 2.4rem;
+    display: flex;
+}
+.footer-block__newsletter .footer-block__heading, .footer-block__newsletter .footer-block__subheading {
+    margin-bottom: 1.6rem;
+}
+.footer-block__newsletter:not(:only-child) .footer__newsletter {
+    height: 3.6rem;
+    margin-bottom: 1.6rem;
+}
+.newsletter-form__field-wrapper {
+    max-width: 36rem;
+}
+.newsletter-form__field-wrapper .field {
+    min-width: 22.5rem;
+    min-height: 3.7rem;
+}
+.footer__newsletter .newsletter-form__field-wrapper .field__input {
+    padding: 1.1rem 9rem 1.1rem 1.1rem;
+    font-size: 1.2rem;
+}
+.newsletter-form__field-wrapper .field__label {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.footer-accordion-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.footer-accordion-content .list-menu__item--link {
+    padding: 0;
+}
+.product.product--medium .price--on-sale .price__regular, .price--on-sale .price__availability {
+    display: none;
+}
+.product.product--medium .price--on-sale .price__sale {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .6rem;
+}
+.product.product--medium product-info .price--on-sale .price-item--regular {
+    color: #a2a2a2;
+    font-size: 1.2rem;
+}
+.product.product--medium .discount-percent {
+    font-size: 1.2rem;
+    line-height: 1.4em;
+    color: #fff;
+    width: 6.7rem;
+    background-color: #ec1a3bcc;
+    display: grid;
+    place-items: center;
+}
+.product.product--medium .accordion .summary__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+.accordion-details svg.icon.icon-caret, .accordion-details[open] svg.icon.icon-plus, .accordion-details svg.icon.icon-minus {
+    display: none;
+}
+.accordion .accordion-details summary {
+    display: flex;
+    position: relative;
+    line-height: 1.4em;
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+}
+.accordion {
+    border-bottom: .1rem solid rgba(0, 0, 0, 1);
+}
+.product.product--medium product-info product-form .product-form__submit.button {
+    background-color: rgba(50, 50, 50, 1);
+}
+.product.product--medium product-info product-form .product-form__submit.button:hover {
+    background-color: rgba(50, 50, 50, 0.6);
+}
+product-recommendations .related-products__heading {
+    margin: 0 0 4.8rem;
+}
+.tabs-switch-container .splide.is-initialized:not(.is-active) .splide__list{
+    display:flex;
+}
+
+@media screen and (min-width: 750px) {
+    .footer__content-top, .footer__content-logo, .footer__content-bottom-wrapper {
+        padding-inline: 10rem;
+    }
+    .footer__content-top .grid {
+        display: grid;
+        grid-template-columns: 1fr .2fr;
+        row-gap: 6rem;
+        margin-bottom: 0;
+    }
+    .footer__menu-list {
+        display: flex;
+    }
+    .footer-block__newsletter:not(:only-child) .footer__newsletter {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 0;
+        margin-bottom: 3.4rem;
+        height: 4.2rem;
+    }
+    .newsletter-form__field-wrapper {
+        max-width: 36rem;
+    }
+    .newsletter-form__field-wrapper .field {
+        min-width: 30rem;
+    }
+    .footer__content-bottom {
+        border-top: solid .1rem rgba(255, 255, 255,.08);
+        padding-top: 4.5rem;
+    }
+    .footer-block__details-content .list-menu__item--link, .copyright__content a {
+        color: rgba(255, 255, 255,.75);
+    }
+    .footer-block__details-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+        margin-bottom: 0;
+    }
+    .accordion-details svg.icon.icon-caret {
+        display: block;
+    }
+    .accordion-details svg.icon.icon-plus, .accordion-details[open] svg.icon.icon-minus {
+        display: none;
+    }
+    .accordion-details[open] svg.icon.icon-caret {
+        transform: rotate(180deg);
+    }
+    product-info.product__info-container .icon-with-text+.product__accordion {
+        border-top: .1rem solid rgba(0, 0, 0, 1);
+    }
+}
+@media screen and (max-width: 749px) {
+    .footer .grid {
+        display: block;
+    }  
+    .header__inline-menu {
+        display:none;
+    } 
+    product-recommendations .card .card__content ,mm-product-card .card__content{
+        padding: 1rem;
+    }
+}
+</style>
+

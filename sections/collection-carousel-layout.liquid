@@ -1,0 +1,165 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.45 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.35 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }} ">
+
+  <div class="brand_cc_main c2_main">
+    <div class="c2_label center">
+      <div class="c2_subtitle subtitle">
+        {{ section.settings.subtitle }}
+      </div>
+      <div class="cc_heading h2">
+        {{ section.settings.heading }}
+      </div>
+    </div>
+
+    <div
+      class="splide sm_p_l_20"
+      id="splidecc2"
+      aria-label="">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for block in section.blocks %}
+            {% assign collection = block.settings.collection %}
+            <li class="splide__slide">
+              <div class="cc_collection_card">
+                <a href="{{ collection.url }}">
+                  <div class="content_positioning">
+                    <div class="cc_image_container">
+                      {% if block.settings.alternate_collection_image == blank %}
+                        {% render 'picture'
+                          , class: ''
+                          , mobileSrc: collection.featured_image
+                          , desktopSrc: collection.featured_image %}
+                      {% else %}
+                        {% render 'picture'
+                          , class: ''
+                          , mobileSrc: block.settings.alternate_collection_image
+                          , desktopSrc: block.settings.alternate_collection_image %}
+                      {% endif %}
+
+                    </div>
+                    <div
+                      class="c2_title p-absolute"
+                      {% if section.settings.show_title == false %}
+                      style="display: none;"
+                      {% endif %}>
+                      <div class="h6 title_inner">
+                        {{ collection.title }}</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const slider = new Splide('#splidecc2', {
+          type: 'slide',
+          perPage: 2.4,
+          perMove: 1,
+          focus: 'left',
+          arrows: false,
+          gap: '65px',
+          noDrag: '.no-drag',
+          breakpoints: {
+              750: {
+                  perPage: 1.11,
+                  gap: '34px',
+                  fixedHeight: '280px',
+              }
+          }
+      });
+      slider.mount();
+    });
+</script>
+
+{% schema %}
+  {
+    "name": "Collection Carousel 2",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "range",
+        "label": "Padding Top",
+        "id": "padding_top",
+        "default": 20,
+        "min": 0,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "label": "Padding Bottom",
+        "id": "padding_bottom",
+        "default": 20,
+        "min": 0,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
+      },
+      {
+        "type": "text",
+        "label": "Subtitle",
+        "id": "subtitle",
+        "default": "Categories"
+      }, {
+        "type": "text",
+        "label": "Heading",
+        "id": "heading",
+        "default": "TRENDING CATEGORIES"
+      }, {
+        "type": "checkbox",
+        "label": "Show Collection Title Container",
+        "id": "show_title",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "label": "Collection",
+            "id": "collection"
+          }, {
+            "type": "image_picker",
+            "label": "Alternate Collection Image",
+            "id": "alternate_collection_image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Carousel 2"
+      }
+    ]
+  }
+{% endschema %}

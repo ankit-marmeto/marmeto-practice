@@ -9,8 +9,26 @@
  */
 {
   "sections": {
+    "static_blog_banner_WYnaXx": {
+      "type": "static-blog-banner",
+      "settings": {
+        "text": "Blogs"
+      }
+    },
     "main": {
       "type": "main-blog",
+      "blocks": {
+        "blog_nFCegT": {
+          "type": "blog",
+          "settings": {
+            "blog1": "default-blog",
+            "blog_title": "Fashion"
+          }
+        }
+      },
+      "block_order": [
+        "blog_nFCegT"
+      ],
       "settings": {
         "layout": "collage",
         "show_image": true,
@@ -23,6 +41,7 @@
     }
   },
   "order": [
+    "static_blog_banner_WYnaXx",
     "main"
   ]
 }

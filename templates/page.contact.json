@@ -9,26 +9,27 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "static_banner_Eehz7N": {
+      "type": "static-banner",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
+        "image_for_desktop": "shopify://shop_images/Contact_us.png",
+        "text": "",
+        "image_for_mobile": "shopify://shop_images/Contact_us_MOBILE.png"
       }
     },
-    "form": {
+    "contact_form_J6h9gN": {
       "type": "contact-form",
       "settings": {
         "heading": "",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
+        "contact_data": "<p><strong>Email: </strong>support@myraymond.com<strong><br/>Address:</strong><br/>J K Gram, Thane West, Thane, Maharashtra 400606</p>",
+        "color_scheme": "",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 72
       }
     }
   },
   "order": [
-    "main",
-    "form"
+    "static_banner_Eehz7N",
+    "contact_form_J6h9gN"
   ]
 }

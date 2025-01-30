@@ -1,0 +1,81 @@
+{% comment %}
+  Renders cart products upselling-products
+
+  Accepts:
+  - cart: {Object} cart object.
+  Usage:
+  {% render 'cart-upselling-products', cart: cart %}
+{% endcomment %}
+
+{% assign cart_products = "" %}
+{% assign upsell__handles = '' %}
+
+{% for item in cart.items %}
+{% assign cart_products = cart_products | append: item.product.handle | append: ","  %}
+{% endfor %}
+
+{% for item in cart.items %}
+{% for tag in item.product.tags %}
+{% if tag contains 'upsell__' %}
+  {% assign handle = tag | split: '__' | last %}
+    {%- unless item.product.handle == handle -%}
+        {% unless cart_products contains handle %}
+            {%- assign upsell__handles = upsell__handles | append: handle | append: ',' -%}
+        {% endunless %}
+    {%- endunless -%}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+{%- assign upsell__handles = upsell__handles | split: ',' | uniq -%}
+
+{% if upsell__handles.size > 0 %}
+<div class="cart-drawer__upsell-container">
+    <div class="cart-drawer__upsell">
+        <h2 class="h3">
+          YOU MIGHT ALSO LIKE 
+        </h2>
+    </div>
+    <div class="main-cart-drawer__cart-items">
+    {% for handle in upsell__handles %}
+        {% assign product = all_products[handle] %}
+        <drawer-upsell-product class="cart-drawer__upsell-products" data-url="{{ product.url }}" data-section="drawer-upsell-product">
+            <div class="main-cart-drawer__cart-item" id="drawer-upsell-product">
+                {% assign current_variant = product.selected_or_first_available_variant %}
+                <div class="cart-drawer__product-image">
+                    <a id="MediaGallery-CartDrawer" href="{{ product.url }}" class="cart-drawer__product-image-item">
+                      {% assign image = product.featured_image %}
+                      {{ image | image_url: width: 100 | image_tag:
+                        widths: '100',
+                        height: '120'
+                      }}
+                    </a>
+                </div>
+              
+                <div class="drawer-product-card__details">
+                    <p class="h4">
+                      {{ product.title | escape }}
+                    </p>
+                </div>
+              
+                <div class="cart-drawer__product-price">
+                     <p class="upsell-variant-price caption">{{ current_variant.price | money | remove: '.00' }}</p>
+                     <p class="caption compare-price">{{ current_variant.compare_at_price | money | remove: '.00' }}</p>
+                </div>
+              
+                <div class="product-card__select-options">
+                    {% unless product.has_only_default_variant %}
+                        {% render 'cart-upselling-variant-selector', product: product %}
+                    {% endunless %}
+                </div>
+              
+                <div class="product-card__atc-button">
+                  {% render "cart-upselling-atc-button", product: product %}
+                </div>
+            </div>
+    
+        </drawer-upsell-product>
+    {% endfor %}
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,130 @@
+<media-gallery id="MediaGallery-{{ section.id }}" role="region" {% if section.settings.enable_sticky_info %}class="product__media-gallery"{% endif %} aria-label="{{ 'products.product.media.gallery_viewer' | t }}">
+    <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
+    
+  <div class="
+    {%- if section.settings.gallery_layout == 'splide_slider_vertical_thumbnails' -%}
+      vertical-splider-container
+    {%- endif -%}"
+  >
+      <product-gallery
+        id="ProductGallery-{{ section.id }}"
+        class="{% if section.settings.gallery_layout contains 'slider' %} splide{% endif %} product__gallery-main-image"
+        aria-label="Gallery Viewer"
+        data-desktopperpage="1"
+        data-mobileperpage="1"
+        data-gapBetweenSlides="2rem"
+        data-disableDrag="false"
+        data-carouselSyncSelector="carousel-sync#sync-{{ section.id }}"
+        data-variantFilter="{{ section.settings.hide_variants }}"
+      >
+        <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
+          {{ "accessibility.skip_to_product_info" | t }}
+        </a>
+        <div class="splide__track">
+            <div class="wishlist-container product__title-wistlist">
+              {% render 'hulkapps-wishlist-product-btn' %}
+            </div>
+          <ul class="{% if section.settings.gallery_layout contains 'slider' %} splide__list{% else %} tw-flex tw-flex-wrap tw-justify-center tw-gap-y-3{% endif %}">
+            {%- for media in product.media -%}
+            <li class="{% if media.media_type contains 'video' %} splide--slide-video{% endif %}{% if section.settings.gallery_layout contains 'slider' %} splide__slide{% else %} {{ section.settings.mobile_items }} {{ section.settings.desktop_items }} tw-px-2{% endif %}" data-media-id="{{ media.id }}" data-filter="{{ media.alt | escape }}">
+              <div class="slot-item group">
+                {% render 'product-media', media: media, loop: section.settings.enable_video_looping, forloop: forloop %}
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% for tag in product.tags %}
+          {% if tag contains 'Combo_Offer' %}
+            <span class="badge product__badge-tags combo-offer-tag">
+              {{ section.settings.offer_text }}
+            </span>
+          {% endif %}
+        {% endfor %}
+      </product-gallery>
+      
+  
+      {% comment %}
+        Please specify the CSS properties 'width' and 'min-width' for the vertical slider.
+      {% endcomment %}
+      <carousel-sync
+        id="sync-{{ section.id }}"
+        class=" 
+          {% if section.settings.gallery_layout contains 'slider' %} 
+            splide
+          {% endif %} 
+          {% if section.settings.mobile_thumbnails == 'hide' %}
+            small-hide 
+          {% endif %} 
+          {% if section.settings.gallery_layout == 'splide_slider_vertical_thumbnails' %}
+            md:tw-min-w-[90px] md:tw-w-[90px]
+          {% endif %}" 
+        aria-label="Thumbnails Viewer"
+        data-type="slide"
+        data-focus="0"
+        data-desktopperpage="5"
+        data-mobileperpage="5"
+        data-desktopSlideGap="2rem"
+        data-disabledrag="false"
+        data-isNavigation="true"
+        data-showArrows="true"
+        data-permove="1"
+        data-gapMobile="9"
+        {% if section.settings.gallery_layout == 'splide_slider_vertical_thumbnails' %}
+          data-direction="ttb"
+        {% endif %}
+      >
+        <div class="splide__track">
+          <ul class="{% if section.settings.gallery_layout contains 'slider' %} splide__list{% else %} tw-flex tw-flex-wrap tw-justify-center tw-gap-y-3{% endif %}">
+            {%- for media in product.media -%}
+            <li class="{% if section.settings.gallery_layout contains 'slider' %} splide__slide{% else %} {{ section.settings.mobile_items }} {{ section.settings.desktop_items }} tw-px-2{% endif %}" data-media-id="{{ media.id }}" data-filter="{{ media.alt | escape }}">
+              <div class="slot-item group">
+                {%- if media.media_type == 'model' -%}
+                  <span class="thumbnail__badge" aria-hidden="true">
+                    {%- render 'icon-3d-model' -%}
+                  </span>
+                {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                  <span class="thumbnail__badge" aria-hidden="true">
+                    {%- render 'icon-play' -%}
+                  </span>
+                {%- endif -%}
+                <img id="Thumbnail-{{ section.id }}-{{ forloop.index }}"
+                  srcset="{% if media.preview_image.width >= 59 %}{{ media.preview_image | image_url: width: 59 }} 59x,{% endif %}
+                          {% if media.preview_image.width >= 118 %}{{ media.preview_image | image_url: width: 118 }} 118w,{% endif %}
+                          {% if media.preview_image.width >= 84 %}{{ media.preview_image | image_url: width: 84 }} 84w,{% endif %}
+                          {% if media.preview_image.width >= 168 %}{{ media.preview_image | image_url: width: 168 }} 168w,{% endif %}
+                          {% if media.preview_image.width >= 130 %}{{ media.preview_image | image_url: width: 130 }} 130w,{% endif %}
+                          {% if media.preview_image.width >= 260 %}{{ media.preview_image | image_url: width: 260 }} 260w{% endif %}"
+                  src="{{ media | image_url: width: 84, height: 84 }}"
+                  sizes="(min-width: 1200px) calc((1200px - 19.5rem) / 12), (min-width: 750px) calc((100vw - 16.5rem) / 8), calc((100vw - 8rem) / 5)"
+                  alt="{{ media.alt | escape }}"
+                  height="200"
+                  width="200"
+                  loading="lazy"
+                  fetchpriority="low"
+                  class="tw-h-full tw-object-cover"
+                >  
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </carousel-sync>
+  </div>
+  <details class="share-icon-container mobile large-up-hide">
+    <summary class="share-icon" aria-label="{{ 'products.product.media.share' | t }}">
+      {% render 'icon' with 'share' %}
+    </summary>
+    <div class="share-icon-content">
+      <a href="https://api.whatsapp.com/send?text={{ shop.url }}{{ product.url }}" class="share-on-whatsapp" target="_blank">
+        {% render 'icon' with 'whatsapp' %}
+      </a>
+      <a href="//www.facebook.com/sharer.php?u={{ shop.url }}{{ product.url }}" class="share_on_facebook" target="_blank">
+        {% render 'icon' with 'facebook' %}
+      </a>
+      <a href="//instagram.com/?url={{ shop.url }}{{ product.url }}" class="share_on_instagram" target="_blank">
+        {% render 'icon' with 'instagram' %}
+      </a>
+      </div>
+  </details>
+</media-gallery>

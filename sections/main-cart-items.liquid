@@ -2,7 +2,6 @@
 {{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
 {{ 'component-totals.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -17,12 +16,13 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+  cart-remove-button .button{
+    padding: 0 1.2rem;
+  }
+  cart-remove-button .button:not([disabled]):hover{
+    color: rgb(var(--color-button-text));
+  }
 {%- endstyle -%}
-
-{%- unless settings.cart_type == 'drawer' -%}
-  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
-{%- endunless -%}
-
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
 <cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
@@ -77,9 +77,9 @@
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody data-csapp_line_wrapper>
                 {%- for item in cart.items -%}
-                  <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                  <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}" data-csapp_line_index>
                     <td class="cart-item__media">
                       {% if item.image %}
                         {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
@@ -103,6 +103,8 @@
                       {%- endif -%}
 
                       <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
+                     <div data-aiod-volume-discount-line_item-bar></div>
+
 
                       {%- if item.original_price != item.final_price -%}
                         <div class="cart-item__discounted-prices">
@@ -120,7 +122,7 @@
                           </strong>
                         </div>
                       {%- else -%}
-                        <div class="product-option">
+                        <div class="product-option" data-csapp_price>
                           {{ item.original_price | money }}
                         </div>
                       {%- endif -%}
@@ -164,16 +166,19 @@
                       <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                         {%- for discount in item.line_level_discount_allocations -%}
                           <li class="discounts__discount">
-                            {{- 'icon-discount.svg' | inline_asset_content -}}
-                            {{ discount.discount_application.title | escape }}
+                            {%- render 'icon-discount' -%}
+                            {{ discount.discount_application.title }}
                           </li>
                         {%- endfor -%}
                       </ul>
+                      {% if item.product.tags contains 'ONSALE' %}
+                        <span class="sale-info-text"> {{ settings.sale_info_text }}</span>
+                      {% endif %}
                     </td>
 
                     <td class="cart-item__totals right medium-hide large-up-hide">
                       {%- render 'loading-spinner' -%}
-                      <div class="cart-item__price-wrapper">
+                      <div class="cart-item__price-wrapper"  data-csapp_line_price  data-csapp_discount_summery>
                         {%- if item.original_line_price != item.final_line_price -%}
                           <dl class="cart-item__discounted-prices">
                             <dt class="visually-hidden">
@@ -235,19 +240,17 @@
                               <button
                                 type="button"
                                 aria-expanded="false"
-                                class="quantity-popover__info-button quantity-popover__info-button--icon-only button button--tertiary small-hide medium-hide"
+                                class="quantity-popover__info-button quantity-popover__info-button--icon-only button button--tertiary small-hide no-js-hidden"
                               >
-                                {{- 'icon-info.svg' | inline_asset_content -}}
+                                {% render 'icon-info' %}
                               </button>
                             {%- endif -%}
                             <quantity-input class="quantity cart-quantity">
-                              <button class="quantity__button" name="minus" type="button">
+                              <button class="quantity__button no-js-hidden" name="minus" type="button">
                                 <span class="visually-hidden">
                                   {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
                                 </span>
-                                <span class="svg-wrapper">
-                                  {{- 'icon-minus.svg' | inline_asset_content -}}
-                                </span>
+                                {% render 'icon-minus' %}
                               </button>
                               <input
                                 class="quantity__input"
@@ -257,8 +260,7 @@
                                 value="{{ item.quantity }}"
                                 {% # theme-check-disable %}
                                 data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
-                                min="0"
-                                data-min="{{ item.variant.quantity_rule.min }}"
+                                min="{{ item.variant.quantity_rule.min }}"
                                 {% if item.variant.quantity_rule.max != null %}
                                   max="{{ item.variant.quantity_rule.max }}"
                                 {% endif %}
@@ -268,13 +270,11 @@
                                 id="Quantity-{{ item.index | plus: 1 }}"
                                 data-index="{{ item.index | plus: 1 }}"
                               >
-                              <button class="quantity__button" name="plus" type="button">
+                              <button class="quantity__button no-js-hidden" name="plus" type="button">
                                 <span class="visually-hidden">
                                   {{- 'products.product.quantity.increase' | t: product: item.product.title | escape -}}
                                 </span>
-                                <span class="svg-wrapper">
-                                  {{- 'icon-plus.svg' | inline_asset_content -}}
-                                </span>
+                                {% render 'icon-plus' %}
                               </button>
                             </quantity-input>
                           </div>
@@ -285,21 +285,19 @@
                             <a
                               href="{{ item.url_to_remove }}"
                               class="button button--tertiary"
-                              aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
+                              aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
                             >
-                              <span class="svg-wrapper">
-                                {{- 'icon-remove.svg' | inline_asset_content -}}
-                              </span>
+                              {% render 'icon-remove' %}
                             </a>
                           </cart-remove-button>
                         </div>
                         {%- if has_qty_rules or has_vol_pricing -%}
                           <button
                             type="button"
-                            class="quantity-popover__info-button quantity-popover__info-button--icon-with-label button button--tertiary large-up-hide"
+                            class="quantity-popover__info-button quantity-popover__info-button--icon-with-label button button--tertiary medium-hide large-up-hide"
                             aria-expanded="false"
                           >
-                            {{- 'icon-info.svg' | inline_asset_content -}}
+                            {% render 'icon-info' %}
                             <span>
                               {%- if has_vol_pricing -%}
                                 {{ 'products.product.volume_pricing.note' | t }}
@@ -320,7 +318,7 @@
                                 {{- 'products.product.volume_pricing.title' | t -}}
                               </span>
                             {%- endif -%}
-                            <div class="quantity__rules caption">
+                            <div class="quantity__rules caption no-js-hidden">
                               {%- if item.variant.quantity_rule.increment > 1 -%}
                                 <span class="divider">
                                   {{-
@@ -332,7 +330,7 @@
                               {%- if item.variant.quantity_rule.min > 1 -%}
                                 <span class="divider">
                                   {{-
-                                    'products.product.quantity.min_of'
+                                    'products.product.quantity.minimum_of'
                                     | t: quantity: item.variant.quantity_rule.min
                                   -}}
                                 </span>
@@ -340,20 +338,18 @@
                               {%- if item.variant.quantity_rule.max != null -%}
                                 <span class="divider">
                                   {{-
-                                    'products.product.quantity.max_of'
+                                    'products.product.quantity.maximum_of'
                                     | t: quantity: item.variant.quantity_rule.max
                                   -}}
                                 </span>
                               {%- endif -%}
                             </div>
                             <button
-                              class="button-close button button--tertiary large-up-hide"
+                              class="button-close button button--tertiary medium-hide large-up-hide"
                               type="button"
                               aria-label="{{ 'accessibility.close' | t }}"
                             >
-                              <span class="svg-wrapper">
-                                {{- 'icon-close.svg' | inline_asset_content -}}
-                              </span>
+                              {%- render 'icon-close' -%}
                             </button>
                             {%- if item.variant.quantity_price_breaks.size > 0 -%}
                               <volume-pricing class="parent-display">
@@ -380,9 +376,17 @@
                         {%- endif -%}
                         <div class="cart-item__error" id="Line-item-error-{{ item.index | plus: 1 }}" role="alert">
                           <small class="cart-item__error-text"></small>
-                          <span class="svg-wrapper">
-                            {{- 'icon-error.svg' | inline_asset_content -}}
-                          </span>
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            class="icon icon-error"
+                            viewBox="0 0 13 13"
+                          >
+                            <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                            <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                            <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                            <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                          </svg>
                         </div>
                       </quantity-popover>
                     </td>
@@ -459,7 +463,7 @@
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
+      "default": "background-1"
     },
     {
       "type": "header",

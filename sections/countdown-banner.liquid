@@ -1,0 +1,194 @@
+{{ "countdown.css" | asset_url | stylesheet_tag }}
+<script src="{{ 'timer.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .text-color{{ section.id }} {
+    color: {{ section.settings.text_color_scheme }};
+  }
+  .border-color{{ section.id }} {
+    background-color: {{ section.settings.text_color_scheme }};
+  }
+
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .layout-{{ section.id }} {
+      flex-direction: {{ section.settings.layout }};
+    }
+    .main_countdown {
+      justify-content: flex-end;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+
+  <div class="padding-small">
+    <a href="{{section.settings.button_url}}">
+
+      <div class="main_countdown layout-{{section.id}} color-{{ section.settings.section_color_scheme }}">
+        <div class="content">
+          <div class="text_content">
+            <div class="h2 flex-cl">
+              {{ section.settings.heading_text }}
+              <div class="border-custom border-color{{section.id}}">&nbsp;</div>
+            </div>
+
+
+            <div class="h4">
+              {{ section.settings.caption }}
+            </div>
+
+            <div class="mt-sm-25">
+              <span class="h3 d_price text-color{{section.id}}" style="filter: brightness(0.8);">{{ section.settings.discounted_price | split: "/" | first }}</span>
+              <span>/{{ section.settings.discounted_price | split: "/" | last }}</span>
+            </div>
+
+          </div>
+
+          {% if section.settings.date != blank %}
+            <div class="promotional-banner__text-timer">
+              {% render 'timer'
+                , input: section.settings.date
+                , count_background:
+              %}
+            </div>
+          {% endif %}
+
+          <div class="button {% if section.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %}">
+            {{ section.settings.button_text | link_to: section.settings.button_url }}
+          </div>
+
+        </div>
+
+
+        <div class="image_container">
+          <a href="{{section.settings.button_url}}">
+            {% render 'picture'
+              , class: ''
+              , mobileSrc: section.settings.banner_image
+              , desktopSrc: section.settings.banner_image %}
+          </a>
+        </div>
+
+
+      </div>
+
+    </a>
+  </div>
+
+
+</div>
+
+{% schema %}
+  {
+    "name": "Countdown Banner",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      },
+      {
+        "type": "image_picker",
+        "label": "Banner Image",
+        "id": "banner_image"
+      }, {
+        "type": "text",
+        "label": "Heading Text",
+        "id": "heading_text",
+        "default": "Deal Of The Week"
+      }, {
+        "type": "textarea",
+        "label": "Caption",
+        "id": "caption",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do elusmod tempor incididunt ut labore et dolore"
+      }, {
+        "type": "text",
+        "label": "Discounted Price",
+        "id": "discounted_price",
+        "default": "$35.00 / HanBag"
+      }, {
+        "type": "text",
+        "label": "Button Text",
+        "id": "button_text",
+        "default": "SHOP NOW"
+      }, {
+        "type": "url",
+        "label": "Add Link",
+        "id": "button_url"
+      }, {
+        "type": "checkbox",
+        "id": "button_style_secondary",
+        "default": false,
+        "label": "t:sections.image-with-text.blocks.button.settings.outline_button.label"
+      }, {
+        "type": "select",
+        "id": "layout",
+        "options": [
+          {
+            "value": "row",
+            "label": "t:sections.image-with-text.settings.layout.options__1.label"
+          }, {
+            "value": "row-reverse",
+            "label": "t:sections.image-with-text.settings.layout.options__2.label"
+          }
+        ],
+        "default": "row",
+        "label": "t:sections.image-with-text.settings.layout.label",
+        "info": "t:sections.image-with-text.settings.layout.info"
+      }, {
+        "type": "color",
+        "label": "Text Color Scheme",
+        "id": "text_color_scheme",
+        "default": "#e7ab3c"
+      }, {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.multirow.settings.container_color_scheme.label",
+        "default": "background-5"
+      }, {
+        "type": "header",
+        "content": "Countdown Timer Settings"
+      }, {
+        "type": "text",
+        "id": "date",
+        "label": "Date",
+        "info": "Ex: 01/02/2024 recommended(DD/MM/YYYY)"
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Countdown Banner"
+      }
+    ]
+  }
+{% endschema %}

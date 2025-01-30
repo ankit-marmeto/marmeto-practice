@@ -1,0 +1,33 @@
+<script src="{{ 'account.js' | asset_url }}" defer="defer"></script> 
+
+
+{{ 'account-sidebar.css' | asset_url | stylesheet_tag }}
+
+<div class="account-snippet-main">
+    <div class="account_holderName_container">
+        {% if customer %}
+            {% render 'hello-icon', %}
+        <p id="customer_name">Hello,{{ customer.first_name }}</p>
+        {% endif %}
+    </div>
+    <div class="main-hr"><div></div></div>
+        <div class="">
+        <div class="account_overview account_page_data account_page_container">
+            <a href="/account" class="tab-details {% if template contains 'addresses' %}active-tab{% endif %}"  data-tab-id="{{ section.settings.tab_id_1 }}">{{ section.settings.sidebar_title_1 }}</a>
+            <a class="tab-details" data-tab-id="{{ section.settings.tab_id_2 }}" onclick="handleAnchorClick('address')">{{ section.settings.sidebar_title_2 }}</a>
+            <a class="{% if template contains 'customers/order' %}active-tab{% endif %} tab-details" data-tab-id="{{ section.settings.tab_id_3 }}" onclick="handleAnchorClick('order')">{{ section.settings.sidebar_title_3 }}</a>
+            <a class="tab-details" data-tab-id="{{ section.settings.tab_id_4 }}" onclick="showContent('wishlist')">{{ section.settings.sidebar_title_4 }}</a>
+        </div>
+        <div class="child-hr">
+            <div></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,162 @@
+<div class="page-width style-guide">
+  <h1 class="h2 center">Style Guide</h1>
+
+  <div class="color-{{ section.settings.color_scheme }}">
+    <div class="h3">Typography</div>
+    <h1 class="h1">Heading 1</h1>
+    <h2 class="h2">Heading 2</h2>
+    <h3 class="h3">Heading 3</h3>
+    <h4 class="h4">Heading 4</h4>
+    <h5 class="h5">Heading 5</h5>
+    <h6 class="h6">Heading 6</h6>
+    <p class="body-type1">Body type 1</p>
+    <p class="body-type2">Body type 2</p>
+    <p class="subtitle">Subtitle</p>
+    <p class="caption">Caption</p>
+  </div>
+
+  <div class="color-{{ section.settings.color_scheme }} buttons">
+    <div class="h3">Buttons</div>
+    <button class="button">Normal Button</button>
+    <button class="button button--small">Small Button</button>
+    <button class="button button--large">Large Button</button>
+    <button class="button button--primary">Button text</button>
+    <button class="button button--secondary">Button text</button>
+  </div>
+  
+  <div class="color-{{ section.settings.color_scheme }}">
+    <div class="h3"> Color scheme </div>
+    {% for block in section.blocks %}
+      <div class="color-{{ block.settings.color_scheme }} scheme-blocks">
+        <p> color-{{ block.settings.color_scheme }}</p>
+        <button class="button button--primary">Button primary</button>
+        <button class="button button--secondary">Button secondary</button>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div  class=" color-{{ section.settings.color_scheme }} Text-fields">
+    <div class="h3"> Text fields</div>
+    <div class="field">
+      <input type="text" name="customer[first_name]" id="RegisterForm-FirstName" class="field__input" autocomplete="given-name" placeholder="First name">
+      <label class="field__label" for="RegisterForm-FirstName">
+        First name
+      </label>
+    </div>
+  </div>
+  
+  <div class="color-{{ section.settings.color_scheme }}">
+    <div class="h3">Grids</div>
+
+    <div class="grid grid--1-col">
+      <div class="grid__item column">Column 1</div>
+    </div>
+
+    <div class="grid grid--2-col">
+      <div class="grid__item column">Column 1</div>
+      <div class="grid__item column">Column 2</div>
+    </div>
+
+    <div class="grid grid--3-col">
+      <div class="grid__item column">Column 1</div>
+      <div class="grid__item column">Column 2</div>
+      <div class="grid__item column">Column 3</div>
+    </div>
+
+    <div class="grid grid--4-col">
+      <div class="grid__item column">Column 1</div>
+      <div class="grid__item column">Column 2</div>
+      <div class="grid__item column">Column 3</div>
+      <div class="grid__item column">Column 4</div>
+    </div>
+  </div>
+
+  <div class="color-{{ section.settings.color_scheme }}" >
+    <div class="h3">Media</div>
+
+      <div class="grid grid--4-col">
+        <div class="grid__item">
+          <div class="h5 center mb-10">Square</div>
+          <div class="media media--square">
+            {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+          </div>
+        </div>
+        <div class="grid__item">
+          <div class="h5 center mb-10">Portrait</div>
+          <div class="media media--portrait">
+            {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+          </div>
+        </div>
+        <div class="grid__item">
+          <div class="h5 center mb-10">Landscape</div>
+          <div class="media media--landscape">
+            {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+          </div>
+        </div>
+        <div class="grid__item">
+          <div class="h5 center mb-10">Circle</div>
+          <div class="media media--circle">
+            {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+  
+
+<style>
+   .style-guide div.h3 {
+    margin-top: 3rem;
+   }
+  .grid__item.column {
+    padding: 10px;
+    text-align: center;
+    color: rgb(var(--color-background));
+    background: rgb(var(--color-foreground));
+  }
+  .scheme-blocks {
+    padding: 2rem;
+  }
+  .buttons .button {
+    display: block;
+    margin-bottom: 1rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Style guide",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "color-scheme",
+      "name": "Color Scheme",
+      "settings": [
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "background-1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Color Scheme"
+    }
+  ]
+}
+{% endschema %}

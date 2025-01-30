@@ -1,0 +1,185 @@
+<div class="brand-multi-image__section">
+  <a  href="{{ section.settings.button_url }}" class="brand-multi-image__container--item grid grid--1-col grid--1-col-desktop no-decoration">
+    <div class="desktop_image_container small-hide grid__item">
+        {% render "picture", class: "media media--16-9", desktopSrc: section.settings.desktop_image %}  
+    </div>
+    <div class="mobile_image_container grid__item medium-hide large-up-hide">
+        {% render "picture", class: "media media--custom-landscape", mobileSrc: section.settings.mobile_image %}
+    </div>
+    <div class="multi-image-container__item--text {{ section.settings.desktop-content-position }} no-decoration">
+      <div class="color-{{ section.settings.container_color_scheme }} text-container">
+        {% if section.settings.caption != blank %}
+          <p class="{{ section.settings.caption_size }}">{{ section.settings.caption }}</p>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <p class="{{ section.settings.title_size }} title">{{ section.settings.heading }}</p>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <p class="description {{ section.settings.description_size }}">{{ section.settings.description }}</p> 
+        {% endif %} 
+        <div class="pos">
+          <button class="button button--primary">Shop Now</button>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+{% schema %}
+{
+    "name": "Brand multi image slide",
+    "tag": "section",
+    "class": "page-width",
+    "settings": [
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "default": "scheme_1",
+            "label": "Color Scheme"
+        },
+        {
+            "type": "header",
+            "content": "Section padding "
+        },
+        {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Top padding",
+            "min": 0,
+            "max": 150,
+            "step": 5,
+            "unit": "px",
+            "default": 40
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Bottom padding",
+            "min": 0,
+            "max": 150,
+            "step": 5,
+            "unit": "px",
+            "default": 40
+        },
+        {
+            "type": "select",
+            "id": "desktop-content-position",
+            "options": [
+              {
+                "value": "align-top",
+                "label": "Align top"
+              },
+              {
+                "value": "align-center",
+                "label": "Align center"
+              },
+              {
+                "value": "align-bottom",
+                "label": "Align bottom"
+              }
+            ],
+            "default": "align-center",
+            "label": "Desktop content position"
+        },
+        {
+            "type": "color_scheme",
+            "id": "container_color_scheme",
+            "default": "scheme_1",
+            "label": "Color Scheme"
+        },
+        {
+            "type": "header",
+            "content": "Text settings"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "Raymonds"
+        },
+        {
+            "type": "select",
+            "id": "caption_size",
+            "options": [
+              {
+                "value": "caption",
+                "label": "Caption"
+              },
+              {
+                "value": "subtitle",
+                "label": "Subtitle"
+              }
+            ],
+            "default": "caption",
+            "label": "Select caption font size"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Enter Title",
+            "default": "RAYMONDS"
+          },
+          {
+            "type": "select",
+            "id": "title_size",
+            "options": [
+              {
+                "value": "h6",
+                "label": "small"
+              },
+              {
+                "value": "h3",
+                "label": "medium"
+              },
+              {
+                "value": "h2",
+                "label": "large"
+              }
+            ],
+            "default": "h3",
+            "label": "Select title font size"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Enter description",
+          "default": "lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum"
+        },
+        {
+            "type": "select",
+            "id": "description_size",
+            "options": [
+              {
+                "value": "caption",
+                "label": "Caption"
+              },
+              {
+                "value": "subtitle",
+                "label": "Subtitle"
+              }
+            ],
+            "default": "caption",
+            "label": "Select description font size"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Enter url"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Select desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Select mobile image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Brand multi image slide"
+        }
+    ]
+}
+{% endschema %}

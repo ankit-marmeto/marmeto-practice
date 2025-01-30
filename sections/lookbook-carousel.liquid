@@ -1,0 +1,306 @@
+{{ 'lookbook-carousel.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }} lb_padding_sm">
+  <div class="lookbook_container">
+    <div class="h2 center">
+      {{ section.settings.section_heading }}
+    </div>
+    <div class="lb_main pb-5">
+      <div
+        class="splide"
+        id="splidelb"
+        aria-label="">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for block in section.blocks %}
+              {% assign prod1 = block.settings.prod1 %}
+              {% assign prod2 = block.settings.prod2 %}
+              {% assign prod3 = block.settings.prod3 %}
+
+              <li class="splide__slide">
+                <div class="lb_slide_container">
+
+                  <div class="lb_first_container content_positioning">
+                    <div class="lb_first_img_container">
+                      {% render 'picture'
+                        , class: ''
+                        , mobileSrc: block.settings.first_image
+                        , desktopSrc: block.settings.first_image %}
+                    </div>
+                    {% if prod1 != blank %}
+                      <div class="hotspot_prod_container p_absolute pos1--{{block.id}} hc1">
+                        <div class="hotspot_container hs3">
+                          <div class="hotspot-icons">
+                            <span class="hotspot"></span>
+                          </div>
+                          <a href="{{ prod1.url }}">
+                            <div class="prod_card">
+                              <div class="triangle">&nbsp;</div>
+                              <div class="prod_img_container">
+                                {% render 'picture'
+                                  , class: ''
+                                  , mobileSrc: prod1.featured_image
+                                  , desktopSrc: prod1.featured_image %}
+                              </div>
+                              <div class="prod_title body-type1">
+                                {{ prod1.title | truncatewords: 4 }}
+                              </div>
+                            </div>
+                          </a>
+                      </div>
+                      </div>
+                    {% endif %}
+
+                    <div class="h2 center mg-top-10">
+                      {{ block.settings.category_heading }}
+                    </div>
+                  </div>
+
+                  <div class="lb_second_container content_positioning">
+                    <div class="lb_second_img_container">
+                      {% render 'picture'
+                        , class: ''
+                        , mobileSrc: block.settings.second_image
+                        , desktopSrc: block.settings.second_image %}
+                    </div>
+                    {% if prod2 != blank %}
+                      <div class="hotspot_prod_container p_absolute pos2--{{block.id}} hc2">
+                        <div class="hotspot_container hs3">
+                          <div class="hotspot-icons">
+                            <span class="hotspot"></span>
+                          </div>
+                          <a href="{{ prod2.url }}">
+                            <div class="prod_card">
+                              <div class="triangle">&nbsp;</div>
+                              <div class="prod_img_container">
+                                {% render 'picture',
+                                  class: '',
+                                  mobileSrc: prod2.featured_image,
+                                  desktopSrc: prod2.featured_image 
+                                %}
+                              </div>
+                              <div class="prod_title body-type1">
+                                {{ prod2.title | truncatewords: 4 }}
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    {% endif %}
+
+                    {% if prod3 != blank %}
+                      <div class="hotspot_prod_container p_absolute pos3--{{block.id}} hc3">
+                        <div class="hotspot_container hs3">
+                          <div class="hotspot-icons">
+                            <span class="hotspot"></span>
+                          </div>
+                          <a href="{{ prod3.url }}">
+                            <div class="prod_card">
+                              <div class="triangle">&nbsp;</div>
+                              <div class="prod_img_container">
+                                {% render 'picture'
+                                  , class: ''
+                                  , mobileSrc: prod3.featured_image
+                                  , desktopSrc: prod3.featured_image %}
+                              </div>
+                              <div class="prod_title body-type1">
+                                {{ prod3.title | truncatewords: 4 }}
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    {% endif %}
+
+                  </div>
+
+                </div>
+              </li>
+              <style>
+                .pos1--{{ block.id }} {
+                  top: {{ block.settings.hotspot_1_position_y }}%;
+                  left: {{ block.settings.hotspot_1_position_x }}%;
+                }
+                .pos2--{{ block.id }} {
+                  top: {{ block.settings.hotspot_2_position_y }}%;
+                  left: {{ block.settings.hotspot_2_position_x }}%;
+                } .pos3--{{ block.id }} {
+                  top: {{ block.settings.hotspot_3_position_y }}%;
+                  left: {{ block.settings.hotspot_3_position_x }}%;
+                }
+              </style>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const slider = new Splide('#splidelb', {
+        type: 'slide',
+        perPage: 1,
+        perMove: 1,
+        focus: 'left',
+        arrows: false,
+        gap: '20px',
+        noDrag: '.no-drag',
+        breakpoints: {
+            750: {
+                perPage: 1,
+                gap: '15px',
+                pagination: false,
+                fixedHeight: '350px',
+            }
+        }
+    });
+    slider.mount();
+  });
+</script>
+{% schema %}
+  {
+    "name": "Lookbook Carousel",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "range",
+        "label": "Padding Top",
+        "id": "padding_top",
+        "default": 20,
+        "min": 0,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      }, {
+        "type": "range",
+        "label": "Padding Bottom",
+        "id": "padding_bottom",
+        "default": 20,
+        "min": 0,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      }, {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
+      }, {
+        "type": "text",
+        "label": "Section Heading",
+        "id": "section_heading",
+        "default": "LOOK BOOK"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "text",
+            "label": "Category Heading",
+            "id": "category_heading",
+            "default": "MEN'S FORMAL SUIT"
+          },
+          {
+            "type": "image_picker",
+            "label": "First Image",
+            "id": "first_image"
+          },
+          {
+            "type": "image_picker",
+            "label": "Second Image",
+            "id": "second_image"
+          },
+          {
+            "type": "product",
+            "label": "Product 1",
+            "id": "prod1"
+          }, {
+            "type": "range",
+            "label": "Hotspot Position (vertical-top)",
+            "id": "hotspot_1_position_y",
+            "default": 23,
+            "min": 10,
+            "max": 36,
+            "step": 1,
+            "unit": "%"
+          }, {
+            "type": "range",
+            "label": "Hotspot Position (horizontal-left)",
+            "id": "hotspot_1_position_x",
+            "default": 19,
+            "min": 0,
+            "max": 53,
+            "step": 1,
+            "unit": "%"
+          }, {
+            "type": "product",
+            "label": "Product 2",
+            "id": "prod2"
+          }, {
+            "type": "range",
+            "label": "Hotspot Position (vertical-top)",
+            "id": "hotspot_2_position_y",
+            "default": 20,
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "%"
+          }, {
+            "type": "range",
+            "label": "Hotspot Position (horizontal-left)",
+            "id": "hotspot_2_position_x",
+            "default": 20,
+            "min": 0,
+            "max": 70,
+            "step": 1,
+            "unit": "%"
+          }, {
+            "type": "product",
+            "label": "Product 3",
+            "id": "prod3"
+          }, {
+            "type": "range",
+            "label": "Hotspot Position (vertical-top)",
+            "id": "hotspot_3_position_y",
+            "default": 20,
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "%"
+          }, {
+            "type": "range",
+            "label": "Hotspot Position (horizontal-left)",
+            "id": "hotspot_3_position_x",
+            "default": 20,
+            "min": 0,
+            "max": 70,
+            "step": 1,
+            "unit": "%"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Lookbook Carousel"
+      }
+    ]
+  }
+{% endschema %}

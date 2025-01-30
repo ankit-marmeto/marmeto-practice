@@ -9,273 +9,283 @@
  */
 {
   "sections": {
-    "an_slideshow_me9LQA": {
-      "type": "an-slideshow",
+    "slideshow_image_76zqaT": {
+      "type": "slideshow-image",
       "blocks": {
-        "slide_6jpX44": {
+        "slide_BHUNxE": {
           "type": "slide",
           "settings": {
-            "image_picker": "shopify://shop_images/Frame_1.png",
-            "heading": "Probiotic Gummies",
-            "sub-heading": "<p>Gumazing is all about raising the standards of early childhood nutrition. Children can be fussy eaters. So, their diets may not have all the essential nutrients for a complete physical development. Our thoughtful super-bear, Gumazing</p>",
-            "button-label": "Shop Now",
-            "button-url": ""
+            "image": "shopify://shop_images/Desktop_banner_EOSS.png",
+            "image_mobile": "shopify://shop_images/Mobile_banner_EOSS.png",
+            "slide_url": "shopify://collections/end-of-season-sale",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "tracking_id": "bannerclick",
+            "tracking_name": "Diwali sale",
+            "tracking_creative": "banner1",
+            "tracking_position": "slot1"
           }
         },
-        "slide_hAkYWD": {
+        "slide_djUD38": {
           "type": "slide",
           "settings": {
-            "image_picker": "shopify://shop_images/Frame_1.png",
-            "heading": "Why Gumazing?",
-            "sub-heading": "<p>Gumazing is all about raising the standards of early childhood nutrition. Children can be fussy eaters. So, their diets may not have all the essential nutrients for a complete physical development. Our thoughtful super-bear, Gumazing</p>",
-            "button-label": "See more",
-            "button-url": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_6jpX44",
-        "slide_hAkYWD"
-      ],
-      "settings": {
-        "cutout-image": "shopify://shop_images/Vector_3.png",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "an_image_with_text_NaF3RQ": {
-      "type": "an-image-with-text",
-      "settings": {
-        "heading-1": "About",
-        "heading-2": "Gumazing",
-        "image-head": "shopify://shop_images/Vector_4.png",
-        "image": "shopify://shop_images/Frame_1000006605_1.png",
-        "description": "Embark on a journey of health and joy with Gumazing, a brand meticulously designed to enrich the lives of children through delectable and nutritious supplements. Gumazing isn’t just a product it’s an unwavering commitment to ensuring every child receives the indispensable nutrients required to thrive.",
-        "button-label": "See more",
-        "button-url": "",
-        "image-first": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "an_image_with_text_KWfGmK": {
-      "type": "an-image-with-text",
-      "settings": {
-        "heading-1": "Meet",
-        "heading-2": "Krishika Bahirwani",
-        "image-head": "shopify://shop_images/Vector_4.png",
-        "image": "shopify://shop_images/Group_1000005270.png",
-        "description": "Embark on a journey of health and joy with Gumazing, a brand meticulously designed to enrich the lives of children through delectable and nutritious supplements. Gumazing isn’t just a product it’s an unwavering commitment to ensuring every child receives the indispensable nutrients required to thrive.",
-        "button-label": "see more",
-        "button-url": "",
-        "image-first": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "an_collection_list_kxjxcD": {
-      "type": "an-collection-list",
-      "blocks": {
-        "collection_card_twcwDQ": {
-          "type": "collection-card",
-          "settings": {
-            "collection": "gummies",
-            "color": "#ff9c54"
+            "image": "shopify://shop_images/Desktop_Banner_2_661a7e80-9191-46b5-b98b-0b804e58a8af.png",
+            "image_mobile": "shopify://shop_images/Mobile_Banner2.png",
+            "slide_url": "shopify://collections/fresh-arrival",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "tracking_id": "banner2",
+            "tracking_name": "Dipawali_sale",
+            "tracking_creative": "banner2",
+            "tracking_position": "slot2"
           }
         },
-        "collection_card_eFFJTf": {
-          "type": "collection-card",
-          "settings": {
-            "collection": "drops",
-            "color": "#ffcd00"
-          }
-        },
-        "collection_card_FKexmd": {
-          "type": "collection-card",
-          "settings": {
-            "collection": "syrup",
-            "color": "#89dc65"
-          }
-        },
-        "collection_card_yMcdhd": {
-          "type": "collection-card",
-          "settings": {
-            "collection": "sachtes",
-            "color": "#e86100"
-          }
-        },
-        "collection_card_TGY7pA": {
-          "type": "collection-card",
-          "settings": {
-            "collection": "merchendise",
-            "color": "#eba900"
-          }
-        }
-      },
-      "block_order": [
-        "collection_card_twcwDQ",
-        "collection_card_eFFJTf",
-        "collection_card_FKexmd",
-        "collection_card_yMcdhd",
-        "collection_card_TGY7pA"
-      ],
-      "settings": {
-        "heading-1": "Shop By",
-        "heading-2": "Category",
-        "border-cut": "shopify://shop_images/Vector_4.png",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "an_collection_list_CgFz49": {
-      "type": "an-collection-list",
-      "blocks": {
-        "collection_card_cp9b7r": {
-          "type": "collection-card",
-          "settings": {
-            "collection": "0-2-years",
-            "color": "#ff9c54"
-          }
-        },
-        "collection_card_ifdRjn": {
-          "type": "collection-card",
-          "settings": {
-            "collection": "3-4-years",
-            "color": "#ffcd00"
-          }
-        },
-        "collection_card_94YtEd": {
-          "type": "collection-card",
-          "settings": {
-            "collection": "5-7-years",
-            "color": "#89dc65"
-          }
-        }
-      },
-      "block_order": [
-        "collection_card_cp9b7r",
-        "collection_card_ifdRjn",
-        "collection_card_94YtEd"
-      ],
-      "settings": {
-        "heading-1": "Shop By",
-        "heading-2": "Age",
-        "border-cut": "shopify://shop_images/Vector_4.png",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "an_offer_slider_NGr94B": {
-      "type": "an-offer-slider",
-      "blocks": {
-        "slide_zpnjai": {
+        "slide_9pXRim": {
           "type": "slide",
           "settings": {
-            "url": ""
-          }
-        },
-        "slide_ADcgMf": {
-          "type": "slide",
-          "settings": {
-            "url": ""
+            "image": "shopify://shop_images/Banner_3_-_Desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_3_-_Mobile.jpg",
+            "slide_url": "shopify://collections/combo-offer",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "tracking_id": "banner3",
+            "tracking_name": "diwali_sale",
+            "tracking_creative": "banner3",
+            "tracking_position": "slot3"
           }
         }
       },
       "block_order": [
-        "slide_zpnjai",
-        "slide_ADcgMf"
+        "slide_BHUNxE",
+        "slide_djUD38",
+        "slide_9pXRim"
       ],
-      "disabled": true,
       "settings": {
-        "background": "",
-        "heading": "Special offers",
-        "border_radius_top_left": 36,
-        "border_radius_top_right": 36,
-        "border_radius_bottom_left": 36,
-        "border_radius_bottom_right": 36,
-        "padding_left": 36,
-        "padding_right": 36,
-        "upper-cutout-image": "shopify://shop_images/Vector_7.png",
-        "bottom-cutout-image": "shopify://shop_images/Vector_3.png",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "custom_class": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "layout": "full_bleed",
+        "slide_height": "large",
+        "slider_visual": "dots",
+        "slider_dots_overlay": true,
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "image_behavior": "none",
+        "accessibility_info": "Slideshow about our brand"
       }
     },
-    "blog_ae8WDM": {
-      "type": "blog",
+    "section_brand_collections_kfzyT6": {
+      "type": "section-brand-collections",
       "blocks": {
-        "terms_WKCMAe": {
-          "type": "terms",
+        "collection_DPVH47": {
+          "type": "collection",
           "settings": {
-            "heading": "What is Vitamin C",
-            "description2": "<p>Vitamin C, also known as ascorbic acid, is a water-soluble vitamin that plays a crucial role in maintaining overall health. It's an essential nutrient our bodies can't make by themselves, so we need to get it through the food we eat or, in this case, through fun gummy supplements.</p><p>One of the primary functions of vitamin C is its role in supporting the immune system. It acts as a powerful antioxidant, protecting our cells from damage caused by harmful free radicals.</p><p>Aside from its immune-boosting and collagen-promoting properties, vitamin C also helps in the absorption of iron, supports brain health, and aids in wound healing. In short, everything that is vital to your child’s growing body!</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>"
+            "collection": "raymond",
+            "image_small": "shopify://shop_images/Raymond_83df0bc4-997d-4f34-8e14-4412ee6451ac.png"
           }
         },
-        "terms_AMqgbG": {
-          "type": "terms",
+        "collection_fkhTkf": {
+          "type": "collection",
           "settings": {
-            "heading": "Benefits of Vitamin C supplements for Kids",
-            "description2": "<p>Now that we understand the importance of vitamin C, let's delve into the specific benefits that vitamin C gummies offer. These chewy treats not only provide a convenient and enjoyable way to consume vitamin C but also offer several advantages over traditional forms of supplementation.</p><p>Super Immune Support: Vitamin C is well-known for its immune-boosting properties. By incorporating vitamin C gummies into your kid’s daily routine, you can strengthen their immune system to combat common illnesses such as colds and flu.Antioxidant Power: Vitamin C is like a superhero fighting against bad stuff in our bodies. By eating vitamin C gummies, you can help slow down the aging process and stay strong against diseases.</p><p>Iron Absorption: Iron is like the energy booster we need, but sometimes it's hard to get. Vitamin C gummies can be like a sidekick that helps our bodies grab iron from plants, making it easier for vegetarian superheroes to get their iron power.</p><p>Mood Booster: Research suggests that vitamin C supplements for kids may have a positive impact on their mood and mental health. By munching on vitamin C gummies, you can turn your frown upside down and keep away the blues.</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>"
+            "collection": "park-avenue",
+            "image_small": "shopify://shop_images/Park_Avenue_519d0ebd-5f7a-444c-bedb-30fb3930f63f.png"
           }
         },
-        "terms_W3QGep": {
-          "type": "terms",
+        "collection_AgpDyT": {
+          "type": "collection",
           "settings": {
-            "heading": "How to choose the right vitamin C gummies",
-            "description2": "<p>With a plethora of vitamin C gummies available in the market, choosing the right one can be a daunting task. Here are a few factors to consider when selecting vitamin C gummies:</p><p>Quality and Purity: Look for gummies made from high-quality ingredients and free from artificial additives, fillers, and preservatives. Opt for brands that undergo third-party testing to ensure purity and potency.Vitamin C Content: Check the label to determine the amount of vitamin C in each gummy.Additional Ingredients: Some vitamin C gummies may contain additional nutrients or herbal extracts to enhance their benefits. Consider your specific health goals and choose gummies that align with your child’s nutritional needs. For example, if you're looking for immune support, gummies with added zinc may be beneficial.Allergens and Dietary Restrictions: If you have any specific dietary restrictions or allergies, make sure to check the ingredients list for potential allergens such as gluten, dairy, or soy.</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>"
+            "collection": "colorplus",
+            "image_small": "shopify://shop_images/Colorplus_77ebd339-4eea-468b-a8dd-18296611251b.png"
           }
         },
-        "terms_hCKQmT": {
-          "type": "terms",
+        "collection_wdgmU7": {
+          "type": "collection",
           "settings": {
-            "heading": "Recommended daily dosage of vitamin C",
-            "description2": "<p>The recommended daily dosage of vitamin C varies depending on age, sex, and specific health requirements. The National Institutes of Health (NIH) provides guidelines for adequate intake, which can serve as a general reference.</p><p>For kids aged 1-3 years, 2 gummies per day is a recommended serving size. Whereas for toddlers aged above 4, 2-4 gummies each day should be enough for the right nutritional dosage.</p><p></p><p></p><p></p>"
+            "collection": "parx",
+            "image_small": "shopify://shop_images/Parx_f494c5ed-e98f-4836-93ca-06436d2f4737.png"
           }
         },
-        "terms_qgUkqF": {
-          "type": "terms",
+        "collection_QLBQWM": {
+          "type": "collection",
           "settings": {
-            "heading": "Potential side effects of vitamin C gummies",
-            "description2": "<p>While vitamin C is generally considered safe, consuming excessive amounts can lead to certain side effects. Some potential side effects of vitamin C gummies include:</p><p>Digestive Issues: High doses of vitamin C can cause gastrointestinal problems such as diarrhea, stomach cramps, and flatulence. If your child has these symptoms, it may be an indication to reduce the dosage.</p><p>Interaction with Medications: Vitamin C can interact with certain medications. If your child is on any other medications, it's best to consult with your healthcare provider before starting any new supplement.</p><p>Allergic Reactions: Although rare, some children may be allergic to vitamin C or other ingredients present in the gummies. If you experience any allergic reactions such as rash, itching, or difficulty breathing, discontinue use and seek medical attention.</p><p>It's crucial to follow the recommended dosage guidelines and consult with a healthcare professional if you have any concerns.</p><p></p><p></p>"
-          }
-        },
-        "terms_jyQmVR": {
-          "type": "terms",
-          "settings": {
-            "heading": "Tips for incorporating vitamin C gummies into your child’s daily routine",
-            "description2": "<p>Incorporating vitamin C gummies into kids’ daily routine is simple and enjoyable. Here are a few tips to help you make the most out of vitamin c supplements for kids:</p><p>Establish a Routine: Set a specific time each day to for your child’s vitamin C intake. Whether it's in the morning with breakfast or as an afternoon pick-me-up, consistency is key when it comes to reaping the benefits of any supplement.</p><p>Pair with a Balanced Diet: While vitamin C gummies can provide a convenient source of this essential nutrient, it's important to remember that they should not replace a healthy diet. Aim to provide your child with a variety of fruits and vegetables rich in vitamin C to complement their gummy intake.</p><p>Keep them fresh: To keep your gummies tasty and good for you, store them in a cool, dry place away from the sun. Follow the instructions on the bottle to make sure they stay fresh.Share the Joy: Vitamin C gummies can be a fun and healthy treat for the whole family. Encourage your loved ones to join you in your vitamin C journey and make it a bonding experience.</p><p></p>"
-          }
-        },
-        "terms_xmjhEP": {
-          "type": "terms",
-          "settings": {
-            "heading": "Frequently asked questions about vitamin C gummies",
-            "description2": "<p>Are vitamin C gummies suitable for children?</p><p>Yes, vitamin C gummies for kids are generally considered safe. However, it's important to follow the recommended dosage guidelines based on the child's age. Consult with a pediatrician for specific recommendations.</p><p>Can I take vitamin C gummies while pregnant or breastfeeding?</p><p>Yes, vitamin C gummies are generally safe for pregnant and breastfeeding women. However, it's always a good idea to consult with a healthcare professional before starting any new supplement, especially during pregnancy or while breastfeeding.</p><p>Can children with diabetes take vitamin c gummies?</p><p>Vitamin C gummies typically contain sugar or natural sweeteners. For a diabetic, it's important to consider the sugar content of the gummies and consult with a healthcare professional to determine if they are suitable. Sugar-free alternatives may be available.</p><p>Can children take vitamin C gummies with other supplements or medications?</p><p>Vitamin C gummies are generally safe to take with other supplements or medications. However, certain medications may interact with vitamin C. It's best to consult with your healthcare provider before starting any new supplement regimen, especially if a child is on another medication.</p><p>How long does it take to see the benefits of vitamin C gummies for kids?</p><p>The time it takes to see the benefits of vitamin C gummies can vary. Consistency is key, and it may take several weeks of regular consumption for your child to notice significant changes in their health.</p>"
+            "collection": "sleepwear",
+            "image_small": "shopify://shop_images/LOOK_INTO_BRANDS_Desktop.png",
+            "image_alternate": "shopify://shop_images/LOOK_INTO_BRANDS_Mobile.png"
           }
         }
       },
       "block_order": [
-        "terms_WKCMAe",
-        "terms_AMqgbG",
-        "terms_W3QGep",
-        "terms_hCKQmT",
-        "terms_qgUkqF",
-        "terms_jyQmVR",
-        "terms_xmjhEP"
+        "collection_DPVH47",
+        "collection_fkhTkf",
+        "collection_AgpDyT",
+        "collection_wdgmU7",
+        "collection_QLBQWM"
       ],
       "settings": {
-        "image": "shopify://shop_images/Frame_1000006625.png",
-        "description1": "<p>Looking for a fun and tasty way to boost your kid’s immune system? Look no further than vitamin C gummies! Packed with the power of vitamin C, these chewy goodies have become a popular choice for health-conscious individuals of all ages.</p><p>But why are vitamin C gummies so extraordinary? Well, apart from their scrumptious flavor and easy-to-chew form, they bring a host of health benefits. From supporting the immune system to helping with collagen production and reducing stress on the body, the advantages of adding vitamin C gummies to your child’s daily routine are simply amazing.</p><p>In this article, we delve into the science behind their effectiveness, chat about the recommended daily dose, and find out how they can make kids feel super. So, grab a handful of vitamin C gummies and join us on this journey to unlocking their incredible health benefits!</p>"
+        "color_scheme": "",
+        "show_title": true,
+        "caption": "",
+        "caption_size": "subtitle",
+        "caption_mobile_enable": true,
+        "title": "Look Into Brands",
+        "title_size": "h2",
+        "title_color": "#ffffff",
+        "text_position": "center"
+      }
+    },
+    "section_collections_gQWeeW": {
+      "type": "section-collections",
+      "settings": {
+        "color_scheme": "background-2",
+        "collection_list": [
+          "formal-shirts",
+          "casual-shirts",
+          "trousers-chinos",
+          "t-shirts-polos",
+          "jeans",
+          "jackets",
+          "sweatshirts",
+          "suits-blazers",
+          "sleepwear"
+        ],
+        "text_position": "center",
+        "caption": "",
+        "caption_size": "caption",
+        "caption_color": "#ffffff",
+        "title": "CLASSIFY YOUR CHOICE",
+        "title_size": "h2",
+        "title_color": "#ffffff",
+        "mobile_count": "2",
+        "mobile_total_count": 4,
+        "desktop_count": "5"
+      }
+    },
+    "section_products_tab_switch_TmAwQa": {
+      "type": "section-products-tab-switch",
+      "blocks": {
+        "collection_QG9nKA": {
+          "type": "collection",
+          "settings": {
+            "collection": "browse-the-new-arrivals-shirts"
+          }
+        },
+        "collection_geFrgV": {
+          "type": "collection",
+          "settings": {
+            "collection": "browse-the-new-arrivals-chinos-trousers"
+          }
+        },
+        "collection_VAR3Gp": {
+          "type": "collection",
+          "settings": {
+            "collection": "browse-the-new-arrivals-t-shirt-polos"
+          }
+        },
+        "collection_6PK3cR": {
+          "type": "collection",
+          "settings": {
+            "collection": "browse-the-new-arrivals-jeans"
+          }
+        },
+        "collection_TqBEB4": {
+          "type": "collection",
+          "settings": {
+            "collection": "sleepwear"
+          }
+        }
+      },
+      "block_order": [
+        "collection_QG9nKA",
+        "collection_geFrgV",
+        "collection_VAR3Gp",
+        "collection_6PK3cR",
+        "collection_TqBEB4"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "caption": "",
+        "caption_size": "caption",
+        "caption_color": "#000000",
+        "title": "BROWSE THE NEW ARRIVALS",
+        "title_size": "h2",
+        "title_color": "#ffffff",
+        "description": "",
+        "description_size": "h4",
+        "description_color": "#ffffff",
+        "text_position": "center",
+        "show_vendor": true
+      }
+    },
+    "image_banner_F7cQYy": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_qREwTB": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Embrace the Art of </p><p>Formal Fashion</p>",
+            "heading_size": "h2"
+          }
+        },
+        "buttons_cbkPii": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP NOW",
+            "button_link_1": "shopify://collections/formal-fashion",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_qREwTB",
+        "buttons_cbkPii"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Image_1_eec1dfc7-81f5-4d01-9d3d-00cf2ef45ef6.png",
+        "image_2": "shopify://shop_images/Image_2_31fbd0bd-3c3d-4c6f-b651-0a7a24b8cf2c.png",
+        "hide_image": true,
+        "monochrome": true,
+        "image_overlay_opacity": 0,
+        "image_height": "extra_large",
+        "desktop_content_position": "middle-center",
+        "mobile_content_position": "align-bottom",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
+    "brand_multi_image_slide_i4p9nD": {
+      "type": "brand-multi-image-slide",
+      "settings": {
+        "color_scheme": "background-2",
+        "padding-top": 40,
+        "padding-bottom": 40,
+        "desktop-content-position": "align-center",
+        "container_color_scheme": "background-2",
+        "caption": "",
+        "caption_size": "caption",
+        "heading": "Casually Classic",
+        "title_size": "h6",
+        "description": "",
+        "description_size": "caption",
+        "button_url": "shopify://collections/casual-classic",
+        "desktop_image": "shopify://shop_images/Casually_33b2aba0-ae16-4ca8-94a0-489069f1a629.jpg",
+        "mobile_image": "shopify://shop_images/Image_1_f629c89f-ca52-438c-b7c4-03def0d2ccd8.png"
       }
     }
   },
   "order": [
-    "an_slideshow_me9LQA",
-    "an_image_with_text_NaF3RQ",
-    "an_image_with_text_KWfGmK",
-    "an_collection_list_kxjxcD",
-    "an_collection_list_CgFz49",
-    "an_offer_slider_NGr94B",
-    "blog_ae8WDM"
+    "slideshow_image_76zqaT",
+    "section_brand_collections_kfzyT6",
+    "section_collections_gQWeeW",
+    "section_products_tab_switch_TmAwQa",
+    "image_banner_F7cQYy",
+    "brand_multi_image_slide_i4p9nD"
   ]
 }

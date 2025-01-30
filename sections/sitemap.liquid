@@ -1,0 +1,68 @@
+
+{{'sitemap.css' |  asset_url |  stylesheet_tag }}
+
+
+<div class="site-map-main">
+
+    {% for block in section.blocks %}
+        
+
+       <div class="sitemap_main_container">
+
+       
+
+        {%- for link in block.settings.select_linklist.links -%}
+
+            <div class="sitemap_content_container">
+            <div class="sitemap_title">
+            {{ link.title |  link_to: link.url }}
+            </div>
+            {% for childLink in link.links %}
+                <div class="sitemap_data">
+
+               
+                
+                {{childLink.title | link_to: childLink.url}}
+
+                </div>
+            {% endfor %}
+
+            </div>
+        
+        {% endfor %} 
+       </div>
+
+       
+
+    {% endfor %}
+</div>
+
+
+
+
+{% schema %}
+    {
+      "name": "sitemap",
+      "tag": "section",
+      "class":"site-map",
+      "settings": [],
+      "blocks": [
+        {
+          "type": "sitemap",
+          "name": "sitemap",
+          "settings": [
+            {
+              "type": "link_list",
+              "label": "select linklist",
+              "id": "select_linklist"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "sitemap"
+        }
+      ]
+    }
+    {% endschema %}

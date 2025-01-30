@@ -1,0 +1,148 @@
+{{ 'multi-image.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+  <div class="multi_banner page-width">
+    <div class="mb_container">
+      {% for block in section.blocks %}
+        {% render 'image-banner-card'
+          , block: block %}
+      {% endfor %}
+
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Multi Banner",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "range",
+        "label": "Padding Top",
+        "id": "padding_top",
+        "default": 20,
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px"
+      }, {
+        "type": "range",
+        "label": "Padding Bottom",
+        "id": "padding_bottom",
+        "default": 20,
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px"
+      }, {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Image",
+            "id": "image"
+          },
+          {
+            "type": "image_picker",
+            "label": "Image (Mobile)",
+            "id": "image_mobile"
+          },
+          {
+            "type": "text",
+            "label": "Banner Title",
+            "id": "banner_title",
+            "default": "Sophisticated Classic Wear"
+          },
+          {
+            "type": "text",
+            "label": "Button Text",
+            "id": "button_text",
+            "default": "Shop Now"
+          }, {
+            "type": "url",
+            "label": "Button URL",
+            "id": "button_url"
+          }, {
+            "type": "select",
+            "label": "Content Position (Horizontal)",
+            "id": "content_position_x",
+            "options": [
+              {
+                "label": "Left",
+                "value": "flex-start"
+              }, {
+                "label": "Center",
+                "value": "center"
+              }, {
+                "label": "Right",
+                "value": "flex-end"
+              }
+            ]
+          }, {
+            "type": "select",
+            "label": "Content Position (Vertical)",
+            "id": "content_position_y",
+            "options": [
+              {
+                "label": "Top",
+                "value": "flex-start"
+              }, {
+                "label": "Middle",
+                "value": "center"
+              }, {
+                "label": "Bottom",
+                "value": "flex-end"
+              }
+            ]
+          }, {
+            "type": "select",
+            "label": "Text Alignment",
+            "id": "text_alignment",
+            "options": [
+              {
+                "label": "Left",
+                "value": "flex-start"
+              }, {
+                "label": "Center",
+                "value": "center"
+              }, {
+                "label": "Right",
+                "value": "flex-end"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Multi Banner"
+      }
+    ]
+  }
+{% endschema %}

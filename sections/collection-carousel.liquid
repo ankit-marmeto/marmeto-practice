@@ -1,0 +1,208 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .cc_subtitle--{{ section.id }} {
+    color: {{ section.settings.subtitle_color }};
+  }
+  {% if section.settings.show_title == false %}
+    #splidecc .cc_image_container img {
+      width: 100%;
+      object-fit: cover;
+    }
+  {% endif %}
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    {% if section.settings.show_title == false %}
+      #splidecc .cc_image_container img {
+        height: 100%;
+      }
+    {% endif %}
+    
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }} pb-sm-66 content_positioning">
+
+  <div class="brand_cc_main">
+    <div class="cc_label center">
+      <div class="cc_subtitle subtitle cc_subtitle--{{ section.id }}">
+        {{ section.settings.subtitle }}
+      </div>
+      <div class="cc_heading h2">
+        {{ section.settings.heading }}
+      </div>
+    </div>
+
+    <div class="p-absolute bg-left">&nbsp;
+    </div>
+    <div class="p-absolute bg-right">&nbsp;
+    </div>
+
+    <div
+      class="splide"
+      id="splidecc"
+      aria-label="">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for block in section.blocks %}
+            {% assign collection = block.settings.collection %}
+            <li class="splide__slide">
+              <div class="cc_collection_card">
+                <a href="{{ collection.url }}">
+                  <div class="content_positioning">
+                    <div class="cc_image_container">
+                      {% if block.settings.image_alternate != blank and block.settings.image_small != blank %}
+                        {% render 'picture'
+                          , class: ''
+                          , mobileSrc: block.settings.image_small
+                          , desktopSrc: block.settings.image_alternate %}
+                      {% elsif block.settings.image_small == blank and block.settings.image_alternate != blank %}
+                        {% render 'picture'
+                          , class: ''
+                          , mobileSrc: block.settings.image_alternate
+                          , desktopSrc: block.settings.image_alternate %}
+                      {% elsif block.settings.image_small != blank and block.settings.image_alternate == blank %}
+                        {% render 'picture'
+                          , class: ''
+                          , mobileSrc: block.settings.image_small
+                          , desktopSrc: collection.featured_image %}
+                      {% else %}
+                        {% render 'picture'
+                          , class: ''
+                          , mobileSrc: collection.featured_image
+                          , desktopSrc: collection.featured_image %}
+                      {% endif %}
+                      <div
+                        class="cc_title"
+                        {% if section.settings.show_title == false %}
+                        style="display: none;"
+                        {% endif %}>
+                        <div class="title_bg_white h6">
+                          {{ collection.title }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const slider = new Splide('#splidecc', {
+        type: 'slide',
+        perPage: 1,
+        perMove: 1,
+        focus: 'left',
+        fixedHeight: '650px',
+        fixedWidth:'100%',
+        pagination: false,
+        gap: '20px',
+        noDrag: '.no-drag',
+        breakpoints: {
+            750: {
+                perPage: 1,
+                gap: '15px',
+                fixedHeight: '600px',
+            }
+        }
+    });
+    slider.mount();
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Collection Carousel",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "range",
+        "label": "Padding Top",
+        "id": "padding_top",
+        "default": 20,
+        "min": 0,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "label": "Padding Bottom",
+        "id": "padding_bottom",
+        "default": 20,
+        "min": 0,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
+      },
+      {
+        "type": "text",
+        "label": "Subtitle",
+        "id": "subtitle",
+        "default": "Collection"
+      }, 
+      {
+        "type": "color",
+        "label": "Subtitle color",
+        "id": "subtitle_color",
+        "default": "#000000"
+      },
+      {
+        "type": "text",
+        "label": "Heading",
+        "id": "heading",
+        "default": "FEATURED COLLECTIONS"
+      }, {
+        "type": "checkbox",
+        "label": "Show Collection Title Container",
+        "id": "show_title",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "label": "Collection",
+            "id": "collection"
+          }, {
+            "type": "image_picker",
+            "label": "Collection Image - Mobile (optional)",
+            "id": "image_small"
+          }, {
+            "type": "image_picker",
+            "label": "Collection Image Alternate (optional)",
+            "id": "image_alternate"
+          }
+
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Carousel"
+      }
+    ]
+  }
+{% endschema %}

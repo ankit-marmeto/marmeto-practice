@@ -1,0 +1,33 @@
+<div>
+    {% if settings.offer_main_heading != blank %}
+      <div class="offer-main-heading">{{ settings.offer_main_heading }}</div>
+    {% endif %}  
+</div>
+<div class="splide__track">
+	<ul class="splide__list offer-splide-list">  
+        {% for i in (1..4) %}
+            {% assign heading = "offer_heading_" | append: i %}
+            {% assign description = "offers_description_" | append: i %}
+            {% assign couponcode = "couponcode_" | append: i %}
+            {% if settings[heading] != blank %}
+                <li class="splide__slide">
+                    <div class="offer_{{ i }}">
+                        {% if settings[heading] != blank %}
+                            <div class="offers-heading_{{ i }}">
+                                {{ settings[heading] }}
+                            </div>
+                        {% endif %}
+                        {% if settings[description] != blank %}
+                            <div class="offers-description_{{ i }}">
+                                {{ settings[description] }}
+                            </div>
+                        {% endif %}
+                        {% if settings[couponcode] != blank %}
+                            <button type="button" value="{{ settings[couponcode] }}" class="coupon-code">{{ settings[couponcode] }}</button>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endif %}
+        {% endfor %}     
+    </ul> 
+</div> 

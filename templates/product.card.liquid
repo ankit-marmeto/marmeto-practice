@@ -1,0 +1,21 @@
+{% layout 'none' %}
+
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+
+{%- assign pageUrlWithHost = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first |
+    replace:'\/','/' | 
+    replace:'%20',' ' | 
+    replace:'\u0026','&'
+-%}
+{%  assign querys =  pageUrlWithHost | split: "&" %}
+{%  assign sectionId =  "" %}
+
+{% for query in querys %}
+    {% assign temp = query | split: "=" | first %}
+    {% if temp == "section" %}
+        {%  assign sectionId =  query | split: "=" | last %}
+        {{ sectionId }}
+    {% endif %}
+{% endfor %}
+
+{% render 'mm-product-card', card_product: product, sectionId: sectionId %}

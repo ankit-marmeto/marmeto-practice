@@ -1,0 +1,53 @@
+.main_announcement_bar:not(.flickity-enabled){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flickity-parent {
+	height: 4rem;
+}
+.announcement-text p,
+.announcement-text a {
+	font-size: 1.2rem;
+	font-weight: 300;
+	color: #000;
+}
+.announcement-text strong {
+  font-weight: 400;
+}
+.announcement-bar a {
+	margin-left: 0.6rem;
+	text-underline-offset: 0.3rem;
+	border-bottom: 1px solid;
+}
+.announcement-close-btn {
+	position: absolute;
+	right: 3rem;
+	top: 0.8rem;
+	cursor: pointer;
+}
+@media only screen and (min-width: 750px) {
+	.flickity-parent {
+		height: 3.8rem;
+	}
+}
+@media only screen and (max-width: 325px) {
+	.announcement-text {
+		font-size: 1rem;
+	}
+}
+@media only screen and (max-width: 749px) {
+	.announcement-bar {
+		justify-content: flex-start;
+	}
+	.announcement-bar .page-width.announcement-text {
+		margin: 0 2.2rem 0 0;
+	}
+	.announcement-close-btn {
+		right: 1.75rem;
+	}
+	.main_announcement_bar .page-width {
+		padding-left: 1.65rem;
+	}
+}

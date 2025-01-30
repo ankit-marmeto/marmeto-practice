@@ -1,0 +1,40 @@
+{% comment %}
+  Renders pincode checker
+
+  Accepts:
+  - block: {Object} block
+
+  Usage:
+  {% render 'pincode-checker', block: block %}
+{% endcomment %}
+{% if template.name == 'product' %}
+  <script type="lazy-script" src="{{ 'pincode-checker.js' | asset_url }}" defer="defer"></script>
+{% else %}
+  <script src="{{ 'pincode-checker.js' | asset_url }}" defer="defer"></script>
+{% endif %}
+
+<pincode-checker>
+  <h4 class="pincode-heading">{{ block.settings.heading }}</h4>
+  <div class="field">
+    <input 
+      id="pincode-{{ block.id }}"
+      type="text" 
+      class="field__input" 
+      title="Please enter exactly 6 digits" 
+      maxlength="6" 
+      pattern="\d{6}" 
+      placeholder="Enter Pincode" 
+      oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);"
+    >
+    
+    <label for="pincode-{{ block.id }}" class="field__label">{{ block.settings.placeholder_text }}</label>
+    <button class="button button--secondary" data-check>{{ block.settings.button_text }}</button>
+  </div>
+  <div class="hidden success" data-pincode-success >
+    <span class="pincode-entered"></span>
+    <span class="success-msg">{{ block.settings.pincode_available_message }}</span>
+    <span class="pincode-estimatation"> Expected Delivery in <span class="estimation-time"></span> Days</span>
+  </div>
+  <div class="hidden failure" data-pincode-failure >{{ block.settings.pincode_unavailable_message }}</div>
+  <div class="hidden alert-msg" data-pincode-alert >{{ block.settings.pincode_alert_message }}</div>
+</pincode-checker>

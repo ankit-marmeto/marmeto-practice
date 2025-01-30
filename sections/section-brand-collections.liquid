@@ -1,0 +1,203 @@
+{{ 'section-brand-collections.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .category-section__collections--container:after {
+    content: 'flickity';
+    display: none;
+  }
+  @media screen and (min-width: 750px) {
+    .category-section__collections--container:after {
+      content: '';
+    }
+    .section-brand-collections__continer{
+      display: flex;
+      gap: 1rem;
+      overflow-x: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  }
+  .section-brand-collections__continer::-webkit-scrollbar {
+      display: none;
+  }
+{% endstyle %}
+
+<div class="color-{{ section.settings.color_scheme }} section-brand-collection">
+    <div class="section-brand-collection__text {{ section.settings.text_position }}">
+      <p class="{{ section.settings.caption_size}} letter-spacing {% unless section.settings.caption_mobile_enable %}small-hide{% endunless %}">{{ section.settings.caption }}</p>
+      <p class="{{ section.settings.title_size }} uppercase">{{ section.settings.title }}</p>
+    </div>
+
+  <div class="section-brand-collections__continer">
+    {% for block in section.blocks %}
+      {% assign collection = block.settings.collection %}
+      <div class="section-brand-collections__continer--item">
+        <a href="{{ block.settings.collection.url}}">
+          <div class="brand-collections__continer--item--image">
+            {% if block.settings.image_alternate != blank and block.settings.image_small != blank %}
+              {% render 'picture'
+                , class: 'media custom-media-image'
+                , mobileSrc: block.settings.image_small
+                , desktopSrc: block.settings.image_alternate %}
+            {% elsif block.settings.image_small == blank and block.settings.image_alternate != blank %}
+              {% render 'picture'
+                , class: 'media custom-media-image'
+                , mobileSrc: block.settings.image_alternate
+                , desktopSrc: block.settings.image_alternate %}
+            {% elsif block.settings.image_small != blank and block.settings.image_alternate == blank %}
+              {% render 'picture'
+                , class: 'media custom-media-image'
+                , mobileSrc: block.settings.image_small
+                , desktopSrc: collection.featured_image %}
+            {% else %}
+              {% render 'picture'
+                , class: 'media custom-media-image'
+                , mobileSrc: collection.featured_image
+                , desktopSrc: collection.featured_image %}
+            {% endif %}
+          </div>
+          <div
+            {% if section.settings.show_title == false %}
+            style="display: none;"
+            {% endif %}>
+            <p class="h3">{{ block.settings.collection.title }}</p>
+            <p class="h7 brand_collection-url" href="{{ block.settings.collection.url}}">Shop Now</p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Section brand collection",
+    "tag": "section",
+    "class": "page-width",
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "default": "scheme_1",
+        "label": "Color Scheme"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Collection Title Container",
+        "id": "show_title",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Caption settings"
+      },
+      {
+        "type": "text",
+        "id": "caption",
+        "label": "Enter caption",
+        "default": "Choice Brand"
+      },
+      {
+        "type": "select",
+        "id": "caption_size",
+        "options": [
+          {
+            "value": "caption",
+            "label": "Caption"
+          }, {
+            "value": "subtitle",
+            "label": "Subtitle"
+          }
+        ],
+        "default": "subtitle",
+        "label": "Select font size"
+      },
+      {
+        "type": "checkbox",
+        "id": "caption_mobile_enable",
+        "label": "Show caption in mobile",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Title settings"
+      }, 
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Enter title",
+        "default": "Look Into Brands"
+      }, 
+      {
+        "type": "select",
+        "id": "title_size",
+        "options": [
+          {
+            "value": "h6",
+            "label": "small"
+          }, {
+            "value": "h2",
+            "label": "medium"
+          }, {
+            "value": "h1",
+            "label": "large"
+          }
+        ],
+        "default": "h2",
+        "label": "Select font size"
+      }, 
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Select font color",
+        "default": "#fff"
+      }, {
+        "type": "select",
+        "id": "text_position",
+        "label": "Choose the text position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      }, {
+        "type": "header",
+        "content": "Carousel count"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Select collection"
+          }, {
+            "type": "image_picker",
+            "label": "Collection Image - Mobile (optional)",
+            "id": "image_small"
+          }, {
+            "type": "image_picker",
+            "label": "Collection Image Alternate (optional)",
+            "id": "image_alternate"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Section brand collections"
+      }
+    ]
+  }
+{% endschema %}

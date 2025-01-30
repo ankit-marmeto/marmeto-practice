@@ -1,0 +1,27 @@
+{% comment %} 
+    usage:  {% render 'collection-card', url: collection.url, image: collection.featured_image, title: collection.title %}
+ {% endcomment %}
+
+<div class="collection_card">
+  <a href="{{ url }}">
+    <div class="image_with_brand_container p-relative">
+      <div class="collection_image_container">
+        {% render 'picture'
+          , class: ''
+          , mobileSrc: image
+          , desktopSrc: image %}</div>
+      {% if brandImage != blank %}
+        <div class="brand_image p-absolute-2">
+          <div class="brand_image_container">
+            {% render 'picture'
+              , class: ''
+              , mobileSrc: brandImage
+              , desktopSrc: brandImage %}
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+    <div class="h4 collection_title">{{ title }}</div>
+  </a>
+</div>

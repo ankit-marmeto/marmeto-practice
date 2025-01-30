@@ -1,0 +1,173 @@
+{{ "section-blog-posts.css" | asset_url | stylesheet_tag }}
+<script src="{{ 'section-blogpost.js' | asset_url }}" defer="defer"></script>
+{% style %}
+  .padding-{{section.id}} {
+    padding-top: {{ section.settings.padding-top}}px;
+    padding-bottom: {{ section.settings.padding-bottom}}px;
+  }
+{% endstyle %}
+<div class="padding-{{ section.id }} color-{{ section.settings.color_scheme }} section-blog-posts">
+  <div class="section-blog-posts__text {{ section.settings.text_position }}">
+    <p class="{{ section.settings.caption_size}}">{{ section.settings.caption }}</p>
+    <p class="{{ section.settings.title_size }}">{{ section.settings.title }}</p>
+  </div>
+  <div class="splide page-width" id="section-blog-post">
+    <div class="splide__track">
+      <div class="section-blog-posts__container  splide__list">
+        {% for block in section.blocks %}
+          <div class="section-blog-posts__container--item splide__slide" >
+            <div>
+              {% assign article_image = block.settings.article.image %}
+                {% render "picture", class: "media media--16-9", mobileSrc: article_image , desktopSrc: article_image %}
+            </div>
+            <div class="section-blog-posts__container--item--text">
+              <div>
+                <p class="h4">{{ block.settings.article.title }}</p>
+                <p class="h3">{{ block.settings.article.excerpt }}</p>
+              </div>
+              <a class="h4" href="{{ block.settings.article.url }}">Discover More</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Section blog posts",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "default": "scheme_1",
+        "label": "Color Scheme"
+      },
+      {
+        "type": "header",
+        "content": "Section padding "
+      },
+      {
+        "type": "range",
+        "id": "padding-top",
+        "label": "Top padding",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding-bottom",
+        "label": "Bottom padding",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Caption settings"
+      },
+      {
+        "type": "text",
+        "id": "caption",
+        "label": "Enter caption",
+        "default": "BLOGS"
+      },
+      {
+        "type": "select",
+        "id": "caption_size",
+        "options": [
+          {
+            "value": "caption",
+            "label": "Caption"
+          },
+          {
+            "value": "subtitle",
+            "label": "Subtitle"
+          }
+        ],
+        "default": "caption",
+        "label": "Select font size"
+      },
+      {
+        "type": "header",
+        "content": "Title settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Enter title",
+        "default": "OUR BLOGS"
+      },
+      {
+        "type": "select",
+        "id": "title_size",
+        "options": [
+          {
+            "value": "h6",
+            "label": "small"
+          },
+          {
+            "value": "h2",
+            "label": "medium"
+          },
+          {
+            "value": "h1",
+            "label": "large"
+          }
+        ],
+        "default": "h2",
+        "label": "Select font size"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Select font color",
+        "default": "#fff"
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "Choose the text position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      }
+    ],
+    "blocks": [
+        {
+          "type": "blog_post",
+          "name": "Article",
+          "settings": [
+            {
+              "type": "article",
+              "id": "article",
+              "label": "Article"
+            }
+          ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Section blog posts"
+      }
+    ]
+  }
+{% endschema %}

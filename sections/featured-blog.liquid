@@ -139,16 +139,14 @@
         {%- endif -%}
       </ul>
       {%- if posts_exceed_limit -%}
-        <div class="slider-buttons{% if section.settings.post_limit < 3 %} medium-hide{% endif %}{% if section.settings.post_limit < 2 %} small-hide{% endif %}">
+        <div class="slider-buttons no-js-hidden{% if section.settings.post_limit < 3 %} medium-hide{% endif %}{% if section.settings.post_limit < 2 %} small-hide{% endif %}">
           <button
             type="button"
             class="slider-button slider-button--prev"
             name="previous"
             aria-label="{{ 'general.slider.previous_slide' | t }}"
           >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
+            {% render 'icon-caret' %}
           </button>
           <div class="slider-counter caption">
             <span class="slider-counter--current">1</span>
@@ -162,9 +160,7 @@
             name="next"
             aria-label="{{ 'general.slider.next_slide' | t }}"
           >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
+            {% render 'icon-caret' %}
           </button>
         </div>
       {%- endif -%}
@@ -201,7 +197,7 @@
     {
       "type": "inline_richtext",
       "id": "heading",
-      "default": "t:sections.featured-blog.settings.heading.default",
+      "default": "Blog posts",
       "label": "t:sections.featured-blog.settings.heading.label"
     },
     {
@@ -219,14 +215,6 @@
         {
           "value": "h0",
           "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
         }
       ],
       "default": "h1",
@@ -260,7 +248,7 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "info": "t:sections.all.colors.has_cards_info",
-      "default": "scheme-1"
+      "default": "background-1"
     },
     {
       "type": "checkbox",

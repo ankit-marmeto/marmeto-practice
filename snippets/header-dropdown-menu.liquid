@@ -16,14 +16,14 @@
                 id="HeaderMenu-{{ link.handle }}"
                 class="header__menu-item list-menu__item link focus-inset"
               >
-                <span
+                <span class="h4"
                   {%- if link.child_active %}
-                    class="header__active-menu-item"
+                    class="header__active-menu-item h4"
                   {% endif %}
                 >
                   {{- link.title | escape -}}
                 </span>
-                {{- 'icon-caret.svg' | inline_asset_content -}}
+                {% render 'icon-caret' %}
               </summary>
               <ul
                 id="HeaderMenu-MenuList-{{ forloop.index }}"
@@ -50,8 +50,8 @@
                           id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                           class="header__menu-item link link--text list-menu__item focus-inset caption-large"
                         >
-                          <span>{{ childlink.title | escape }}</span>
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                          <span class="h4">{{ childlink.title | escape }}</span>
+                          {% render 'icon-caret' %}
                         </summary>
                         <ul
                           id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
@@ -88,7 +88,7 @@
               aria-current="page"
             {% endif %}
           >
-            <span
+            <span class="h4"
               {%- if link.current %}
                 class="header__active-menu-item"
               {% endif %}

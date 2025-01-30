@@ -1,0 +1,381 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "occassion_banner_mmPgAJ": {
+      "type": "occassion-banner",
+      "settings": {
+        "background_image": "shopify://shop_images/Hero_bannner.png",
+        "background_image_small": "shopify://shop_images/Hero_bannner_51c1c576-55f3-4a23-942a-f94d6894f502.png",
+        "bg_url": "",
+        "image_height": "small",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "content_position_x": "flex-start",
+        "content_position_y": "flex-start",
+        "text_alignment": "flex-start",
+        "section_color_scheme": ""
+      }
+    },
+    "occassion_banner_EKPMXX": {
+      "type": "occassion-banner",
+      "settings": {
+        "background_image": "shopify://shop_images/Holi_Banner_b0105b05-68c3-4d3b-9d7d-2f5c11c46e60.png",
+        "background_image_small": "shopify://shop_images/Holi_banner.png",
+        "bg_url": "shopify://collections",
+        "image_height": "small",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "content_position_x": "flex-start",
+        "content_position_y": "flex-start",
+        "text_alignment": "flex-start",
+        "section_color_scheme": ""
+      }
+    },
+    "collection_carousel_PX4NAL": {
+      "type": "collection-carousel",
+      "blocks": {
+        "collection_AjUbxE": {
+          "type": "collection",
+          "settings": {
+            "collection": "jeans",
+            "image_small": "shopify://shop_images/Featured_Collection_Jeans.png",
+            "image_alternate": "shopify://shop_images/Featuired_Collection_Jeans.png"
+          }
+        },
+        "collection_QQRVGx": {
+          "type": "collection",
+          "settings": {
+            "collection": "shirts-2",
+            "image_small": "shopify://shop_images/Featured_Collection_Shirts.png",
+            "image_alternate": "shopify://shop_images/Featured_Collections_Shirts.png"
+          }
+        }
+      },
+      "block_order": [
+        "collection_AjUbxE",
+        "collection_QQRVGx"
+      ],
+      "settings": {
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "section_color_scheme": "background-2",
+        "subtitle": "Collection",
+        "subtitle_color": "#ffffff",
+        "heading": "FEATURED COLLECTIONS",
+        "show_title": false
+      }
+    },
+    "collection_carousel_layout_eiaitA": {
+      "type": "collection-carousel-layout",
+      "blocks": {
+        "collection_bkmGwq": {
+          "type": "collection",
+          "settings": {
+            "collection": "chinos",
+            "alternate_collection_image": "shopify://shop_images/1._Shirts.png"
+          }
+        },
+        "collection_3KTekY": {
+          "type": "collection",
+          "settings": {
+            "collection": "shirts-2",
+            "alternate_collection_image": "shopify://shop_images/2._Suits_Blazers.png"
+          }
+        },
+        "collection_WbG6Pf": {
+          "type": "collection",
+          "settings": {
+            "collection": "suites",
+            "alternate_collection_image": "shopify://shop_images/3._Jeans_90e68485-398e-453f-bd0a-10b25c074426.png"
+          }
+        },
+        "collection_HwHgzC": {
+          "type": "collection",
+          "settings": {
+            "collection": "tshirts-polos",
+            "alternate_collection_image": "shopify://shop_images/4._Trousers_f5d46231-9c96-45c8-901c-1fc897f7f51f.png"
+          }
+        }
+      },
+      "block_order": [
+        "collection_bkmGwq",
+        "collection_3KTekY",
+        "collection_WbG6Pf",
+        "collection_HwHgzC"
+      ],
+      "settings": {
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "section_color_scheme": "background-1",
+        "subtitle": "Categories",
+        "heading": "TRENDING CATEGORIES",
+        "show_title": true
+      }
+    },
+    "slideshow_image_GmrxWw": {
+      "type": "slideshow-image",
+      "blocks": {
+        "slide_fNYiWz": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Prestinge_Banner.png",
+            "image_mobile": "shopify://shop_images/Prestinge_Banner.png",
+            "slide_url": "",
+            "image_overlay_opacity": 0,
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fNYiWz"
+      ],
+      "settings": {
+        "custom_class": "",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "layout": "full_bleed",
+        "slide_height": "large",
+        "slider_visual": "counter",
+        "slider_dots_overlay": true,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "brand_collection_carousel_aD4Kf7": {
+      "type": "brand-collection-carousel",
+      "blocks": {
+        "collection_EACDcV": {
+          "type": "collection",
+          "settings": {
+            "collection": "chinos",
+            "alternate_collection_image": "shopify://shop_images/1._Shirts.png"
+          }
+        },
+        "collection_EEyYRf": {
+          "type": "collection",
+          "settings": {
+            "collection": "shirts-2",
+            "alternate_collection_image": "shopify://shop_images/2._Suits_Blazers.png"
+          }
+        },
+        "collection_yYg3Ec": {
+          "type": "collection",
+          "settings": {
+            "collection": "suites-1",
+            "alternate_collection_image": "shopify://shop_images/3._Jeans_90e68485-398e-453f-bd0a-10b25c074426.png"
+          }
+        },
+        "collection_LVhRYV": {
+          "type": "collection",
+          "settings": {
+            "collection": "sweaters",
+            "alternate_collection_image": "shopify://shop_images/4._Trousers_f5d46231-9c96-45c8-901c-1fc897f7f51f.png"
+          }
+        }
+      },
+      "block_order": [
+        "collection_EACDcV",
+        "collection_EEyYRf",
+        "collection_yYg3Ec",
+        "collection_LVhRYV"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "section_color_scheme": "inverse",
+        "heading": "TRENDING BRANDS",
+        "description": "The store locator helps customers easily find their nearest Raymond retail store or shop-in-shop."
+      }
+    },
+    "newsletter_U7JFwX": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_z6Nb9a": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe and get 10% off",
+            "heading_size": "h6"
+          }
+        },
+        "paragraph_dUzXfR": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email_form_DtRgA4": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_z6Nb9a",
+        "paragraph_dUzXfR",
+        "email_form_DtRgA4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2f6bc2f7-8714-4a15-b904-5b20063229b3",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 72
+      }
+    },
+    "section_products_tab_switch_rH6c9W": {
+      "type": "section-products-tab-switch",
+      "blocks": {
+        "collection_JbmjWc": {
+          "type": "collection",
+          "settings": {
+            "collection": "suites-1"
+          }
+        }
+      },
+      "block_order": [
+        "collection_JbmjWc"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-2",
+        "caption": "Latest",
+        "caption_size": "subtitle",
+        "caption_color": "#ffffff",
+        "title": "LATEST ARRIVALS",
+        "title_size": "h2",
+        "title_color": "#ffffff",
+        "description": "",
+        "description_size": "h4",
+        "description_color": "#ffffff",
+        "text_position": "center",
+        "show_vendor": false
+      }
+    },
+    "lookbook_carousel_CCXcA9": {
+      "type": "lookbook-carousel",
+      "blocks": {
+        "slide_qcibCr": {
+          "type": "slide",
+          "settings": {
+            "category_heading": "MEN'S FORMAL SUIT",
+            "prod1": "suit-1",
+            "hotspot_1_position_y": 23,
+            "hotspot_1_position_x": 19,
+            "prod2": "suit-2",
+            "hotspot_2_position_y": 13,
+            "hotspot_2_position_x": 38,
+            "prod3": "tshirt",
+            "hotspot_3_position_y": 38,
+            "hotspot_3_position_x": 23
+          }
+        },
+        "slide_THWXyB": {
+          "type": "slide",
+          "settings": {
+            "category_heading": "MEN'S FORMAL SUIT",
+            "prod1": "men-blue-slim-fit-structure-polyester-blend-suit",
+            "hotspot_1_position_y": 30,
+            "hotspot_1_position_x": 9,
+            "prod2": "",
+            "hotspot_2_position_y": 20,
+            "hotspot_2_position_x": 20,
+            "prod3": "",
+            "hotspot_3_position_y": 20,
+            "hotspot_3_position_x": 20
+          }
+        }
+      },
+      "block_order": [
+        "slide_qcibCr",
+        "slide_THWXyB"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "section_color_scheme": "",
+        "section_heading": "LOOK BOOK"
+      }
+    },
+    "section_products_tab_switch_RDNycU": {
+      "type": "section-products-tab-switch",
+      "blocks": {
+        "collection_JkpWK6": {
+          "type": "collection",
+          "settings": {
+            "collection": "suites-1"
+          }
+        },
+        "collection_3LPaea": {
+          "type": "collection",
+          "settings": {
+            "collection": "tshirts-polos-1"
+          }
+        },
+        "collection_nGzkqi": {
+          "type": "collection",
+          "settings": {
+            "collection": "trouser"
+          }
+        },
+        "collection_NfLzmw": {
+          "type": "collection",
+          "settings": {
+            "collection": "chinos"
+          }
+        }
+      },
+      "block_order": [
+        "collection_JkpWK6",
+        "collection_3LPaea",
+        "collection_nGzkqi",
+        "collection_NfLzmw"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-1",
+        "caption": "THEME",
+        "caption_size": "subtitle",
+        "caption_color": "",
+        "title": "SHOP BY THEME",
+        "title_size": "h2",
+        "title_color": "#ffffff",
+        "description": "",
+        "description_size": "h4",
+        "description_color": "#ffffff",
+        "text_position": "center",
+        "show_vendor": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "occassion_banner_mmPgAJ",
+    "occassion_banner_EKPMXX",
+    "collection_carousel_PX4NAL",
+    "collection_carousel_layout_eiaitA",
+    "slideshow_image_GmrxWw",
+    "brand_collection_carousel_aD4Kf7",
+    "newsletter_U7JFwX",
+    "section_products_tab_switch_rH6c9W",
+    "lookbook_carousel_CCXcA9",
+    "section_products_tab_switch_RDNycU"
+  ]
+}

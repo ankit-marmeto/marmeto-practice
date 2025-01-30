@@ -1,0 +1,41 @@
+.static-image-container img{
+    height:100%;
+    width: 100%;
+}
+
+
+.static-main{
+    position: relative;
+}
+.static-blog-text-container{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding-left: 12.2rem;
+}
+.static-blog-text{
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+@media screen and (max-width:749px){
+    .static-blog-text-container{
+        padding: 0;
+         justify-content: center;
+    }
+    .static-text{
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #FFF;
+    }
+}

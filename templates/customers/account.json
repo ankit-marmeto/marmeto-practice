@@ -11,6 +11,42 @@
   "sections": {
     "main": {
       "type": "main-account",
+      "blocks": {
+        "tab-1": {
+          "type": "tab-heading",
+          "settings": {
+            "heading": "Account Overview",
+            "data-id": "dashboard"
+          }
+        },
+        "tab-2": {
+          "type": "tab-heading",
+          "settings": {
+            "heading": "Address",
+            "data-id": "address"
+          }
+        },
+        "tab-3": {
+          "type": "tab-heading",
+          "settings": {
+            "heading": "Manage Orders",
+            "data-id": "order"
+          }
+        },
+        "tab-4": {
+          "type": "tab-heading",
+          "settings": {
+            "heading": "Wishlist",
+            "data-id": "wishlist"
+          }
+        }
+      },
+      "block_order": [
+        "tab-1",
+        "tab-2",
+        "tab-3",
+        "tab-4"
+      ],
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36

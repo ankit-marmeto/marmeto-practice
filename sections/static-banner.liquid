@@ -1,0 +1,63 @@
+{{'static-banner.css' |  asset_url |  stylesheet_tag }}
+<div class="static-main">
+  <div class="static-image-container">
+    {% render 'new-image',
+        
+          mobileSrc: section.settings.image_for_mobile,
+          desktopSrc: section.settings.image_for_desktop
+        %}
+    
+  </div>
+  <div class="static-text-container">
+    <p class="static-text"> {{ section.settings.text }}</p>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+    {
+      "name": "static-banner",
+      "tag": "section",
+      "class": "static-banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image For Desktop",
+          "id": "image_for_desktop"
+        },
+        {
+          "type": "text",
+          "label": "Enter Text",
+          "id": "text",
+          "default": "contact"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image For Mobile",
+          "id": "image_for_mobile"
+        }
+      ],
+      "blocks": [],
+      "presets": [
+        {
+          "name": "static-banner"
+        }
+      ]
+    }
+    {% endschema %}

@@ -1,0 +1,219 @@
+<script src="{{ 'section-collections.js' | asset_url }}" defer="defer"></script>
+{{ 'section-collections.css' | asset_url | stylesheet_tag }}
+{% style %}
+  @media screen and (max-width: 749px){
+    .category-section__collections--container :nth-child(n+{{ section.settings.mobile_total_count | plus: 1}}) {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 750px) {
+    .category-section__collections--container :nth-child(n+{{ section.settings.desktop_count | plus: 1 }}) {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+<div class="color-{{ section.settings.color_scheme }} category-section">
+  <div class="page-width catergory-section-inner">
+    <div class="category-section__text {{ section.settings.text_position }}">
+      <p class="{{ section.settings.caption_size }} letter-spacing" style="color: {{ section.settings.caption_color }}">{{ section.settings.caption }}</p>
+      <p class="{{ section.settings.title_size }} category-section__title" style="color: {{ section.settings.title_color }}">{{ section.settings.title }}</p>
+    </div>
+    {% assign collection-lists-count = 0 %}
+    {% if section.settings.collection_list != blank %}
+    <div class="category-section__collections">
+      {% assign collection-lists = section.settings.collection_list %}
+      <div class="category-section__collections--container grid grid--{{ section.settings.mobile_count }}-col grid--{{ section.settings.desktop_count }}-col-desktop page-width">
+        {% for collection in collection-lists %}
+          {% assign collection-lists-count = forloop.index %}
+            <div class="category-section__collections--item grid__item">
+              <a href="{{ collection.url }}">
+                <div class="catefory-section__collection--media">
+                  {% render "picture", class: "media media--portrait", mobileSrc: collection.featured_image, desktopSrc: collection.featured_image %}
+                </div>
+                <div class="category-section__collection--text">
+                  <p class="h4">{{ collection.title }}</p>
+                  {% render "icon" with 'caret-right' %}
+                </div>
+              </a>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="center buttons-container">
+      <button id="load-more-button" class="button button--medium button--secondary h4" data-mobile-count="{{ section.settings.mobile_total_count }}" data-desktop-count="{{ section.settings.desktop_count }}" data-collection-size="{{ collection-lists-count }}">Load more</button>
+      <button id="view-less-button" class="button button--medium button--secondary h4 hidden">View less</button>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Collections",
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "default": "scheme_1",
+        "label": "Color Scheme"
+      },
+      {
+        "type": "collection_list",
+        "id": "collection_list",
+        "label": "Select the collections"
+      },
+      {
+        "type": "header",
+        "content": "Align text position"
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "Choose the text position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "header",
+        "content": "Caption settings"
+      },
+      {
+        "type": "text",
+        "id": "caption",
+        "label": "Enter caption",
+        "default": "CHOOSE CATEGORIES"
+      },
+      {
+        "type": "select",
+        "id": "caption_size",
+        "options": [
+          {
+            "value": "caption",
+            "label": "Caption"
+          },
+          {
+            "value": "subtitle",
+            "label": "Subtitle"
+          }
+        ],
+        "default": "caption",
+        "label": "Select font size"
+      },
+      {
+        "type": "color",
+        "id": "caption_color",
+        "label": "Select font color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Title settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Enter title",
+        "default": "CLASSIFY YOUR CHOICE"
+      },
+      {
+        "type": "select",
+        "id": "title_size",
+        "options": [
+          {
+            "value": "h6",
+            "label": "small"
+          },
+          {
+            "value": "h2",
+            "label": "medium"
+          },
+          {
+            "value": "h1",
+            "label": "large"
+          }
+        ],
+        "default": "h2",
+        "label": "Select font size"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Select font color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Choose collection count to display"
+      },
+      {
+        "type": "select",
+        "id": "mobile_count",
+        "options": [
+          {
+            "value": "2",
+            "label": "Two"
+          },
+          {
+            "value": "3",
+            "label": "Three"
+          },
+          {
+            "value": "4",
+            "label": "Four"
+          }
+        ],
+        "default": "2",
+        "label": "Select the items count per row in mobile "
+      },
+      {
+        "type": "range",
+        "id": "mobile_total_count",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 4,
+        "label": "Select total number of collections to show for mobile",
+        "info": "Total count should be greater than row count"
+      },
+      {
+        "type": "select",
+        "id": "desktop_count",
+        "options": [
+          {
+            "value": "4",
+            "label": "Four"
+          },
+          {
+            "value": "5",
+            "label": "Five"
+          },
+          {
+            "value": "6",
+            "label": "Six"
+          }
+        ],
+        "default": "5",
+        "label": "Select the items count in desktop"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collections"
+      }
+    ]
+  }
+{% endschema %}

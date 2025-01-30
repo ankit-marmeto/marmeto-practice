@@ -1,0 +1,43 @@
+{% if section.settings.show_metafield_image != blank or section.settings.banner_image != blank  %}
+  <div class="banner-image-wrapper"> 
+      {% assign collection_banner_img = collection.metafields.custom.collection_banners | image_url %}
+    {% if section.settings.show_metafield_image  and collection_banner_img != blank %}
+      <div class="banner-metafield-image {% if section.settings.dont_show_banner_desktop %} large-up-hide {% endif %}">
+      {% render 'picture', class: '', mobileSrc: collection_banner_img , desktopSrc: collection_banner_img , loading:'eager' , fetchpriority:'high' %} 
+      </div>
+    {% elsif section.settings.banner_image != blank %}
+      <div class="banner-image  {% if section.settings.dont_show_banner_desktop %} large-up-hide {% endif %}">
+      {% render 'picture', class: '', mobileSrc: section.settings.banner_image , desktopSrc: section.settings.banner_image , loading: 'eager', fetchpriority: 'high' %}
+      </div> 
+    {% endif %}
+  </div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner Image",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_metafield_image",
+        "label": "Show Metafield image of collection",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "dont_show_banner_desktop",
+        "label": "Dont Show banner in desktop",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Image"
+      }     
+    ],
+    "presets": [
+      {
+        "name": "Banner Image"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,41 @@
+<div
+  class="
+    wizzy-filters-facet-block
+    facet-block-[[ divKey ]]
+    facet-block-[[#isLeft]]left [[#leftFacetCollapsible]]collapsible[[/leftFacetCollapsible]]
+    [[#leftDefaultCollapsed]][[^isSelected]]collapsed[[/isSelected]][[/leftDefaultCollapsed]]
+    [[#firstLeftDefaultOpened]]first-opened[[/firstLeftDefaultOpened]][[/isLeft]][[^isLeft]]top[[/isLeft]]
+  "
+  data-key="[[ key ]]"
+  [[#parentKey]]data-parentKey="[[parentKey]]"
+  [[/parentKey]]
+>
+  <!-- <button aria-expanded="false" class="toggle-button" tabindex="0">Toggle Content</button> -->
+
+  <div class="wizzy-facet-head facet-head-[[divKey]]">
+    <button class="facet-head-title" aria-expanded="false" aria-label="[[& title ]] filter">[[& title ]]</button>
+    <span class="facet-head-right"> </span>
+  </div>
+  <div class="wizzy-facet-body facet-body-[[divKey]]">
+    <div class="facet-search-wrapper active">
+      [[#withSearch]]
+      <input
+        type="text"
+        class="facet-head-search-input"
+        aria-label="Search [[ title ]]"
+        placeholder="Search [[ title ]]"
+      >
+
+      <div class="facet-head-search">
+        <a href="#" class="facet-head-search-icon" aria-lable="search close button" title="Search [[ title ]]"></a>
+      </div>
+      [[/withSearch]]
+    </div>
+
+    <div class="wizzy-filter-wrapper [[#withSearch]]withSearch[[/withSearch]]">
+      <ul class="wizzy-facet-list">
+        [[#items]] [[&html]] [[/items]]
+      </ul>
+    </div>
+  </div>
+</div>

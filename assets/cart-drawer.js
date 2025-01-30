@@ -9,8 +9,6 @@ class CartDrawer extends HTMLElement {
 
   setHeaderCartIconAccessibility() {
     const cartLink = document.querySelector('#cart-icon-bubble');
-    if (!cartLink) return;
-
     cartLink.setAttribute('role', 'button');
     cartLink.setAttribute('aria-haspopup', 'dialog');
     cartLink.addEventListener('click', (event) => {
@@ -37,9 +35,7 @@ class CartDrawer extends HTMLElement {
     this.addEventListener(
       'transitionend',
       () => {
-        const containerToTrapFocusOn = this.classList.contains('is-empty')
-          ? this.querySelector('.drawer__inner-empty')
-          : document.getElementById('CartDrawer');
+        const containerToTrapFocusOn = this.classList.contains('is-empty')? this.querySelector('.drawer__inner-empty'): document.getElementById('CartDrawer');
         const focusElement = this.querySelector('.drawer__inner') || this.querySelector('.drawer__close');
         trapFocus(containerToTrapFocusOn, focusElement);
       },
@@ -75,12 +71,9 @@ class CartDrawer extends HTMLElement {
       this.querySelector('.drawer__inner').classList.remove('is-empty');
     this.productId = parsedState.id;
     this.getSectionsToRender().forEach((section) => {
-      const sectionElement = section.selector
-        ? document.querySelector(section.selector)
-        : document.getElementById(section.id);
-
-      if (!sectionElement) return;
-      sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
+      const sectionElement = section.selector? document.querySelector(section.selector): document.getElementById(section.id);
+      const newDrawer = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
+      sectionElement.innerHTML = newDrawer;
     });
 
     setTimeout(() => {

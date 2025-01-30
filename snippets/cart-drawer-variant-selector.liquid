@@ -1,0 +1,45 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  - update_url: {Boolean} whether or not to update url when changing variants. If false, the url isn't updated. Default: true (optional).
+  Usage:
+  {% render 'cart-drawer-variant-selector', product: product %}
+{% endcomment %}
+
+{%- unless product.has_only_default_variant -%}
+  {% assign productOptions = product.options %}
+  {% if productOptions contains "Size" %}
+    <div>
+      <cart-item-variant>
+          {%- assign variant_options = "" -%}
+          {% for option in lineItem.variant.options %}
+            {%- assign variant_options = variant_options | append: option | append: " " -%}
+          {% endfor %}
+
+        {% for option in product.options_with_values %}
+          {% if option.name == "Size" %}
+            <label class="cart-drawer-variant-container">Size
+            <select class="cart-drawer-variant-container__select" data-previous-variant="{{ variant_options | rstrip }}" data-product-url="{{ lineItem.product.url }}" data-item-key="{{ lineItem.key }}" data-item="{{ lineItem.index | plus: 1 }}">
+                {% for value in option.values %}
+                  <option value="{{ value }}" 
+                    {% if lineItem.variant.options contains value %} selected {% endif %}
+                  >
+                    {{ value }}
+                  </option>
+                {% endfor %}
+            </select>
+          </label>
+          {% endif %}
+        {% endfor %}
+
+        <script type="application/json">
+          {{ product.variants | json }}
+        </script>
+      </cart-item-variant>                     
+    </div>
+  {% endif %}
+{%- endunless -%}

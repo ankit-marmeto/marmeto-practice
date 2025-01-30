@@ -1,0 +1,111 @@
+.account-snippet-main p {
+  margin: 0;
+}
+a.active-tab.tab-details {
+  font-size: 24px;
+  color: #000;
+  font-weight: 400;
+  line-height: 140%;
+}
+.account-snippet-main hr {
+  margin: 0;
+}
+.account-snippet-main a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #8C8C91;
+}
+.account_holderName_container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+@media screen and (min-width: 749px) {
+  #customer_name {
+    color: #1d1d1f;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+  .account_page_data {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+  a.account-tab {
+    color: #1d1d1f;
+    font-size: 24px;
+    font-weight: 400;
+  }
+  .tab-details {
+    color: #8c8c91;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+  }
+  .child-hr {
+    display: none;
+  }
+  .main-hr {
+    margin: 3.2rem 0;
+    height: 1px;
+    background: #d2d2d7;
+  }
+}
+@media screen and (max-width: 749px) {
+  .hide {
+    display: none !important;
+  }
+  .account_holderName_container svg {
+    height: 2.7rem;
+    width: 2.7rem;
+  }
+  #order-pagination ul {
+    padding: 0;
+    padding-bottom: 3.4rem;
+  }
+  a.active-tab.tab-details {
+    font-size: 1.4rem;
+  }
+  .account_page_container {
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+  }
+  .account_page_container::-webkit-scrollbar {
+    display: none;
+  }
+  .account_holderName_container {
+    padding-bottom: 2.7rem;
+  }
+  #customer_name {
+    color: #1d1d1f;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 140%;
+  }
+  .account_page_container > * {
+    padding-right: 16px;
+  }
+  .account_page_container > *:not(:first-child) {
+    padding-left: 16px;
+  }
+  .account_page_container > *:not(:last-child) {
+    border-right: 1px solid #BDBDBD;
+  }
+  .tab-details {
+    white-space: nowrap;
+  }
+  .account_holderName_container {
+    justify-content: center;
+  }
+  .main-hr {
+    display: none;
+  }
+  .child-hr {
+    margin: 8px 0 16px 0;
+    height: 1px;
+    background: #d2d2d7;
+  }
+}

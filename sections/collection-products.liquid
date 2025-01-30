@@ -1,0 +1,150 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{% assign collection = section.settings.collection %}
+
+<div class="section-{{ section.id }}-padding page-width p_0">
+
+  <div class="cp_main">
+    <div class="cc_label center small-hide medium-hide">
+      <div class="cc_subtitle subtitle">
+        {{ section.settings.subtitle }}
+      </div>
+      <div class="cc_heading h2">
+        {{ section.settings.heading }}
+      </div>
+    </div>
+
+    <div class="cp_container">
+      <div class="cp_collection_card color-{{ section.settings.section_color_scheme }}">
+        <a href="{{collection.url}}">
+          <div class="p-relative cp_card_item">
+            <div class="cp_image_container">
+              {% if section.settings.image_alternate != blank and section.settings.image_small != blank %}
+                {% render 'picture'
+                  , class: ''
+                  , mobileSrc: section.settings.image_small
+                  , desktopSrc: section.settings.image_alternate %}
+              {% elsif section.settings.image_small == blank and section.settings.image_alternate != blank %}
+                {% render 'picture'
+                  , class: ''
+                  , mobileSrc: section.settings.image_alternate
+                  , desktopSrc: section.settings.image_alternate %}
+              {% elsif section.settings.image_small != blank and section.settings.image_alternate == blank %}
+                {% render 'picture'
+                  , class: ''
+                  , mobileSrc: section.settings.image_small
+                  , desktopSrc: collection.featured_image %}
+              {% else %}
+                {% render 'picture'
+                  , class: ''
+                  , mobileSrc: collection.featured_image
+                  , desktopSrc: collection.featured_image %}
+              {% endif %}
+            </div>
+            <div class="cp_overlay_container p-absolute-100">
+              <div class="cp_card_title h2">
+                {{ collection.title | capitalize }}
+              </div>
+              <div class="cp_viewAll_text h4">
+                {{ section.settings.view_all }}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="grid grid--2-col grid--4-col-desktop cp_grid">
+        {% for product in collection.products limit: 3 %}
+          <div class="grid__item">
+            {% render 'mm-product-card'
+              , card_product: product %}
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+{% schema %}
+  {
+    "name": "Collection Products",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "range",
+        "label": "Padding Top",
+        "id": "padding_top",
+        "default": 20,
+        "min": 0,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "label": "Padding Bottom",
+        "id": "padding_bottom",
+        "default": 20,
+        "min": 0,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
+      },
+      {
+        "type": "text",
+        "label": "Subtitle",
+        "id": "subtitle",
+        "default": "STYLES"
+      }, {
+        "type": "text",
+        "label": "Heading",
+        "id": "heading",
+        "default": "DISCOVER THE STYLES"
+      }, {
+        "type": "collection",
+        "label": "Collection",
+        "id": "collection"
+      }, {
+        "type": "image_picker",
+        "label": "Collection Image - Mobile (optional)",
+        "id": "image_small"
+      }, {
+        "type": "image_picker",
+        "label": "Collection Image Alternate (optional)",
+        "id": "image_alternate"
+      }, {
+        "type": "text",
+        "label": "View All Text",
+        "id": "view_all",
+        "default": "Discover More"
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Collection Products"
+      }
+    ]
+  }
+{% endschema %}

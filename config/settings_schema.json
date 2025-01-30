@@ -2,10 +2,25 @@
   {
     "name": "theme_info",
     "theme_name": "Dawn",
-    "theme_version": "15.2.0",
+    "theme_version": "12.0.0",
     "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
+  },
+  {
+    "name": "Preload slideshow first image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "slider_first_img",
+        "label": "Slider first image"
+      },
+      {
+        "type": "image_picker",
+        "id": "slider_first_img_desk",
+        "label": "Slider first image desk"
+      }
+    ]
   },
   {
     "name": "t:settings_schema.logo.name",
@@ -24,6 +39,21 @@
         "default": 100,
         "unit": "px",
         "label": "t:settings_schema.logo.settings.logo_width.label"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_logo",
+        "label": "t:settings_schema.logo.settings.mobile_logo_image.label"
+      },
+      {
+        "type": "range",
+        "id": "mobile_logo_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "default": 100,
+        "unit": "px",
+        "label": "t:settings_schema.logo.settings.mobile_logo_image.label"
       },
       {
         "type": "image_picker",
@@ -60,8 +90,14 @@
           },
           {
             "type": "color",
-            "id": "button",
+            "id": "button_background",
             "label": "t:settings_schema.colors.settings.button_background.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "button_background_hover",
+            "label": "t:settings_schema.colors.settings.button_background_hover.label",
             "default": "#121212"
           },
           {
@@ -72,8 +108,32 @@
           },
           {
             "type": "color",
+            "id": "button_hover",
+            "label": "t:settings_schema.colors.settings.button_hover.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_background",
+            "label": "t:settings_schema.colors.settings.secondary_button_background.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_background_hover",
+            "label": "t:settings_schema.colors.settings.secondary_button_background_hover.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
             "id": "secondary_button_label",
             "label": "t:settings_schema.colors.settings.secondary_button_label.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_label_hover",
+            "label": "t:settings_schema.colors.settings.secondary_button_label_hover.label",
             "default": "#121212"
           },
           {
@@ -91,9 +151,9 @@
           },
           "links": "secondary_button_label",
           "icons": "text",
-          "primary_button": "button",
+          "primary_button": "button_background",
           "on_primary_button": "button_label",
-          "primary_button_border": "button",
+          "primary_button_border": "button_background",
           "secondary_button": "background",
           "on_secondary_button": "secondary_button_label",
           "secondary_button_border": "secondary_button_label"
@@ -156,8 +216,8 @@
         "id": "page_width",
         "min": 1000,
         "max": 1600,
-        "step": 100,
-        "default": 1200,
+        "step": 40,
+        "default": 1440,
         "unit": "px",
         "label": "t:settings_schema.layout.settings.page_width.label"
       },
@@ -184,7 +244,7 @@
         "id": "spacing_grid_horizontal",
         "min": 4,
         "max": 40,
-        "step": 4,
+        "step": 2,
         "default": 8,
         "unit": "px",
         "label": "t:settings_schema.layout.settings.spacing_grid_horizontal.label"
@@ -194,7 +254,7 @@
         "id": "spacing_grid_vertical",
         "min": 4,
         "max": 40,
-        "step": 4,
+        "step": 2,
         "default": 8,
         "unit": "px",
         "label": "t:settings_schema.layout.settings.spacing_grid_vertical.label"
@@ -539,7 +599,7 @@
         "type": "color_scheme",
         "id": "card_color_scheme",
         "label": "t:sections.all.colors.label",
-        "default": "scheme-2"
+        "default": "background-2"
       },
       {
         "type": "header",
@@ -674,7 +734,7 @@
         "type": "color_scheme",
         "id": "collection_card_color_scheme",
         "label": "t:sections.all.colors.label",
-        "default": "scheme-2"
+        "default": "background-2"
       },
       {
         "type": "header",
@@ -809,7 +869,7 @@
         "type": "color_scheme",
         "id": "blog_card_color_scheme",
         "label": "t:sections.all.colors.label",
-        "default": "scheme-2"
+        "default": "background-2"
       },
       {
         "type": "header",
@@ -1258,13 +1318,13 @@
         "type": "color_scheme",
         "id": "sale_badge_color_scheme",
         "label": "t:settings_schema.badges.settings.sale_badge_color_scheme.label",
-        "default": "scheme-5"
+        "default": "accent-2"
       },
       {
         "type": "color_scheme",
         "id": "sold_out_badge_color_scheme",
         "label": "t:settings_schema.badges.settings.sold_out_badge_color_scheme.label",
-        "default": "scheme-3"
+        "default": "inverse"
       }
     ]
   },
@@ -1462,7 +1522,129 @@
         "type": "color_scheme",
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
-        "default": "scheme-1"
+        "default": "background-1"
+      },
+      {
+        "type": "text",
+        "id": "sale_info_text",
+        "label": "Sale information text"
+      }
+    ]
+  },
+  {
+    "name": "Threshold value",
+    "settings": [
+      {
+        "type": "number",
+        "id": "threshold_value",
+        "label": "Enter the threshold amount for free delivery"
+      }
+    ]
+  },
+  {
+    "name": "Offers section in PDP and Cart drawer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_offers_pdp",
+        "label": "Show Offers in PDP",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_offers_cartdrawer",
+        "label": "Show Offers in CartDrawer",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "offer_main_heading",
+        "label": "Offer Main Heading"
+      },
+      {
+        "type": "text",
+        "id": "offer_heading_1",
+        "label": "Offer heading 1"
+      },
+      {
+        "type": "text",
+        "id": "offers_description_1",
+        "label": "Offer Description 1"
+      },
+      {
+        "type": "text",
+        "id": "couponcode_1",
+        "label": "Coupon code 1"
+      },
+      {
+        "type": "text",
+        "id": "offer_heading_2",
+        "label": "Offer heading 2"
+      },
+      {
+        "type": "text",
+        "id": "offers_description_2",
+        "label": "Offer Description 2"
+      },
+      {
+        "type": "text",
+        "id": "couponcode_2",
+        "label": "Coupon code 2"
+      },
+      {
+        "type": "text",
+        "id": "offer_heading_3",
+        "label": "Offer heading 3"
+      },
+      {
+        "type": "text",
+        "id": "offers_description_3",
+        "label": "Offer Description 3"
+      },
+      {
+        "type": "text",
+        "id": "couponcode_3",
+        "label": "Coupon code 3"
+      },
+      {
+        "type": "text",
+        "id": "offer_heading_4",
+        "label": "Offer heading 4"
+      },
+      {
+        "type": "text",
+        "id": "offers_description_4",
+        "label": "Offer Description 4"
+      },
+      {
+        "type": "text",
+        "id": "couponcode_4",
+        "label": "Coupon code 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_sale_banner",
+        "label": "Cart Sale Banner"
+      },
+      {
+        "type": "text",
+        "id": "combo_offer_heading",
+        "label": "Offer heading 1"
+      },
+      {
+        "type": "text",
+        "id": "combo_offers_description",
+        "label": "Offer Description 1"
+      },
+      {
+        "type": "text",
+        "id": "combo_couponcode",
+        "label": "Coupon code 1"
+      },
+      {
+        "type": "url",
+        "id": "offer_button_link",
+        "label": "Button link"
       }
     ]
   }

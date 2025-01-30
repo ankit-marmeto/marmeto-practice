@@ -1,0 +1,120 @@
+{%- if template.name == 'index' -%}
+    {% assign preload_image_desktop = settings.slider_first_img_desk %}
+    {% assign preload_image_mobile = settings.slider_first_img %}
+  
+{% if preload_image_desktop != blank %}
+      <link
+        rel="preload"
+        as="image"
+        fetchpriority="high"
+        media="(min-width: 768px)"
+        href="{{ preload_image_desktop | image_url }}"
+        imagesrcset="
+          {%- if preload_image_desktop.width >= 375 -%}{{ preload_image_desktop | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 550 -%}{{ preload_image_desktop | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 750 -%}{{ preload_image_desktop | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 1100 -%}{{ preload_image_desktop | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 1500 -%}{{ preload_image_desktop | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 1780 -%}{{ preload_image_desktop | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 2000 -%}{{ preload_image_desktop | image_url: width: 2000 }} 2000w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 3000 -%}{{ preload_image_desktop | image_url: width: 3000 }} 3000w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 3840 -%}{{ preload_image_desktop | image_url: width: 3840 }} 3840w,{%- endif -%}
+          {{ preload_image_desktop | image_url }} {{ preload_image_desktop.width -}}w
+        "
+        imagesizes="100vw"
+      >
+    {% endif %}
+  
+    {% if preload_image_mobile != blank %}
+      <link
+        rel="preload"
+        as="image"
+        fetchpriority="high"
+        media="(max-width: 767px)"
+        href="{{ preload_image_mobile | image_url }}"
+        imagesrcset="
+          {%- if preload_image_mobile.width >= 375 -%}{{ preload_image_mobile | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 550 -%}{{ preload_image_mobile | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 750 -%}{{ preload_image_mobile | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 1100 -%}{{ preload_image_mobile | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 1500 -%}{{ preload_image_mobile | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 1780 -%}{{ preload_image_mobile | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 2000 -%}{{ preload_image_mobile | image_url: width: 2000 }} 2000w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 3000 -%}{{ preload_image_mobile | image_url: width: 3000 }} 3000w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 3840 -%}{{ preload_image_mobile | image_url: width: 3840 }} 3840w,{%- endif -%}
+          {{ preload_image_mobile | image_url }} {{ preload_image_mobile.width -}}w
+        "
+        imagesizes="100vw"
+      >
+    {% endif %}
+{%- elsif template.name == 'product' -%}
+    {% assign preload_image = product.featured_image %}
+    <link
+      rel="preload"
+      as="image"
+      class="product_preload_image"
+      href="{{ preload_image }}"
+      imagesrcset="
+        {%- if preload_image.width >= 550 -%} {{ preload_image | image_url: width: 550 }} 550w,{%- endif -%}
+        {%- if preload_image.width >= 1100 -%}{{ preload_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+        {%- if preload_image.width >= 1445 -%}{{ preload_image | image_url: width: 1445 }} 1445w,{%- endif -%}
+        {%- if preload_image.width >= 1680 -%}{{ preload_image | image_url: width: 1680 }} 1680w,{%- endif -%}
+        {%- if preload_image.width >= 2048 -%}{{ preload_image | image_url: width: 2048 }} 2048w,{%- endif -%}
+        {%- if preload_image.width >= 2200 -%}{{ preload_image | image_url: width: 2200 }} 2200w,{%- endif -%}
+        {%- if preload_image.width >= 2890 -%}{{ preload_image | image_url: width: 2890 }} 2890w,{%- endif -%}
+        {%- if preload_image.width >= 4096 -%}{{ preload_image | image_url: width: 4096 }} 4096w,{%- endif -%}
+        {{ preload_image | image_url }} {{ preload_image.width }}w
+      "
+      imagesizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+    >  
+     {%- elsif template.name == 'collection' -%}
+  {% assign preload_image_desktop = collection.products[0].featured_media.preview_image | image_url %}
+  {% assign preload_image_mobile = collection.products[0].featured_media.preview_image | image_url %}
+     {% if preload_image_desktop != blank %}
+      <link
+        rel="preload"
+        as="image"
+        fetchpriority="high"
+        class="collection-product-preload-desk"
+        media="(min-width: 768px)"
+        href="{{ preload_image_desktop | image_url }}"
+        imagesrcset="
+          {%- if preload_image_desktop.width >= 375 -%}{{ preload_image_desktop | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 550 -%}{{ preload_image_desktop | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 750 -%}{{ preload_image_desktop | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 1100 -%}{{ preload_image_desktop | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 1500 -%}{{ preload_image_desktop | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 1780 -%}{{ preload_image_desktop | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 2000 -%}{{ preload_image_desktop | image_url: width: 2000 }} 2000w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 3000 -%}{{ preload_image_desktop | image_url: width: 3000 }} 3000w,{%- endif -%}
+          {%- if preload_image_desktop.width >= 3840 -%}{{ preload_image_desktop | image_url: width: 3840 }} 3840w,{%- endif -%}
+          {{ preload_image_desktop | image_url }} {{ preload_image_desktop.width -}}w
+        "
+        imagesizes="50vw"
+      >
+    {% endif %}
+
+    {% if preload_image_mobile != blank %}
+      <link
+        rel="preload"
+        as="image"
+        fetchpriority="high"
+        class="collection-product-preload-mob"
+        media="(max-width: 767px)"
+        href="{{ preload_image_mobile | image_url }}"
+        imagesrcset="
+          {%- if preload_image_mobile.width >= 375 -%}{{ preload_image_mobile | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 550 -%}{{ preload_image_mobile | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 750 -%}{{ preload_image_mobile | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 1100 -%}{{ preload_image_mobile | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 1500 -%}{{ preload_image_mobile | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 1780 -%}{{ preload_image_mobile | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 2000 -%}{{ preload_image_mobile | image_url: width: 2000 }} 2000w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 3000 -%}{{ preload_image_mobile | image_url: width: 3000 }} 3000w,{%- endif -%}
+          {%- if preload_image_mobile.width >= 3840 -%}{{ preload_image_mobile | image_url: width: 3840 }} 3840w,{%- endif -%}
+          {{ preload_image_mobile | image_url }} {{ preload_image_mobile.width -}}w
+        "
+        imagesizes="100vw"
+      >
+    {% endif %}     
+{%- endif -%}

@@ -52,18 +52,19 @@
   .collage--mobile .collage__item--right:nth-child(3n) {
     grid-column: 1 / span 2;
   }
+  .collage > *:not(div:first-child) {
+    display: none;
+}
 }
 
 @media screen and (min-width: 750px) {
   .collage {
     grid-auto-flow: column;
     grid-column-gap: var(--grid-desktop-horizontal-spacing);
-    grid-row-gap: var(--grid-desktop-vertical-spacing);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: 1.2fr 0.9fr;
+    grid-template-rows: 1fr 1fr;
   }
-
   .collage__item--left:nth-child(3n - 2) {
-    grid-column: 1 / span 2;
     grid-row: span 2;
   }
 
@@ -73,7 +74,7 @@
 
   .collage__item--left:nth-child(3n - 1),
   .collage__item--left:nth-child(3n) {
-    grid-column-start: 3;
+    grid-column-start: 2;
   }
 
   .collage__item--left:nth-child(3n - 1):last-child {

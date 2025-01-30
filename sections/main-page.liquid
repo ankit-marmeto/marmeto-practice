@@ -1,23 +1,35 @@
 {{ 'section-main-page.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+  
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
+    .static-page-width{
+      padding: 0 24.3rem;
+      max-width: 100%;
+      padding-top:32px
+    }
   }
+
+  @media screen and (min-width: 750px) and (max-width: 989px){
+    .static-page-width{
+      padding: 0 14.3rem;
+      max-width: 100%;
+      padding-top:32px
+    }
+
+  }
+   
 {%- endstyle -%}
 
-<div class="page-width page-width--narrow section-{{ section.id }}-padding">
-  <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-    {{ page.title | escape }}
-  </h1>
+<div class="page-width page-width--narrow static-page-width section-{{ section.id }}-padding">
+  <h2 class="main-page-title page-title  page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {{ page.title | escape |  upcase }}
+  </h2>
   <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     {{ page.content }}
   </div>

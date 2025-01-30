@@ -1,0 +1,300 @@
+{{ 'occassion-banner.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .position-{{ section.id }} {
+    justify-content: {{ section.settings.content_position_x }};
+    align-items: {{ section.settings.content_position_y }};
+  }
+  .text-alignment-{{ section.id }} {
+    align-items: {{ section.settings.text_alignment }};
+  }
+
+  .occassion-image-container {
+    display: block;
+  }
+  .occassion-small {
+    height: 25rem;
+  }
+  .occassion-medium {
+    height: 55rem;
+  }
+  .occassion-large {
+    height: 65rem;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .occassion-small {
+      height: 50rem;
+    }
+    .occassion-medium {
+      height: 60rem;
+    }
+    .occassion-large {
+      height: 70rem;
+    }
+  }
+{%- endstyle -%}
+<div class="section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+  {% if section.settings.bg_url != blank %}
+    <a href="{{section.settings.bg_url}}">
+  {% endif %}
+
+
+  <div class="main-banner">
+    <div class="occassion-image-container occassion-{{ section.settings.image_height }}">
+      {% render 'picture'
+        , class: ''
+        , mobileSrc: section.settings.background_image_small
+        , desktopSrc: section.settings.background_image %}
+    </div>
+
+
+    <div class="occassion-content position-{{ section.id }}">
+      <div class="occ-position text-alignment-{{ section.id }}">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+
+            {%- when 'heading' -%}
+              <div class="{{ block.settings.heading_size }}">{{ block.settings.heading }}</div>
+
+            {%- when 'caption' -%}
+              <div class="caption mb_10">{{ block.settings.caption }}</div>
+
+            {%- when 'subtitle' -%}
+              <div class="{{ block.settings.subtitle_size }}" style="color: {{block.settings.subtitle_color}};">{{ block.settings.subtitle }}</div>
+
+            {%- when 'button_url' -%}
+              <a href="{{block.settings.button_url}}">{% render 'right-arrow' %}</a>
+
+          {%- endcase -%}
+
+
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+  {% if section.settings.bg_url != blank %}
+    </a>
+  {% endif %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Occassion Banner",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "label": "Background Image",
+        "id": "background_image"
+      },
+      {
+        "type": "image_picker",
+        "label": "Background Image (Mobile)",
+        "id": "background_image_small"
+      },
+      {
+        "type": "url",
+        "label": "Add Link",
+        "id": "bg_url"
+      },
+      {
+        "type": "select",
+        "id": "image_height",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "small",
+        "label": "Image Height"
+      },
+      {
+        "type": "range",
+        "label": "Padding Top",
+        "id": "padding_top",
+        "default": 20,
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px"
+      }, {
+        "type": "range",
+        "label": "Padding Bottom",
+        "id": "padding_bottom",
+        "default": 20,
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px"
+      }, {
+        "type": "select",
+        "label": "Content Position (Horizontal)",
+        "id": "content_position_x",
+        "options": [
+          {
+            "label": "Left",
+            "value": "flex-start"
+          }, {
+            "label": "Center",
+            "value": "center"
+          }, {
+            "label": "Right",
+            "value": "flex-end"
+          }
+        ]
+      }, {
+        "type": "select",
+        "label": "Content Position (Vertical)",
+        "id": "content_position_y",
+        "options": [
+          {
+            "label": "Top",
+            "value": "flex-start"
+          }, {
+            "label": "Middle",
+            "value": "center"
+          }, {
+            "label": "Bottom",
+            "value": "flex-end"
+          }
+        ]
+      }, {
+        "type": "select",
+        "label": "Text Alignment",
+        "id": "text_alignment",
+        "options": [
+          {
+            "label": "Left",
+            "value": "flex-start"
+          }, {
+            "label": "Center",
+            "value": "center"
+          }, {
+            "label": "Right",
+            "value": "flex-end"
+          }
+        ]
+      }, {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "Heading",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "label": "Heading",
+            "id": "heading",
+            "default": "Pongal Collection 2023"
+          }, {
+            "type": "select",
+            "id": "heading_size",
+            "options": [
+              {
+                "value": "h2",
+                "label": "t:sections.all.heading_size.options__1.label"
+              }, {
+                "value": "h1",
+                "label": "t:sections.all.heading_size.options__2.label"
+              }, {
+                "value": "h0",
+                "label": "t:sections.all.heading_size.options__3.label"
+              }
+            ],
+            "default": "h2",
+            "label": "t:sections.all.heading_size.label"
+          }
+        ]
+      }, {
+        "type": "caption",
+        "name": "Caption",
+        "limit": 1,
+        "settings": [
+
+          {
+            "type": "text",
+            "label": "Caption",
+            "id": "caption",
+            "default": "upto 30% off"
+          }
+        ]
+      }, {
+        "type": "subtitle",
+        "name": "Subtitle",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "label": "Subtitle",
+            "id": "subtitle",
+            "default": "More than 100+ new products"
+          }, {
+            "type": "color",
+            "label": "Subtitle Color",
+            "id": "subtitle_color",
+            "default": "#ff8e00"
+          }, {
+            "type": "select",
+            "id": "subtitle_size",
+            "options": [
+              {
+                "value": "h4",
+                "label": "small"
+              }, {
+                "value": "h5",
+                "label": "medium"
+              }, {
+                "value": "h3",
+                "label": "large"
+              }
+            ],
+            "default": "h5",
+            "label": "Subtitle Size"
+          }
+        ]
+      }, {
+        "type": "button_url",
+        "name": "Button URL",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "url",
+            "label": "Button URL",
+            "id": "button_url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Occassion Banner"
+      }
+    ]
+  }
+{% endschema %}

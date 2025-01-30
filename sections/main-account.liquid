@@ -1,183 +1,151 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
+ 
+{{ 'custom_customer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'account.js' | asset_url }}" defer="defer"></script>
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+{{ 'account-sidebar.css' | asset_url | stylesheet_tag }}
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
 
-<div class="customer account section-{{ section.id }}-padding">
-  <div>
-    <h1 class="customer__title">{{ 'customer.account.title' | t }}</h1>
-    <a href="{{ routes.account_logout_url }}">
-      <span class="svg-wrapper">
-        {{- 'icon-account.svg' | inline_asset_content -}}
-      </span>
-      {{ 'customer.log_out' | t }}
-    </a>
+<div class="customer account-main account section-{{ section.id }}-padding">
+  <div class="account-sidebar">
+    {% render 'account-sidebar', section: section %}
   </div>
 
-  <div>
+  <div class="account-information">
+    <div class="content-div" id="dashboard-content">
+      <div class="overview-parent-container" id="dashboard-content">
+        <div class="child-div">
+          <div class="child_sub">
+            <div class="dashboard-heading customer-name account-icon-container">
+              {% render 'profile-icon' %}
+              <p>{{ customer.name }}</p>
+            </div>
+            <p class="dashboard-text-phone overview-para">
+              Mobile:{{ customer.phone }}</p>
+            <p class="customer-email overview-para">Email: {{ customer.email }}</p>
+          </div>
+        </div>
+        <div class="child-div">
+          <div class="child_sub">
+            <div class="account-icon-container mobile-svg">
+              {% render 'address-icon' %}
+              <p class="dashboard-heading">Shipping Address</p>
+            </div>
+            <p class="dashboard-text-container overview-para">Checkout faster with your saved addresses</p>
+            <p class="view-all-link" onclick="showContent('address')">Shipping Address</p>
+          </div>
+        </div>
+        <div class="child-div">
+          <div class="child_sub">
+            <div class="account-icon-container mobile-svg">
+              {% render 'wishlist-icon' %}
+              <p class="dashboard-heading">Wishlist</p>
+            </div>
+            <p class="dashboard-text-container overview-para wish-list-para">Edit name, mailing address, phone number, birthday, and shopping preference.</p>
+            <p class="view-all-link" onclick="showContent('wishlist')">View Items</p>
+          </div>
+        </div>
+        <div class="child-div online_order_tab">
+          <div class="child_sub">
+            <div class="account-icon-container mobile-svg">
+              {% render 'order-icon' %}
+              <p class="dashboard-heading">Online Orders</p>
+            </div>
+            <p class="dashboard-text-container overview-para">
+              Your MyRaymond online orders</p>
+            <p class="view-all-link" onclick="showContent('order')">Online Orders</p>
+          </div>
+        </div>
+      </div>
+      <div class="logout-container">
+        <a class="logout" href="{{ routes.account_logout_url }}">
+          {% render 'logout-icon' %}
+          {{ 'customer.log_out' | t }}
+        </a>
+      </div>
+    </div>
+    <div id="address-content" class="content-div">
+      {% render "address-snippet" %} 
+    </div>
     <div>
-      <h2>{{ 'customer.orders.title' | t }}</h2>
-
-      {% paginate customer.orders by 20 %}
-        {%- if customer.orders.size > 0 -%}
-          <table role="table" class="order-history">
-            <caption class="visually-hidden">
-              {{ 'customer.orders.title' | t }}
-            </caption>
-            <thead role="rowgroup">
-              <tr role="row">
-                <th id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
-                <th id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
-                <th id="ColumnPayment" scope="col" role="columnheader">{{ 'customer.orders.payment_status' | t }}</th>
-                <th id="ColumnFulfillment" scope="col" role="columnheader">
-                  {{ 'customer.orders.fulfillment_status' | t }}
-                </th>
-                <th id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
-              </tr>
-            </thead>
-            <tbody role="rowgroup">
-              {%- for order in customer.orders -%}
-                <tr role="row">
-                  <td
-                    id="RowOrder"
-                    role="cell"
-                    headers="ColumnOrder"
-                    data-label="{{ 'customer.orders.order_number' | t }}"
-                  >
-                    <a
-                      href="{{ order.customer_url }}"
-                      aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
-                    >
-                      {{ order.name }}
-                    </a>
-                  </td>
-                  <td headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
-                    {{ order.created_at | time_tag: format: 'date' }}
-                  </td>
-                  <td
-                    headers="RowOrder ColumnPayment"
-                    role="cell"
-                    data-label="{{ 'customer.orders.payment_status' | t }}"
-                  >
-                    {{ order.financial_status_label }}
-                  </td>
-                  <td
-                    headers="RowOrder ColumnFulfillment"
-                    role="cell"
-                    data-label="{{ 'customer.orders.fulfillment_status' | t }}"
-                  >
-                    {{ order.fulfillment_status_label }}
-                  </td>
-                  <td headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
-                    {{ order.total_net_amount | money_with_currency }}
-                  </td>
-                </tr>
-              {%- endfor -%}
-            </tbody>
-          </table>
-        {%- else -%}
-          <p>{{ 'customer.orders.none' | t }}</p>
-        {%- endif -%}
-
-        {%- if paginate.pages > 1 -%}
-          {%- if paginate.parts.size > 0 -%}
-            <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
-              <ul role="list">
-                {%- if paginate.previous -%}
-                  <li>
-                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
-                      <span class="svg-wrapper">
-                        {{- 'icon-caret.svg' | inline_asset_content -}}
-                      </span>
-                    </a>
-                  </li>
-                {%- endif -%}
-
-                {%- for part in paginate.parts -%}
-                  <li>
-                    {%- if part.is_link -%}
-                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                        {{- part.title -}}
-                      </a>
-                    {%- else -%}
-                      {%- if part.title == paginate.current_page -%}
-                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                          {{- part.title -}}
-                        </span>
-                      {%- else -%}
-                        <span>{{ part.title }}</span>
-                      {%- endif -%}
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
-
-                {%- if paginate.next -%}
-                  <li>
-                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}">
-                      <span class="svg-wrapper">
-                        {{- 'icon-caret.svg' | inline_asset_content -}}
-                      </span>
-                    </a>
-                  </li>
-                {%- endif -%}
-              </ul>
-            </nav>
-          {%- endif -%}
-        {%- endif -%}
-      {% endpaginate %}
+      <div id="profile-content" class="content-div">
+        <p>profile i am profile</p>
+      </div>
+    </div>
+    <div id="wishlist-content" class="content-div">
+      <p>wishlist</p>
     </div>
 
-    <div>
-      <h2>{{ 'customer.account.details' | t }}</h2>
-
-      {{ customer.default_address | format_address }}
-
-      <a href="{{ routes.account_addresses_url }}">
-        {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
-      </a>
+    <div id="order-content" class="content-div">
+      {%  render 'order-snippet' %} 
     </div>
   </div>
 </div>
 
 {% schema %}
-{
-  "name": "t:sections.main-account.name",
-  "settings": [
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ]
-}
+  {
+    "name": "t:sections.main-account.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tab-heading",
+        "name": "Tab Heading",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "data-id",
+            "label": "Data Id",
+            "info": "Add name for ID to map with tabs."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:sections.main-account.name",
+        "blocks": [
+          {
+            "type": "tab-heading"
+          },
+          {
+            "type": "tab-heading"
+          },
+          {
+            "type": "tab-heading"
+          },
+          {
+            "type": "tab-heading"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}

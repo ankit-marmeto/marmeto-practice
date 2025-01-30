@@ -1,40 +1,72 @@
+.collection-list-main-wrapper > h1 {
+  margin-bottom: 2rem;
+}
+.collection-list-main-wrapper > h2 {
+  margin-bottom: 2rem;
+}
 .collection-list {
   margin-top: 0;
   margin-bottom: 0;
 }
-
 .collection-list-title {
   margin: 0;
 }
-
-@media screen and (max-width: 749px) {
-  .collection-list:not(.slider) {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .section-collection-list .page-width {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .section-collection-list .collection-list:not(.slider) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
 .collection-list__item:only-child {
   max-width: 100%;
   width: 100%;
 }
-
+.collection-list-view-all {
+  margin-top: 2rem;
+}
+.collection_url {
+  display: block;
+  position: relative;
+  display: block;
+}
+.collection-title_wrapper {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.collection-title {
+  color: rgba(255, 255, 255, 1);
+}
+.collection-list__item img {
+  transition: all 1s ease-in-out;
+}
+.collection-list__item:hover img {
+  scale: 1.1;
+}
 @media screen and (max-width: 749px) {
+  .collection-title_wrapper {
+    bottom: 1rem;
+  }
+  .collection-title {
+    font-size: 1.6rem;
+  }
+  .collection-list:not(.slider) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .section-collection-list .page-width {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .section-collection-list .collection-list:not(.slider) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
   .slider.collection-list--1-items {
     padding-bottom: 0;
   }
 }
-
+@media screen and (max-width: 989px) {
+  .collection-list.slider .collection-list__item {
+    max-width: 100%;
+  }
+}
 @media screen and (min-width: 750px) and (max-width: 989px) {
   .slider.collection-list--1-items,
   .slider.collection-list--2-items,
@@ -43,19 +75,8 @@
     padding-bottom: 0;
   }
 }
-
 @media screen and (min-width: 750px) {
   .collection-list__item a:hover {
     box-shadow: none;
   }
-}
-
-@media screen and (max-width: 989px) {
-  .collection-list.slider .collection-list__item {
-    max-width: 100%;
-  }
-}
-
-.collection-list-view-all {
-  margin-top: 2rem;
 }

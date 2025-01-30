@@ -1,0 +1,95 @@
+@media screen and (max-width: 749px) {
+	.section-brand-collections__continer:not(.flickity-enabled) {
+		display: flex;
+		gap: 1rem;
+		overflow-x: auto;
+	}
+}
+.section-brand-collection {
+	max-width: 1428px;
+	margin: 0 auto;
+	padding: 32px 0 26px 0;
+}
+.section-brand-collection__text p:first-child {
+	margin-bottom: 12px;
+	color: #000000;
+}
+.section-brand-collections__continer {
+	margin-top: 17px;
+	padding-bottom: 13.55px;
+}
+.custom-media-image {
+	width: 224px;
+	height: 310px;
+}
+.section-brand-collections__continer--item {
+	margin-right: 16px;
+}
+.section-brand-collections__continer--item > a {
+	text-decoration: none;
+}
+.section-brand-collections__continer--item p:not(:last-child) {
+	margin-top: 16.45px;
+	margin-bottom: 1.2rem;
+	color: #000000;
+	text-transform: uppercase;
+}
+.section-brand-collections__continer--item p:last-child {
+	margin-bottom: 1.6rem;
+}
+.section-brand-collections__continer--item .brand_collection-url {
+	color: #323232;
+	text-decoration-color: #323232;
+	text-transform: capitalize;
+	text-decoration: underline;
+}
+.section-brand-collections__continer .flickity-page-dots {
+	margin-top: 1.4rem;
+	bottom: -1.4rem;
+}
+.section-brand-collections__continer .dot {
+	background: #000000;
+}
+.section-brand-collections__continer .dot {
+	width: 5px;
+	height: 5px;
+	margin: 0 4px;
+	background: #000000;
+}
+.section-brand-collections__continer .dot.is-selected {
+	width: 6rem;
+	border-radius: 0;
+}
+.section-brand-collection .media > img {
+	object-fit: inherit;
+}
+@media screen and (min-width: 750px) {
+	.section-brand-collections__continer .flickity-page-dots {
+		margin-top: 3.2rem;
+		bottom: 0;
+	}
+	.section-brand-collections__continer {
+		margin-top: 4.8rem;
+		padding-bottom: 2.8rem;
+	}
+	.section-brand-collections__continer--item p:last-child {
+		margin-bottom: 2rem;
+	}
+	.section-brand-collections__continer--item p:not(:last-child) {
+		margin-top: 2.4rem;
+		margin-bottom: 2.4rem;
+	}
+	.section-brand-collections__continer--item {
+		margin-right: 24px;
+	}
+	.section-brand-collection__text p:first-child {
+		margin-bottom: 1.6rem;
+	}
+	.custom-media-image {
+		width: 325px;
+		height: 450px;
+	}
+	.section-brand-collection {
+		padding: 72px 0;
+	}
+}

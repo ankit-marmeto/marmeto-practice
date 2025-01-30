@@ -1,0 +1,84 @@
+{{'ourvalue.css' |  asset_url |  stylesheet_tag }}
+
+
+<div class="our-value-top-container">
+
+
+<p class="ourvalue_heading_text">{{ section.settings.section_heading_text }}</p>
+<div class="ourvalueContainer">
+  
+  {% for block in section.blocks %}
+    <div class="ourvalue_data_container">
+
+     
+     <div class="ourvalue_image_container">
+        {% render 'new-image',
+        
+        mobileSrc: block.settings.image,
+        desktopSrc: block.settings.image
+      %}
+     </div>
+       <div class="ourvalue_text">
+          {{ block.settings.text }}
+
+        </div>
+
+ </div>
+
+  {% endfor %}
+
+
+  
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+    {
+      "name": "ourvalues",
+      "tag": "section",
+      "settings": [
+        {
+      "type": "text",
+      "label": "section heading text",
+      "id": "section_heading_text"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "ourvalue",
+          "name": "ourvalue",
+          "settings": [
+            {
+              "type": "image_picker",
+              "label": "Add Image",
+              "id": "image"
+            },
+            {
+              "type": "richtext",
+              "label": "Add text ",
+              "id": "text"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "OurValue"
+        }
+      ]
+    }
+    {% endschema %}

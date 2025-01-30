@@ -1,12 +1,16 @@
+var accountMain = document.querySelector('.overlay-content');
+
 const selectors = {
   customerAddresses: '[data-customer-addresses]',
   addressCountrySelect: '[data-address-country-select]',
   addressContainer: '[data-address]',
   toggleAddressButton: 'button[aria-expanded]',
-  cancelAddressButton: 'button[type="reset"]',
+  cancelAddressButton: "button[type='reset']",
   deleteAddressButton: 'button[data-confirm-message]',
 };
-
+function toggleClass() {
+  accountMain.classList.toggle('overlay');
+}
 const attributes = {
   expanded: 'aria-expanded',
   confirmMessage: 'data-confirm-message',
@@ -19,6 +23,8 @@ class CustomerAddresses {
     this._setupCountries();
     this._setupEventListeners();
   }
+
+   
 
   _getElements() {
     const container = document.querySelector(selectors.customerAddresses);
@@ -56,6 +62,7 @@ class CustomerAddresses {
     });
     this.elements.cancelButtons.forEach((element) => {
       element.addEventListener('click', this._handleCancelButtonClick);
+      
     });
     this.elements.deleteButtons.forEach((element) => {
       element.addEventListener('click', this._handleDeleteButtonClick);
@@ -68,18 +75,28 @@ class CustomerAddresses {
 
   _handleAddEditButtonClick = ({ currentTarget }) => {
     this._toggleExpanded(currentTarget);
+    toggleClass()
   };
 
   _handleCancelButtonClick = ({ currentTarget }) => {
     this._toggleExpanded(currentTarget.closest(selectors.addressContainer).querySelector(`[${attributes.expanded}]`));
+    toggleClass();
   };
 
   _handleDeleteButtonClick = ({ currentTarget }) => {
+    toggleClass();
+    
     // eslint-disable-next-line no-alert
-    if (confirm(currentTarget.getAttribute(attributes.confirmMessage))) {
+    document.querySelector('.deleteModal').style.display='block'
+    document.querySelector('.cancelButton').addEventListener('click',() =>{
+      accountMain.classList.remove('overlay'); 
+      document.querySelector('.deleteModal').style.display='none'
+    })
+    document.querySelector('.deleteButton').addEventListener('click',()=>{
       Shopify.postLink(currentTarget.dataset.target, {
         parameters: { _method: 'delete' },
       });
-    }
+    })
   };
 }
+

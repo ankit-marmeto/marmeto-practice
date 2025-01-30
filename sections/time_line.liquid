@@ -1,0 +1,149 @@
+{{'timeline.css' |  asset_url |  stylesheet_tag }}
+
+
+{% style %}
+
+
+
+  
+
+
+
+
+{% endstyle %}
+
+
+
+
+
+
+<div class="timeline_maincontainer">
+
+
+<div class="timeline_section_line">
+    <div>
+
+    </div>
+</div>
+
+ {% for block in section.blocks %}
+    <div class="timeline_block timeline-image-align-{{ block.settings.image_alignment }}">
+
+    <div class="timeline_text_container timeline-text-alignment-{{ block.settings.text_alignment }}">
+        <div class="timeline_text">
+            {{ block.settings.text }}
+
+        </div>
+
+        <div class="timeline_para">
+            {{ block.settings.paragraph }}
+
+
+        </div>
+    </div>
+    
+      <div class="dot">
+        <div class="dot_child">
+
+        </div>
+      </div>
+
+    <div class="timeline_image_container">
+
+    {% render 'new-image',class="timeline_image"
+        
+          mobileSrc: block.settings.select_image,
+          desktopSrc: block.settings.select_image
+        %}
+
+     
+
+    </div>
+
+
+    </div>
+  
+ {% endfor %}
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+    {
+      "name": "timeline",
+      "tag": "section",
+      "settings": [],
+      "blocks": [
+        {
+          "type": "timeline",
+          "name": "timeline",
+          "settings": [
+            {
+              "type": "text",
+              "label": "Enter Text",
+              "id": "text"
+            },
+            {
+              "type": "richtext",
+              "label": "Enter Paragraph",
+              "id": "paragraph"
+            },
+            {
+              "type": "select",
+              "id": "text_alignment",
+              "label": "Text Alignment",
+              "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+                "default": "right"
+            },
+
+            {
+              "type": "image_picker",
+              "label": "select image",
+              "id": "select_image"
+            },
+            {
+              "type": "select",
+              "id": "image_alignment",
+              "label": "Image Alignment",
+              "options": [
+              {
+                "value": "row",
+                "label": "Left"
+              },
+              {
+                "value": "row-reverse",
+                "label": "Right"
+              }
+            ],
+                "default": "row"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "TimeLine"
+        }
+      ]
+    }
+    {% endschema %}
