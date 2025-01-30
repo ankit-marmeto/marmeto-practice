@@ -167,6 +167,13 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "1744347199190486471": {
+        "type": "shopify://apps/advanced-wishlist/blocks/app/330d9272-08ea-4193-b3e0-475a69fa65fa",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "background-1": {
         "settings": {
