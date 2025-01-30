@@ -15,8 +15,6 @@
         "slide_BHUNxE": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Desktop_banner_EOSS.png",
-            "image_mobile": "shopify://shop_images/Mobile_banner_EOSS.png",
             "slide_url": "shopify://collections/end-of-season-sale",
             "image_overlay_opacity": 0,
             "color_scheme": "background-1",
@@ -29,8 +27,6 @@
         "slide_djUD38": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Desktop_Banner_2_661a7e80-9191-46b5-b98b-0b804e58a8af.png",
-            "image_mobile": "shopify://shop_images/Mobile_Banner2.png",
             "slide_url": "shopify://collections/fresh-arrival",
             "image_overlay_opacity": 0,
             "color_scheme": "",
@@ -43,8 +39,6 @@
         "slide_9pXRim": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner_3_-_Desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner_3_-_Mobile.jpg",
             "slide_url": "shopify://collections/combo-offer",
             "image_overlay_opacity": 0,
             "color_scheme": "background-1",
@@ -65,7 +59,7 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "layout": "full_bleed",
-        "slide_height": "large",
+        "slide_height": "extra_large",
         "slider_visual": "dots",
         "slider_dots_overlay": true,
         "auto_rotate": true,
@@ -80,37 +74,31 @@
         "collection_DPVH47": {
           "type": "collection",
           "settings": {
-            "collection": "raymond",
-            "image_small": "shopify://shop_images/Raymond_83df0bc4-997d-4f34-8e14-4412ee6451ac.png"
+            "collection": "raymond"
           }
         },
         "collection_fkhTkf": {
           "type": "collection",
           "settings": {
-            "collection": "park-avenue",
-            "image_small": "shopify://shop_images/Park_Avenue_519d0ebd-5f7a-444c-bedb-30fb3930f63f.png"
+            "collection": "park-avenue"
           }
         },
         "collection_AgpDyT": {
           "type": "collection",
           "settings": {
-            "collection": "colorplus",
-            "image_small": "shopify://shop_images/Colorplus_77ebd339-4eea-468b-a8dd-18296611251b.png"
+            "collection": "colorplus"
           }
         },
         "collection_wdgmU7": {
           "type": "collection",
           "settings": {
-            "collection": "parx",
-            "image_small": "shopify://shop_images/Parx_f494c5ed-e98f-4836-93ca-06436d2f4737.png"
+            "collection": "parx"
           }
         },
         "collection_QLBQWM": {
           "type": "collection",
           "settings": {
-            "collection": "sleepwear",
-            "image_small": "shopify://shop_images/LOOK_INTO_BRANDS_Desktop.png",
-            "image_alternate": "shopify://shop_images/LOOK_INTO_BRANDS_Mobile.png"
+            "collection": "sleepwear"
           }
         }
       },
@@ -243,8 +231,6 @@
         "buttons_cbkPii"
       ],
       "settings": {
-        "image": "shopify://shop_images/Image_1_eec1dfc7-81f5-4d01-9d3d-00cf2ef45ef6.png",
-        "image_2": "shopify://shop_images/Image_2_31fbd0bd-3c3d-4c6f-b651-0a7a24b8cf2c.png",
         "hide_image": true,
         "monochrome": true,
         "image_overlay_opacity": 0,
@@ -274,9 +260,7 @@
         "title_size": "h6",
         "description": "",
         "description_size": "caption",
-        "button_url": "shopify://collections/casual-classic",
-        "desktop_image": "shopify://shop_images/Casually_33b2aba0-ae16-4ca8-94a0-489069f1a629.jpg",
-        "mobile_image": "shopify://shop_images/Image_1_f629c89f-ca52-438c-b7c4-03def0d2ccd8.png"
+        "button_url": "shopify://collections/casual-classic"
       }
     }
   },
