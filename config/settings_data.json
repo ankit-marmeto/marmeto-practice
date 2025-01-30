@@ -152,6 +152,21 @@
     "offer_button_link": "shopify://collections/combo-offer",
     "offer_collection": "combo-offer",
     "wizz_beta_frontend_js": "<script src='http://127.0.0.1:5500/dist/wizzyFrontend.min.js' defer></script>",
+    "sections": {
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "color_scheme": "background-1"
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "background-1"
+        }
+      }
+    },
+    "content_for_index": [],
     "color_schemes": {
       "background-1": {
         "settings": {
@@ -281,22 +296,7 @@
           "shadow": "#ffffff"
         }
       }
-    },
-    "sections": {
-      "main-password-header": {
-        "type": "main-password-header",
-        "settings": {
-          "color_scheme": "background-1"
-        }
-      },
-      "main-password-footer": {
-        "type": "main-password-footer",
-        "settings": {
-          "color_scheme": "background-1"
-        }
-      }
-    },
-    "content_for_index": []
+    }
   },
   "presets": {
     "Default": {

@@ -52,20 +52,19 @@
         "drawer_link_1_NAeyHN": {
           "type": "drawer_link-1",
           "settings": {
-            "menu": "menu-drawer-1"
+            "menu": "about"
           }
         },
         "drawer_link_2_rCNYjc": {
           "type": "drawer_link-2",
           "settings": {
-            "menu": "menu-drawer-2"
+            "menu": ""
           }
         },
         "image_blocks_Ur7qXj": {
           "type": "image_blocks",
           "settings": {
             "mega_menu_handle": "Categories",
-            "mega_menu_image": "shopify://shop_images/Desktop_c8e724ce-3de3-4f50-afc8-bedd768096ef.png",
             "mega_menu_image_link": "shopify://collections/online-exclusive"
           }
         },
@@ -73,7 +72,6 @@
           "type": "image_blocks",
           "settings": {
             "mega_menu_handle": "Categories",
-            "mega_menu_image": "shopify://shop_images/Desktop.png",
             "mega_menu_image_link": "shopify://collections/sale"
           }
         }
@@ -85,7 +83,6 @@
         "image_blocks_3taYL9"
       ],
       "settings": {
-        "menu_image": "shopify://shop_images/Sale_image.png",
         "show_sale_text": true,
         "red-font-text": "End of Season Sale",
         "menu_image-text": "",
