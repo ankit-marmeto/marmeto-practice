@@ -61,6 +61,12 @@
             "menu": "gumazing"
           }
         },
+        "drawer_link_1_VRj9dG": {
+          "type": "drawer_link-1",
+          "settings": {
+            "menu": "footer"
+          }
+        },
         "image_blocks_Ur7qXj": {
           "type": "image_blocks",
           "settings": {
@@ -79,6 +85,7 @@
       "block_order": [
         "drawer_link_1_NAeyHN",
         "drawer_link_2_rCNYjc",
+        "drawer_link_1_VRj9dG",
         "image_blocks_Ur7qXj",
         "image_blocks_3taYL9"
       ],
